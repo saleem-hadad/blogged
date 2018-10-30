@@ -16,7 +16,7 @@ class BloggedServiceProvider extends ServiceProvider
     {
         $this->registerRoutes();
         
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'Blogged');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'blogged');
     }
 
     /**
@@ -50,6 +50,38 @@ class BloggedServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->loadHelpers();
+
+        if ($this->app->runningInConsole()) {
+            $this->registerPublishableResources();
+        }
+    }
+
+    /**
+     * Load helpers.
+     */
+    protected function loadHelpers()
+    {
+        foreach (glob(__DIR__.'/Helpers/*.php') as $filename) {
+            require_once $filename;
+        }
+    }
+
+    /**
+     * Register the publishable files.
+     */
+    protected function registerPublishableResources()
+    {
+        $publishablePath = dirname(__DIR__).'/publishable';
+
+        $publishable = [
+            'blogged_assets' => [
+                "{$publishablePath}/assets/" => public_path('vendor/binarytorch/blogged/assets'),
+            ],
+        ];
+
+        foreach ($publishable as $group => $paths) {
+            $this->publishes($paths, $group);
+        }
     }
 }
