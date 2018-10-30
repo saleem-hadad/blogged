@@ -9,6 +9,6 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return 'blog';
+        return view('Blogged::index');
     }
 }

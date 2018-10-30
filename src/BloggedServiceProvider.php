@@ -14,23 +14,9 @@ class BloggedServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->singleton(Blogged::class, function () {
-            return new Blogged();
-        });
-
-        $this->app->alias(Blogged::class, 'Blogged');
-
         $this->registerRoutes();
-    }
-
-    /**
-     * Register the application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
+        
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'Blogged');
     }
 
     /**
@@ -55,5 +41,15 @@ class BloggedServiceProvider extends ServiceProvider
             'namespace'  => 'BinaryTorch\Blogged\Http\Controllers',
             'middleware' => ['web'],
         ];
+    }
+
+    /**
+     * Register the application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
     }
 }
