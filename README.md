@@ -1,14 +1,14 @@
 <h6 align="center">
-    <img src="https://larecipe.binarytorch.com.my/images/logo.svg"/>
+    <img width="200" src="https://larecipe.binarytorch.com.my/images/blogged.svg"/>
 </h6>
 
 <h2 align="center">
-    Blogged
+    <b>Blogged</b>
 </h2>
 
 
 <h6 align="center">
-    Write gorgeous articles for your website.
+    Write gorgeous blog articles for your website using MarkDown inside your Laravel app.
 </h6>
     
 
@@ -21,7 +21,7 @@
 </p>
 <br/><br/>
 
-# Blogged 🍪
+# Blogged 🖍
 
 
 
