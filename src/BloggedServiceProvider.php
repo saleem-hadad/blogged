@@ -2,6 +2,7 @@
 
 namespace BinaryTorch\Blogged;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class BloggedServiceProvider extends ServiceProvider
@@ -18,6 +19,8 @@ class BloggedServiceProvider extends ServiceProvider
         });
 
         $this->app->alias(Blogged::class, 'Blogged');
+
+        $this->registerRoutes();
     }
 
     /**
@@ -28,5 +31,21 @@ class BloggedServiceProvider extends ServiceProvider
     public function register()
     {
         //
+    }
+
+    /**
+     * Register the Horizon routes.
+     *
+     * @return void
+     */
+    protected function registerRoutes()
+    {
+        Route::group([
+            'prefix'     => config('blogged.uri', 'blog'),
+            'namespace'  => 'BinaryTorch\Blogged\Http\Controllers',
+            'middleware' => ['web'],
+        ], function () {
+            $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        });
     }
 }
