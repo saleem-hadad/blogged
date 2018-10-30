@@ -1,0 +1,46 @@
+{
+    "name": "binarytorch/blogged",
+    "description": "Write gorgeous articles for your Laravel applications using MarkDown",
+    "keywords": ["laravel", "markdown", "blog", "articles"],
+    "license": "MIT",
+    "type": "library",
+    "support": {
+        "issues": "https://github.com/saleem-hadad/blogged/issues",
+        "source": "https://github.com/saleem-hadad/blogged"
+    },
+    "authors": [
+        {
+            "name": "Saleem Hadad",
+            "email": "saleem@binary-torch.com"
+        }
+    ],
+    "require": {
+        "illuminate/support": "~5.4.0|~5.5.0|~5.6.0|~5.7.0",
+        "erusev/parsedown-extra": "^0.7.1",
+        "symfony/dom-crawler": "^4.1",
+        "mockery/mockery": "^1.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~7.0",
+        "laravel/framework": "~5.4.0|~5.5.0|~5.6.0|~5.7.0",
+        "orchestra/testbench": "~3.4.0|~3.5.0|~3.6.0|~3.7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "BinaryTorch\\Blogged\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BinaryTorch\\Blogged\\Tests\\": "tests/"
+      }
+    },
+    "minimum-stability": "stable",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "BinaryTorch\\Blogged\\BloggedServiceProvider"
+            ]
+        }
+    }
+}
