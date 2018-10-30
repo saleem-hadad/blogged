@@ -20,6 +20,9 @@
 // Bootstrap Datepicker
 //
 
+import "../sass/vendor/nucleo/css/nucleo.css";
+import "../sass/vendor/font-awesome/css/font-awesome.css";
+
 'use strict';
 
 var Datepicker = (function() {
