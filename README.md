@@ -8,7 +8,7 @@
 
 
 <h6 align="center">
-    Write gorgeous articles for your website.
+    Write gorgeous blog articles for your website using MarkDown inside your Laravel app.
 </h6>
     
 
@@ -21,7 +21,7 @@
 </p>
 <br/><br/>
 
-# Blogged 🍪
+# Blogged 🖌
 
 
 
