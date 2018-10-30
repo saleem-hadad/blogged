@@ -34,18 +34,26 @@ class BloggedServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the Horizon routes.
+     * Register the Blogged routes.
      *
      * @return void
      */
     protected function registerRoutes()
     {
-        Route::group([
+        Route::group($this->routesConfig(), function () {
+            $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        });
+    }
+
+    /**
+     * @return array
+     */
+    protected function routesConfig()
+    {
+        return [
             'prefix'     => config('blogged.uri', 'blog'),
             'namespace'  => 'BinaryTorch\Blogged\Http\Controllers',
             'middleware' => ['web'],
-        ], function () {
-            $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
-        });
+        ];
     }
 }
