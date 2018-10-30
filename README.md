@@ -1,9 +1,9 @@
 <h6 align="center">
-    <img src="https://larecipe.binarytorch.com.my/images/logo.svg"/>
+    <img width="200" src="https://larecipe.binarytorch.com.my/images/blogged.svg"/>
 </h6>
 
 <h2 align="center">
-    Blogged
+    <b>Blogged</b>
 </h2>
 
 
