@@ -16,6 +16,16 @@ class ArticleTest extends TestCase
     }
 
     /** @test */
+    public function it_has_unique_slug()
+    {
+        $article = factory(Article::class)->create(['slug' => 'slug-me']);
+        $this->assertEquals('slug-me', $article->slug);
+        
+        $this->expectException('\Illuminate\Database\QueryException');
+        $article = factory(Article::class)->create(['slug' => 'slug-me']);
+    }
+
+    /** @test */
     public function it_has_body()
     {
         $article = factory(Article::class)->create(['body' => 'bla bla bla']);
