@@ -71,7 +71,7 @@
                             <hr>
                             Usually template matching is done straight forward, but sometimes it needs to undergo several operations first such as conerting to grayscale, blurring and thresholding in some cases. Those operations are kind of crucial when programmers are looking for minimizing the processing time, because not all the time we need color and tiny details to be able to  match our template.
 
-                            <blockquote class="alert alert-primary" role="alert">
+                            <blockquote class="alert alert-warning bg-warning" role="alert">
                                 <span class="alert-inner--icon"><i class="ni ni-like-2"></i></span>
                                 <span class="alert-inner--text">LaRecipe will try to locate in each of your documentations versions in order to generate the sidebar index. You can create the files manually or you can generate them using LaRecipe docs generator.</span>
                             </blockquote>
