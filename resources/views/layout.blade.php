@@ -7,6 +7,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
         {{-- CSS --}}
         <link rel="stylesheet" href="{{ blogged_assets('css/app.css') }}">
 
@@ -16,6 +19,8 @@
     <body>
         <div id="app">
             @yield('content')
+
+            @include('blogged::partials.footer')
         </div>
     </body>
 </html>

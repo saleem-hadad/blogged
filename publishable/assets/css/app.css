@@ -19004,3 +19004,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   height: 3px;
   bottom: 0;
 }
+
+.no-border {
+  border: none;
+}

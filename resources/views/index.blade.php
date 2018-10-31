@@ -59,14 +59,14 @@
             </div>
         </nav>
         <!-- Header -->
-        <div class="header bg-gradient-primary py-8"></div>
+        <div class="header bg-primary py-8"></div>
         <!-- Page content -->
         <section class="section">
             <div class="container">
-                    <div class="card mt--100">
-                        <img class="card-img-top" src="https://i0.wp.com/wp.laravel-news.com/wp-content/uploads/2018/10/laravel-tag-helper.png?resize=2200%2C1125" alt="Card image cap">
-                        <div class="card-body">
-                            <h1 class="is-size-1">Card title</h1>
+                    <div class="card shadow mt--100 no-border">
+                        <img class="card-img-top" src="https://i0.wp.com/wp.laravel-news.com/wp-content/uploads/2018/10/laravel-telescope.jpg?resize=2200%2C1125" alt="Card image cap">
+                        <div class="card-body pl-5">
+                            <h1 class="display-1">Write Beautiful blog inside your Laravel application</h1>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                         </div>
                     </div>
