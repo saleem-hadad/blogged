@@ -5040,7 +5040,7 @@ input[type="button"].btn-block {
 }
 
 .navbar-dark .navbar-brand {
-  color: rgba(255, 255, 255, 0.65);
+  color: #ffffff;
 }
 
 .navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
@@ -13494,6 +13494,15 @@ button.section-darker:focus {
   clear: both;
 }
 
+.justify-content-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .img-center {
   display: block;
   margin-left: auto;
@@ -16365,7 +16374,7 @@ textarea[resize="horizontal"] {
 }
 
 .navbar-horizontal .navbar-dark .navbar-brand {
-  color: #fff;
+  color: #fff !important;
 }
 
 .navbar-horizontal .navbar-light .navbar-brand {

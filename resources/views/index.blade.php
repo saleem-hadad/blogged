@@ -65,12 +65,15 @@
                                 <div class="card-body">
                                     <h2>{{ $article->title }}</h2>
                                     <p>{{ $article->excerpt }}</p>
-                                    <button type="button" class="btn btn-outline-primary">Read More</button>
+                                    <a href="{{ url($article->path()) }}" class="btn btn-outline-primary">Read More</a>
                                 </div>
                             </div>
                         </div>
                     @endforeach
                 </div>
+            </div>
+            <div class="justify-content-center pt-5">
+                {{ $articles->links() }}
             </div>
         </section>
     </div>
