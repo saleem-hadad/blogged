@@ -6,7 +6,7 @@
         <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
             <div class="container px-4">
                 <a class="navbar-brand" href="/">
-                    <img src="/images/blogged-white.svg" /> <span style="color: #fff">Blogged</span>
+                    <img src="/images/text-logo-dark.svg" />
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-main" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -33,19 +33,13 @@
                         <li class="nav-item">
                             <a class="nav-link nav-link-icon" href="../index.html">
                                 <i class="ni ni-planet"></i>
-                                <span class="nav-link-inner--text">Dashboard</span>
+                                <span class="nav-link-inner--text">Home</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link nav-link-icon" href="../examples/register.html">
                                 <i class="ni ni-circle-08"></i>
-                                <span class="nav-link-inner--text">Register</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link nav-link-icon" href="../examples/login.html">
-                                <i class="ni ni-key-25"></i>
-                                <span class="nav-link-inner--text">Login</span>
+                                <span class="nav-link-inner--text">Blog</span>
                             </a>
                         </li>
                         <li class="nav-item">
