@@ -14,4 +14,12 @@ class ArticleTest extends TestCase
 
         $this->assertEquals('who are you?', $article->title);
     }
+
+    /** @test */
+    public function it_has_body()
+    {
+        $article = factory(Article::class)->create(['body' => 'bla bla bla']);
+
+        $this->assertEquals('bla bla bla', $article->body);
+    }
 }
