@@ -14,7 +14,7 @@
         <script src="{{ blogged_assets('js/app.js') }}" defer></script>
     </head>
     <body>
-        <div id="app" class="bg-default">
+        <div id="app">
             @yield('content')
         </div>
     </body>

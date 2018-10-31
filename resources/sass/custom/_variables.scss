@@ -1,31 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //
 // Variables
 //
@@ -35,7 +7,7 @@
 $enable-caret:              true !default;
 $enable-rounded:            true !default;
 $enable-shadows:            true !default;
-$enable-gradients:          false !default;
+$enable-gradients:          true !default;
 $enable-transitions:        true !default;
 $enable-grid-classes:       true !default;
 $enable-print-styles:       true !default;
@@ -99,7 +71,7 @@ $colors: map-merge((
 ), $colors);
 
 $default:       #172b4d !default;
-$primary:       #5e72e4 !default;
+$primary:       #ab3f61 !default;
 $secondary:     #f7fafc !default;
 $success:       $green !default;
 $info:          $teal !default;
