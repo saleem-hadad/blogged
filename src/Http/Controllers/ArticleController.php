@@ -4,7 +4,7 @@ namespace BinaryTorch\Blogged\Http\Controllers;
 
 use BinaryTorch\Blogged\Models\Article;
 
-class BlogController extends Controller
+class ArticleController extends Controller
 {
     /**
      * Show the blog home page.
@@ -14,5 +14,13 @@ class BlogController extends Controller
         $articles = Article::all();
 
         return view('blogged::index', compact('articles'));
+    }
+
+    /**
+     * Show a given article.
+     */
+    public function show(Article $article)
+    {
+        return view('blogged::show', compact('article'));
     }
 }

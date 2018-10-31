@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 // Blog routes..
-Route::get('/', 'BlogController@index');
+Route::get('/', 'ArticleController@index');
+Route::get('/{article}', 'ArticleController@show');
 
 // Admin routes..

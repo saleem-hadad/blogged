@@ -16,4 +16,17 @@ class ShowBlogTest extends TestCase
             ->assertStatus(200)
             ->assertSee('How to become a developer in 1 min?');
     }
+
+    /** @test */
+    public function a_guest_can_view_a_given_article()
+    {
+        $article = factory(Article::class)->create([
+            'title' => 'How to become a developer in 1 min?',
+            'slug'  => 'how-to',
+        ]);
+
+        $this->get($article->path())
+            ->assertStatus(200)
+            ->assertSee('How to become a developer in 1 min?');
+    }
 }
