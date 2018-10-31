@@ -3,6 +3,7 @@
 namespace BinaryTorch\Blogged\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Article extends Model
 {
@@ -17,6 +18,14 @@ class Article extends Model
      * @var array
      */
     protected $dates = ['publish_date'];
+
+    /**
+     * @var array
+     */
+    protected $casts = [
+        'published' => 'boolean',
+        'featured'  => 'boolean'
+    ];
 
     /**
      * @var void
@@ -38,5 +47,14 @@ class Article extends Model
     public function feature()
     {
         $this->update(['featured' => true]);
+    }
+
+    /**
+     * @var Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeScheduled(Builder $query)
+    {
+        $query->where('published', false)
+            ->whereNotNull('publish_date');
     }
 }

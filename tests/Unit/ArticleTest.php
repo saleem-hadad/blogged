@@ -92,4 +92,34 @@ class ArticleTest extends TestCase
 
         $this->assertTrue($article->featured);
     }
+
+    /** @test */
+    public function it_can_get_scheduled()
+    {
+        $this->assertCount(0, Article::scheduled()->get());
+
+        factory(Article::class)->create([
+            'publish_date' => now()->subMinute(),
+            'published'    => false,
+        ]);
+        $this->assertCount(1, Article::scheduled()->get());
+
+        factory(Article::class)->create([
+            'publish_date' => now()->subMinute(),
+            'published'    => true,
+        ]);
+        $this->assertCount(1, Article::scheduled()->get());
+
+        factory(Article::class)->create([
+            'publish_date' => now()->addMinute(),
+            'published'    => false,
+        ]);
+        $this->assertCount(2, Article::scheduled()->get());
+
+        factory(Article::class)->create([
+            'publish_date' => null,
+            'published'    => false,
+        ]);
+        $this->assertCount(2, Article::scheduled()->get());
+    }
 }
