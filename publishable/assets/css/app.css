@@ -15051,6 +15051,47 @@ a.btn-icon-only {
           box-shadow: none, 0 0 0 0 rgba(34, 34, 34, 0.5);
 }
 
+.btn-linkedin {
+  color: #fff;
+  background: #0077b5 -webkit-gradient(linear, left top, left bottom, from(#258bc0), to(#0077b5)) repeat-x;
+  background: #0077b5 linear-gradient(180deg, #258bc0, #0077b5) repeat-x;
+  border-color: #0077b5;
+  -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.btn-linkedin:hover {
+  color: #fff;
+  background: #0077b5 -webkit-gradient(linear, left top, left bottom, from(#258bc0), to(#0077b5)) repeat-x;
+  background: #0077b5 linear-gradient(180deg, #258bc0, #0077b5) repeat-x;
+  border-color: #0077b5;
+}
+
+.btn-linkedin:focus, .btn-linkedin.focus {
+  -webkit-box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08), 0 0 0 0 rgba(0, 119, 181, 0.5);
+          box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08), 0 0 0 0 rgba(0, 119, 181, 0.5);
+}
+
+.btn-linkedin.disabled, .btn-linkedin:disabled {
+  color: #fff;
+  background-color: #0077b5;
+  border-color: #0077b5;
+}
+
+.btn-linkedin:not(:disabled):not(.disabled):active, .btn-linkedin:not(:disabled):not(.disabled).active,
+.show > .btn-linkedin.dropdown-toggle {
+  color: #fff;
+  background-color: #005582;
+  background-image: none;
+  border-color: #0077b5;
+}
+
+.btn-linkedin:not(:disabled):not(.disabled):active:focus, .btn-linkedin:not(:disabled):not(.disabled).active:focus,
+.show > .btn-linkedin.dropdown-toggle:focus {
+  -webkit-box-shadow: none, 0 0 0 0 rgba(0, 119, 181, 0.5);
+          box-shadow: none, 0 0 0 0 rgba(0, 119, 181, 0.5);
+}
+
 .card-translucent {
   background-color: rgba(18, 91, 152, 0.08);
 }
