@@ -72,4 +72,24 @@ class ArticleTest extends TestCase
 
         $this->assertFalse($article->featured);
     }
+
+    /** @test */
+    public function it_can_be_published()
+    {
+        $article = factory(Article::class)->create();
+
+        $article->publish();
+
+        $this->assertTrue($article->published);
+    }
+
+    /** @test */
+    public function it_can_be_featured()
+    {
+        $article = factory(Article::class)->create();
+
+        $article->feature();
+
+        $this->assertTrue($article->featured);
+    }
 }
