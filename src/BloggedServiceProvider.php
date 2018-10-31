@@ -17,6 +17,8 @@ class BloggedServiceProvider extends ServiceProvider
         $this->registerRoutes();
         
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'blogged');
+
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 
     /**

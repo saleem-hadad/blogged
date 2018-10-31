@@ -2,11 +2,25 @@
 
 namespace BinaryTorch\Blogged\Tests;
 
-use BinaryTorch\Blogged\Facades\Blogged;
 use BinaryTorch\Blogged\BloggedServiceProvider;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
+    use DatabaseTransactions;
+
+    /**
+     * @return void
+     */
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->withFactories(__DIR__.'/../database/factories');
+        
+        $this->artisan('migrate');
+    }
+
     /**
      * @param \Illuminate\Foundation\Application $app
      * @return array
@@ -31,17 +45,5 @@ class TestCase extends \Orchestra\Testbench\TestCase
             'database' => ':memory:',
             'prefix'   => '',
         ]);
-    }
-
-    /**
-     * Load package alias
-     * @param  \Illuminate\Foundation\Application $app
-     * @return array
-     */
-    protected function getPackageAliases($app)
-    {
-        return [
-            'Blogged' => Blogged::class,
-        ];
     }
 }
