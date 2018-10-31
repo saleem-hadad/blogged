@@ -25,10 +25,10 @@ class CreateArticlesTable extends Migration
             $table->boolean('published')->default(false);
             $table->boolean('featured')->default(false);
             
-            $table->unsignedInteger('user_id')->unsigned()->index();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedInteger('category_id')->unsigned()->index();
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->unsignedInteger('user_id')->nullable()->index();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
+            $table->unsignedInteger('category_id')->nullable()->index();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');;
             $table->timestamps();
         });
     }
