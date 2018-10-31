@@ -28,7 +28,7 @@ class Article extends Model
     ];
 
     /**
-     * @var void
+     * @return void
      */
     public function publish()
     {
@@ -42,7 +42,7 @@ class Article extends Model
     }
 
     /**
-     * @var void
+     * @return void
      */
     public function feature()
     {
@@ -50,7 +50,7 @@ class Article extends Model
     }
 
     /**
-     * @var Illuminate\Database\Eloquent\Builder
+     * @return Illuminate\Database\Eloquent\Builder
      */
     public function scopeScheduled(Builder $query)
     {
@@ -59,10 +59,18 @@ class Article extends Model
     }
 
     /**
-     * @var String
+     * @return String
      */
     public function getExcerptAttribute()
     {
         return substr($this->body, 0, 75);
+    }
+
+    /**
+     * @return String
+     */
+    public function path()
+    {
+        return 'blog/' . $this->slug;
     }
 }

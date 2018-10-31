@@ -122,4 +122,12 @@ class ArticleTest extends TestCase
         ]);
         $this->assertCount(2, Article::scheduled()->get());
     }
+
+    /** @test */
+    public function it_has_uri_path()
+    {
+        $article = factory(Article::class)->create(['slug' => 'how-to-cook-laravel-application']);
+
+        $this->assertEquals('blog/how-to-cook-laravel-application', $article->path());
+    }
 }
