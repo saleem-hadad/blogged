@@ -58,10 +58,12 @@
         <section class="section">
             <div class="container">
                     <div class="card shadow mt--100 no-border">
-                        <img class="card-img-top" src="https://i0.wp.com/wp.laravel-news.com/wp-content/uploads/2018/10/laravel-telescope.jpg?resize=2200%2C1125" alt="Card image cap">
-                        <div class="card-body pl-5">
-                            <h1 class="display-1">Write Beautiful blog inside your Laravel application</h1>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <img class="card-img-top" src="https://i0.wp.com/wp.laravel-news.com/wp-content/uploads/2018/09/larecipe-documentation.jpg?resize=2200%2C1125" alt="Card image cap">
+                        <div class="card-body px-5">
+                            <h1 class="display-1">Beautiful Articles with Markdown in Your Laravel Applications.</h1>
+                            <p class="card-text">
+                                Blogged is a progressive package used to write blog articles inside normal Laravel application.
+                            </p>
                         </div>
                     </div>
             </div>
