@@ -19049,3 +19049,30 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 .no-border {
   border: none;
 }
+
+article img {
+  max-width: 100%;
+}
+
+article h1:first-of-type {
+  border-left: 2px solid #3fab81;
+  padding-left: 1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+article hr {
+  border-top: 2px dashed #e9ecef;
+}
+
+article :not(pre) > code {
+  background-color: #f6f9fc;
+  padding: 5px;
+  border-radius: 5px;
+  color: #3fab81;
+}
+
+article blockquote {
+  margin: 2rem 0;
+  font-size: 1rem !important;
+}

@@ -3,3 +3,32 @@
 .no-border {
     border: none;
 }
+
+article {
+    img {
+        max-width: 100%;
+    }
+    
+    h1:first-of-type {
+        border-left: 2px solid $primary;
+        padding-left: 1rem;
+        margin-bottom: 1.5rem;
+        font-weight: $font-weight-bold;
+    }
+
+    hr {
+        border-top: 2px dashed $gray-200;
+    }
+
+    :not(pre) > code {
+        background-color: $gray-100;
+        padding: 5px;
+        border-radius: 5px;
+        color: $primary;
+    }
+
+    blockquote {
+        margin: 2rem 0;
+        font-size: 1rem !important;
+    }
+}
