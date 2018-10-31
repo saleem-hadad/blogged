@@ -57,4 +57,12 @@ class Article extends Model
         $query->where('published', false)
             ->whereNotNull('publish_date');
     }
+
+    /**
+     * @var String
+     */
+    public function getExcerptAttribute()
+    {
+        return substr($this->body, 0, 75);
+    }
 }

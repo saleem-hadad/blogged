@@ -18,7 +18,6 @@ class CreateArticlesTable extends Migration
             $table->string('title', 100);
             $table->string('slug', 120)->unique()->index();
             $table->string('image', 254);
-            $table->string('excerpt', 254);
             $table->longtext('body');
 
             $table->datetime('publish_date')->nullable();
@@ -27,8 +26,8 @@ class CreateArticlesTable extends Migration
             
             $table->unsignedInteger('user_id')->nullable()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
-            $table->unsignedInteger('category_id')->nullable()->index();
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');;
+            // $table->unsignedInteger('category_id')->nullable()->index();
+            // $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');;
             $table->timestamps();
         });
     }

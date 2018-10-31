@@ -34,19 +34,19 @@ class ArticleTest extends TestCase
     }
 
     /** @test */
-    public function it_has_excerpt()
-    {
-        $article = factory(Article::class)->create(['excerpt' => 'bla bla blo']);
-
-        $this->assertEquals('bla bla blo', $article->excerpt);
-    }
-
-    /** @test */
     public function it_has_body()
     {
         $article = factory(Article::class)->create(['body' => 'bla bla bla']);
 
         $this->assertEquals('bla bla bla', $article->body);
+    }
+
+    /** @test */
+    public function it_has_excerpt_taken_from_its_body()
+    {
+        $article = factory(Article::class)->create(['body' => 'bla bla blo']);
+
+        $this->assertEquals('bla bla blo', $article->excerpt);
     }
 
     /** @test */

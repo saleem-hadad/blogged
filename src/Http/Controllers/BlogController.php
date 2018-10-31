@@ -2,6 +2,8 @@
 
 namespace BinaryTorch\Blogged\Http\Controllers;
 
+use BinaryTorch\Blogged\Models\Article;
+
 class BlogController extends Controller
 {
     /**
@@ -9,6 +11,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view('blogged::index');
+        $articles = Article::all();
+
+        return view('blogged::index', compact('articles'));
     }
 }
