@@ -130,4 +130,12 @@ class ArticleTest extends TestCase
 
         $this->assertEquals('blog/how-to-cook-laravel-application', $article->path());
     }
+
+    /** @test */
+    public function it_parse_its_body_with_parsedBody_attribute()
+    {
+        $article = factory(Article::class)->create(['body' => '#hello']);
+
+        $this->assertEquals('<h1>hello</h1>', $article->parsedBody);
+    }
 }

@@ -4,9 +4,12 @@ namespace BinaryTorch\Blogged\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use BinaryTorch\Blogged\Traits\HasMarkdownParser;
 
 class Article extends Model
 {
+    use HasMarkdownParser;
+
     /**
      * @var array
      */
@@ -64,6 +67,14 @@ class Article extends Model
     public function getExcerptAttribute()
     {
         return substr($this->body, 0, 75);
+    }
+
+    /**
+     * @return String
+     */
+    public function getParsedBodyAttribute()
+    {
+        return $this->parse($this->body);
     }
 
     /**
