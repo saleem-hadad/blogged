@@ -31,28 +31,6 @@ class Article extends Model
     ];
 
     /**
-     * @return void
-     */
-    public function publish()
-    {
-        $this->published = true;
-
-        if (! $this->publish_date) {
-            $this->publish_date = now();
-        }
-
-        $this->save();
-    }
-
-    /**
-     * @return void
-     */
-    public function feature()
-    {
-        $this->update(['featured' => true]);
-    }
-
-    /**
      * @return Illuminate\Database\Eloquent\Builder
      */
     public function scopeScheduled(Builder $query)
@@ -78,11 +56,25 @@ class Article extends Model
     }
 
     /**
-     * @return String
+     * @return void
      */
-    public function path()
+    public function publish()
     {
-        return 'blog/' . $this->slug;
+        $this->published = true;
+
+        if (! $this->publish_date) {
+            $this->publish_date = now();
+        }
+
+        $this->save();
+    }
+
+    /**
+     * @return void
+     */
+    public function feature()
+    {
+        $this->update(['featured' => true]);
     }
 
     /**
@@ -93,5 +85,13 @@ class Article extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    /**
+     * @return String
+     */
+    public function path()
+    {
+        return 'blog/' . $this->slug;
     }
 }
