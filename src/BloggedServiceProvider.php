@@ -53,6 +53,7 @@ class BloggedServiceProvider extends ServiceProvider
     public function register()
     {
         $this->loadHelpers();
+        $this->registerConfigs();
 
         if ($this->app->runningInConsole()) {
             $this->registerPublishableResources();
@@ -70,6 +71,14 @@ class BloggedServiceProvider extends ServiceProvider
     }
 
     /**
+     * Register the package configs.
+     */
+    protected function registerConfigs()
+    {
+        $this->mergeConfigFrom(dirname(__DIR__).'/publishable/config/blogged.php', 'blogged');
+    }
+
+    /**
      * Register the publishable files.
      */
     protected function registerPublishableResources()
@@ -77,6 +86,9 @@ class BloggedServiceProvider extends ServiceProvider
         $publishablePath = dirname(__DIR__).'/publishable';
 
         $publishable = [
+            'blogged_config' => [
+                "{$publishablePath}/config/blogged.php" => config_path('blogged.php'),
+            ],
             'blogged_assets' => [
                 "{$publishablePath}/assets/" => public_path('vendor/binarytorch/blogged/assets'),
             ],

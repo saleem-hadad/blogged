@@ -54,7 +54,6 @@ return [
         'show_app_name'  => true,
         'logo'           => '', // e.g.: /images/logo.svg
         'fav'            => '', // e.g.: /fav.png
-        'theme'          => 'light',
         'code'           => 'dark',
         'back_to_top'    => true,
         'primary_color'  => '#787AF6',

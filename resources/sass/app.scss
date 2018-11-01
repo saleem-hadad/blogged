@@ -1,4 +1,6 @@
 @import "argon";
+@import "./vendor/prism-light";
+@import "./vendor/prism-dark";
 
 .no-border {
     border: none;
@@ -16,6 +18,11 @@ article {
         font-weight: $font-weight-bold;
     }
 
+    p {
+        font-size: 1.2rem;
+        word-break: break-word;
+    }
+
     hr {
         border-top: 2px dashed $gray-200;
     }
@@ -30,5 +37,28 @@ article {
     blockquote {
         margin: 2rem 0;
         font-size: 1rem !important;
+
+        &:hover {
+            box-shadow: $input-focus-alternative-box-shadow !important;
+        }
+
+        p { 
+            padding-left: 30px; 
+            margin-bottom: 0px;
+            color: $white
+        }
+    
+        .flag {
+            position: absolute;
+            width: 30px;
+            left: 15px;
+            top: 10px;
+            font-weight: $font-weight-bold;
+            svg {
+                fill: $white;
+                width: 24px;
+                height: 24px;
+            }
+        }
     }
 }

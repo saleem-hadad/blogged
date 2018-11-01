@@ -13469,9 +13469,58 @@ var noDelimiter = { replace: function replace() {
     return '(?!x)x';
   } };
 
-var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
+new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
   el: '#app',
-  delimiters: [noDelimiter, noDelimiter]
+  delimiters: [noDelimiter, noDelimiter],
+  mounted: function mounted() {
+    this.parseArticleContent();
+  },
+
+  methods: {
+    parseArticleContent: function parseArticleContent() {
+      // table styling
+      $('article').find('table').each(function () {
+        $(this).addClass('table table-bordered table-hover shadow shadow-sm--hover');
+      });
+
+      // custom blockquote icons
+      $('article blockquote p:first-child').each(function () {
+        var str = $(this).html();
+        var match = str.match(/\{(.*?)\}/);
+
+        if (match) {
+          var icon = match[1] || false;
+          var word = match[1] || false;
+        }
+
+        if (icon) {
+          switch (icon) {
+            case "info":
+              icon = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" version="1.1" x="0px" y="0px" width="90px" height="90px" viewBox="0 0 90 90" enable-background="new 0 0 90 90" xml:space="preserve"><path fill="#FFFFFF" d="M45 0C20.1 0 0 20.1 0 45s20.1 45 45 45 45-20.1 45-45S69.9 0 45 0zM45 74.5c-3.6 0-6.5-2.9-6.5-6.5s2.9-6.5 6.5-6.5 6.5 2.9 6.5 6.5S48.6 74.5 45 74.5zM52.1 23.9l-2.5 29.6c0 2.5-2.1 4.6-4.6 4.6 -2.5 0-4.6-2.1-4.6-4.6l-2.5-29.6c-0.1-0.4-0.1-0.7-0.1-1.1 0-4 3.2-7.2 7.2-7.2 4 0 7.2 3.2 7.2 7.2C52.2 23.1 52.2 23.5 52.1 23.9z"/></svg>';
+              break;
+            case "success":
+              icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25.625 25.625"><g transform="translate(-0.188 -0.188)"><path d="M13,.188A12.813,12.813,0,1,0,25.813,13,12.815,12.815,0,0,0,13,.188Zm6.734,8.848L12.863,19.168a1.076,1.076,0,0,1-.848.5,1.378,1.378,0,0,1-.9-.4L7.086,15.238a.707.707,0,0,1,0-1l1-1a.7.7,0,0,1,.992,0L11.7,15.867l5.7-8.414a.712.712,0,0,1,.98-.187l1.168.793A.706.706,0,0,1,19.734,9.035Z"/></g></svg>';
+              break;
+            case "danger":
+              icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><path d="M25,0C15.625,0,8,5.977,8,13.313a10.656,10.656,0,0,0,1.5,5.781,10.92,10.92,0,0,1,1.438,4.969A10.908,10.908,0,0,0,13,18.406a25.849,25.849,0,0,0-.969-6.125,1.009,1.009,0,1,1,1.938-.562A27.747,27.747,0,0,1,15,18.406c0,2.887-1.4,5.184-2.531,7.031-.395.645-.766,1.227-1.031,1.781.609.895,1.863,1.25,3.875,1.563,2.086.324,4.688.7,4.688,3.406,0,.547,1.992,1.906,5,1.906s5-1.359,5-1.906c0-2.766,2.613-3.152,4.719-3.469,1.984-.3,3.238-.625,3.844-1.5-.27-.551-.637-1.137-1.031-1.781C36.4,23.59,35,21.293,35,18.406a27.747,27.747,0,0,1,1.031-6.687,1.009,1.009,0,0,1,1.938.563A25.849,25.849,0,0,0,37,18.406a11.028,11.028,0,0,0,2.063,5.688A10.841,10.841,0,0,1,40.5,19.219,10.937,10.937,0,0,0,42,13.313C42,5.977,34.375,0,25,0ZM19.813,18C21.711,18,23,19.988,23,21.688A4.084,4.084,0,0,1,18.594,26C17.492,26,16,24.988,16,21.688A3.655,3.655,0,0,1,19.813,18Zm10.375,0A3.655,3.655,0,0,1,34,21.688C34,24.988,32.508,26,31.406,26A4.084,4.084,0,0,1,27,21.688C27,19.988,28.289,18,30.188,18ZM4.563,21.031a2.914,2.914,0,0,0-2.719,1.625,4.086,4.086,0,0,0-.312,3.031A3.419,3.419,0,0,0,0,28.906a3.607,3.607,0,0,0,3.313,3.688,3.8,3.8,0,0,0,1.813-.437.926.926,0,0,1,.406-.125,3.079,3.079,0,0,1,1.094.406l7.281,2.969a31.556,31.556,0,0,0-.5-4.937,5.507,5.507,0,0,1-3.625-2.125,1.948,1.948,0,0,1-.156-1.969c.023-.047.07-.109.094-.156-.328-.125-.652-.262-.969-.375-.637-.23-.723-.469-.844-1.344a3.575,3.575,0,0,0-2.219-3.219A3.1,3.1,0,0,0,4.563,21.031Zm40.875,0a3.277,3.277,0,0,0-1.156.25,3.63,3.63,0,0,0-2.219,3.25c-.121.875-.16,1.1-.844,1.344-.3.121-.605.246-.906.375.016.031.047.063.063.094a2.035,2.035,0,0,1-.156,2.031,5.686,5.686,0,0,1-3.781,2.063,36.6,36.6,0,0,0-.375,4.781l7.375-2.812a2.843,2.843,0,0,1,1.031-.375,1.186,1.186,0,0,1,.406.156,3.873,3.873,0,0,0,1.813.406A3.61,3.61,0,0,0,50,28.906a3.413,3.413,0,0,0-1.531-3.156,4.136,4.136,0,0,0-.312-3.094A2.917,2.917,0,0,0,45.438,21.031ZM24.906,26C26.105,26,28,30.211,28,30.813a1.064,1.064,0,0,1-1.187,1.094c-.8,0-1.707-2.207-1.906-2.906h-.094c-.7,2-1.32,3-1.719,3-.8,0-1.094-.508-1.094-1.406C22,28.992,23.707,26,24.906,26Zm-9.375,4.813a59.9,59.9,0,0,1,.438,6.219c.027.785.059,1.641.094,2C16.848,40,21.578,44,25,44c3.438,0,8.215-4.02,8.938-5.031.027-.293.074-1.234.094-2.062.059-2.32.129-4.512.344-6.094a9.289,9.289,0,0,0-1.469.344c-.129.789-.223,1.5-.312,2.156C31.965,37.941,31.41,40,25,40c-6.5,0-7.055-2.055-7.656-6.719-.082-.637-.164-1.332-.281-2.094A10.3,10.3,0,0,0,15.531,30.813Zm4.031,3.813c.316,1.953.75,2.844,2.438,3.188V35.719A8.058,8.058,0,0,1,19.563,34.625Zm10.813.063A8.182,8.182,0,0,1,28,35.719v2.063C29.609,37.434,30.051,36.586,30.375,34.688ZM24,36.063V38c.313.008.641,0,1,0s.688.008,1,0V36.063c-.328.027-.66.031-1,.031S24.328,36.09,24,36.063Zm12,1.375a9.337,9.337,0,0,1-.156,2.188,9.893,9.893,0,0,1-3.031,3.063,63.421,63.421,0,0,1,5.688,3,4.654,4.654,0,0,1,.375,1.031c.363,1.23.965,3.281,3.313,3.281A3.3,3.3,0,0,0,45,48.75a4.55,4.55,0,0,0,.563-3.469c.059-.023.1-.07.156-.094a3.41,3.41,0,0,0,2.563-2.656,3.176,3.176,0,0,0-.437-2.5,2.955,2.955,0,0,0-2.219-1.219,3.549,3.549,0,0,0-2.812,1.156c-.187.168-.473.465-.687.438C40.93,39.855,36.582,37.723,36,37.438Zm-22.031.094c-1.348.633-5.039,2.363-6.156,2.844-.02.008-.074.055-.094.063A2.666,2.666,0,0,1,7.156,40a3.45,3.45,0,0,0-2.875-1.187,2.9,2.9,0,0,0-2.062,1.063,3.55,3.55,0,0,0-.625,2.563.879.879,0,0,0,.031.094,3.553,3.553,0,0,0,2.531,2.625c.063.027.125.07.188.094a4.665,4.665,0,0,0,.594,3.5A3.207,3.207,0,0,0,7.688,50c2.348,0,2.98-2.051,3.344-3.281a8.166,8.166,0,0,1,.313-1c1.219-.812,4.777-2.551,5.813-3.062a10.915,10.915,0,0,1-3-2.937A11.042,11.042,0,0,1,13.969,37.531Z"/></svg>';
+              break;
+            case "warning":
+              icon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37.087 50"><path d="M39.531,7a2.353,2.353,0,0,0-2.5,2.531V23a1,1,0,0,1-1,1A1.026,1.026,0,0,1,35,23V4.48A2.33,2.33,0,0,0,32.52,2a2.417,2.417,0,0,0-2.5,2.508v17.5a1,1,0,0,1-1,1,1.012,1.012,0,0,1-1.016-1V2.508a2.5,2.5,0,1,0-5,0V23a1,1,0,0,1-2,0V6.547a2.5,2.5,0,0,0-5-.113V32.3a.665.665,0,0,1-.133.047l0-.047-5-6a3.384,3.384,0,0,0-4.9,0,3.382,3.382,0,0,0,0,4.9l.109.145a.924.924,0,0,0,.137.27l8.52,10.945,2.73,3.539,0-.035.352.453s0,0,.008,0a8.739,8.739,0,0,0,6.551,3.449c.125.012.262.02.4.023.043,0,.086.008.129.008,0,0,.008,0,.016,0,.027,0,.055,0,.086,0h8a8.912,8.912,0,0,0,9-9V9.582A2.347,2.347,0,0,0,39.531,7Z" transform="translate(-4.913)"/></svg>';
+              break;
+            default:
+              icon = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" version="1.1" x="0px" y="0px" width="56.6px" height="87.5px" viewBox="0 0 56.6 87.5" enable-background="new 0 0 56.6 87.5" xml:space="preserve"><path fill="#FFFFFF" d="M28.7 64.5c-1.4 0-2.5-1.1-2.5-2.5v-5.7 -5V41c0-1.4 1.1-2.5 2.5-2.5s2.5 1.1 2.5 2.5v10.1 5 5.8C31.2 63.4 30.1 64.5 28.7 64.5zM26.4 0.1C11.9 1 0.3 13.1 0 27.7c-0.1 7.9 3 15.2 8.2 20.4 0.5 0.5 0.8 1 1 1.7l3.1 13.1c0.3 1.1 1.3 1.9 2.4 1.9 0.3 0 0.7-0.1 1.1-0.2 1.1-0.5 1.6-1.8 1.4-3l-2-8.4 -0.4-1.8c-0.7-2.9-2-5.7-4-8 -1-1.2-2-2.5-2.7-3.9C5.8 35.3 4.7 30.3 5.4 25 6.7 14.5 15.2 6.3 25.6 5.1c13.9-1.5 25.8 9.4 25.8 23 0 4.1-1.1 7.9-2.9 11.2 -0.8 1.4-1.7 2.7-2.7 3.9 -2 2.3-3.3 5-4 8L41.4 53l-2 8.4c-0.3 1.2 0.3 2.5 1.4 3 0.3 0.2 0.7 0.2 1.1 0.2 1.1 0 2.2-0.8 2.4-1.9l3.1-13.1c0.2-0.6 0.5-1.2 1-1.7 5-5.1 8.2-12.1 8.2-19.8C56.4 12 42.8-1 26.4 0.1zM43.7 69.6c0 0.5-0.1 0.9-0.3 1.3 -0.4 0.8-0.7 1.6-0.9 2.5 -0.7 3-2 8.6-2 8.6 -1.3 3.2-4.4 5.5-7.9 5.5h-4.1H28h-0.5 -3.6c-3.5 0-6.7-2.4-7.9-5.7l-0.1-0.4 -1.8-7.8c-0.4-1.1-0.8-2.1-1.2-3.1 -0.1-0.3-0.2-0.5-0.2-0.9 0.1-1.3 1.3-2.1 2.6-2.1H41C42.4 67.5 43.6 68.2 43.7 69.6zM37.7 72.5H26.9c-4.2 0-7.2 3.9-6.3 7.9 0.6 1.3 1.8 2.1 3.2 2.1h4.1 0.5 0.5 3.6c1.4 0 2.7-0.8 3.2-2.1L37.7 72.5z"/></svg>';
+              break;
+          }
+          $(this).html(str.replace(/\{(.*?)\}/, '<div class="flag"><span class="svg">' + icon + '</span></div>'));
+          $(this).parent().addClass('alert shadow has-icon alert-' + word);
+        } else {
+          var _icon = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" version="1.1" x="0px" y="0px" width="56.6px" height="87.5px" viewBox="0 0 56.6 87.5" enable-background="new 0 0 56.6 87.5" xml:space="preserve"><path fill="#FFFFFF" d="M28.7 64.5c-1.4 0-2.5-1.1-2.5-2.5v-5.7 -5V41c0-1.4 1.1-2.5 2.5-2.5s2.5 1.1 2.5 2.5v10.1 5 5.8C31.2 63.4 30.1 64.5 28.7 64.5zM26.4 0.1C11.9 1 0.3 13.1 0 27.7c-0.1 7.9 3 15.2 8.2 20.4 0.5 0.5 0.8 1 1 1.7l3.1 13.1c0.3 1.1 1.3 1.9 2.4 1.9 0.3 0 0.7-0.1 1.1-0.2 1.1-0.5 1.6-1.8 1.4-3l-2-8.4 -0.4-1.8c-0.7-2.9-2-5.7-4-8 -1-1.2-2-2.5-2.7-3.9C5.8 35.3 4.7 30.3 5.4 25 6.7 14.5 15.2 6.3 25.6 5.1c13.9-1.5 25.8 9.4 25.8 23 0 4.1-1.1 7.9-2.9 11.2 -0.8 1.4-1.7 2.7-2.7 3.9 -2 2.3-3.3 5-4 8L41.4 53l-2 8.4c-0.3 1.2 0.3 2.5 1.4 3 0.3 0.2 0.7 0.2 1.1 0.2 1.1 0 2.2-0.8 2.4-1.9l3.1-13.1c0.2-0.6 0.5-1.2 1-1.7 5-5.1 8.2-12.1 8.2-19.8C56.4 12 42.8-1 26.4 0.1zM43.7 69.6c0 0.5-0.1 0.9-0.3 1.3 -0.4 0.8-0.7 1.6-0.9 2.5 -0.7 3-2 8.6-2 8.6 -1.3 3.2-4.4 5.5-7.9 5.5h-4.1H28h-0.5 -3.6c-3.5 0-6.7-2.4-7.9-5.7l-0.1-0.4 -1.8-7.8c-0.4-1.1-0.8-2.1-1.2-3.1 -0.1-0.3-0.2-0.5-0.2-0.9 0.1-1.3 1.3-2.1 2.6-2.1H41C42.4 67.5 43.6 68.2 43.7 69.6zM37.7 72.5H26.9c-4.2 0-7.2 3.9-6.3 7.9 0.6 1.3 1.8 2.1 3.2 2.1h4.1 0.5 0.5 3.6c1.4 0 2.7-0.8 3.2-2.1L37.7 72.5z"/></svg>';
+          $(this).html('<div class="flag"><span class="svg">' + _icon + '</span></div> ' + $(this).html());
+          $(this).parent().addClass('alert shadow has-icon alert-primary');
+        }
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -13484,6 +13533,11 @@ try {
 
     __webpack_require__(8);
 } catch (e) {}
+
+__webpack_require__(22);
+// This enables all language support via CDN
+Prism.plugins.autoloader.use_minified = true;
+Prism.plugins.autoloader.languages_path = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/';
 
 __webpack_require__(9);
 
@@ -30832,6 +30886,326 @@ process.umask = function() { return 0; };
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 21 */,
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {/* PrismJS 1.15.0
+https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript&plugins=line-highlight+line-numbers+toolbar+autoloader */
+var _self = "undefined" != typeof window ? window : "undefined" != typeof WorkerGlobalScope && self instanceof WorkerGlobalScope ? self : {},
+    Prism = function () {
+  var e = /\blang(?:uage)?-([\w-]+)\b/i,
+      t = 0,
+      n = _self.Prism = { manual: _self.Prism && _self.Prism.manual, disableWorkerMessageHandler: _self.Prism && _self.Prism.disableWorkerMessageHandler, util: { encode: function encode(e) {
+        return e instanceof r ? new r(e.type, n.util.encode(e.content), e.alias) : "Array" === n.util.type(e) ? e.map(n.util.encode) : e.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/\u00a0/g, " ");
+      }, type: function type(e) {
+        return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1];
+      }, objId: function objId(e) {
+        return e.__id || Object.defineProperty(e, "__id", { value: ++t }), e.__id;
+      }, clone: function clone(e, t) {
+        var r = n.util.type(e);switch (t = t || {}, r) {case "Object":
+            if (t[n.util.objId(e)]) return t[n.util.objId(e)];var a = {};t[n.util.objId(e)] = a;for (var l in e) {
+              e.hasOwnProperty(l) && (a[l] = n.util.clone(e[l], t));
+            }return a;case "Array":
+            if (t[n.util.objId(e)]) return t[n.util.objId(e)];var a = [];return t[n.util.objId(e)] = a, e.forEach(function (e, r) {
+              a[r] = n.util.clone(e, t);
+            }), a;}return e;
+      } }, languages: { extend: function extend(e, t) {
+        var r = n.util.clone(n.languages[e]);for (var a in t) {
+          r[a] = t[a];
+        }return r;
+      }, insertBefore: function insertBefore(e, t, r, a) {
+        a = a || n.languages;var l = a[e];if (2 == arguments.length) {
+          r = arguments[1];for (var i in r) {
+            r.hasOwnProperty(i) && (l[i] = r[i]);
+          }return l;
+        }var o = {};for (var s in l) {
+          if (l.hasOwnProperty(s)) {
+            if (s == t) for (var i in r) {
+              r.hasOwnProperty(i) && (o[i] = r[i]);
+            }o[s] = l[s];
+          }
+        }var u = a[e];return a[e] = o, n.languages.DFS(n.languages, function (t, n) {
+          n === u && t != e && (this[t] = o);
+        }), o;
+      }, DFS: function DFS(e, t, r, a) {
+        a = a || {};for (var l in e) {
+          e.hasOwnProperty(l) && (t.call(e, l, e[l], r || l), "Object" !== n.util.type(e[l]) || a[n.util.objId(e[l])] ? "Array" !== n.util.type(e[l]) || a[n.util.objId(e[l])] || (a[n.util.objId(e[l])] = !0, n.languages.DFS(e[l], t, l, a)) : (a[n.util.objId(e[l])] = !0, n.languages.DFS(e[l], t, null, a)));
+        }
+      } }, plugins: {}, highlightAll: function highlightAll(e, t) {
+      n.highlightAllUnder(document, e, t);
+    }, highlightAllUnder: function highlightAllUnder(e, t, r) {
+      var a = { callback: r, selector: 'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code' };n.hooks.run("before-highlightall", a);for (var l, i = a.elements || e.querySelectorAll(a.selector), o = 0; l = i[o++];) {
+        n.highlightElement(l, t === !0, a.callback);
+      }
+    }, highlightElement: function highlightElement(t, r, a) {
+      for (var l, i, o = t; o && !e.test(o.className);) {
+        o = o.parentNode;
+      }o && (l = (o.className.match(e) || [, ""])[1].toLowerCase(), i = n.languages[l]), t.className = t.className.replace(e, "").replace(/\s+/g, " ") + " language-" + l, t.parentNode && (o = t.parentNode, /pre/i.test(o.nodeName) && (o.className = o.className.replace(e, "").replace(/\s+/g, " ") + " language-" + l));var s = t.textContent,
+          u = { element: t, language: l, grammar: i, code: s };if (n.hooks.run("before-sanity-check", u), !u.code || !u.grammar) return u.code && (n.hooks.run("before-highlight", u), u.element.textContent = u.code, n.hooks.run("after-highlight", u)), n.hooks.run("complete", u), void 0;if (n.hooks.run("before-highlight", u), r && _self.Worker) {
+        var g = new Worker(n.filename);g.onmessage = function (e) {
+          u.highlightedCode = e.data, n.hooks.run("before-insert", u), u.element.innerHTML = u.highlightedCode, a && a.call(u.element), n.hooks.run("after-highlight", u), n.hooks.run("complete", u);
+        }, g.postMessage(JSON.stringify({ language: u.language, code: u.code, immediateClose: !0 }));
+      } else u.highlightedCode = n.highlight(u.code, u.grammar, u.language), n.hooks.run("before-insert", u), u.element.innerHTML = u.highlightedCode, a && a.call(t), n.hooks.run("after-highlight", u), n.hooks.run("complete", u);
+    }, highlight: function highlight(e, t, a) {
+      var l = { code: e, grammar: t, language: a };return n.hooks.run("before-tokenize", l), l.tokens = n.tokenize(l.code, l.grammar), n.hooks.run("after-tokenize", l), r.stringify(n.util.encode(l.tokens), l.language);
+    }, matchGrammar: function matchGrammar(e, t, r, a, l, i, o) {
+      var s = n.Token;for (var u in r) {
+        if (r.hasOwnProperty(u) && r[u]) {
+          if (u == o) return;var g = r[u];g = "Array" === n.util.type(g) ? g : [g];for (var c = 0; c < g.length; ++c) {
+            var h = g[c],
+                f = h.inside,
+                d = !!h.lookbehind,
+                m = !!h.greedy,
+                p = 0,
+                y = h.alias;if (m && !h.pattern.global) {
+              var v = h.pattern.toString().match(/[imuy]*$/)[0];h.pattern = RegExp(h.pattern.source, v + "g");
+            }h = h.pattern || h;for (var b = a, k = l; b < t.length; k += t[b].length, ++b) {
+              var w = t[b];if (t.length > e.length) return;if (!(w instanceof s)) {
+                if (m && b != t.length - 1) {
+                  h.lastIndex = k;var _ = h.exec(e);if (!_) break;for (var j = _.index + (d ? _[1].length : 0), P = _.index + _[0].length, A = b, x = k, O = t.length; O > A && (P > x || !t[A].type && !t[A - 1].greedy); ++A) {
+                    x += t[A].length, j >= x && (++b, k = x);
+                  }if (t[b] instanceof s) continue;I = A - b, w = e.slice(k, x), _.index -= k;
+                } else {
+                  h.lastIndex = 0;var _ = h.exec(w),
+                      I = 1;
+                }if (_) {
+                  d && (p = _[1] ? _[1].length : 0);var j = _.index + p,
+                      _ = _[0].slice(p),
+                      P = j + _.length,
+                      N = w.slice(0, j),
+                      S = w.slice(P),
+                      C = [b, I];N && (++b, k += N.length, C.push(N));var E = new s(u, f ? n.tokenize(_, f) : _, y, _, m);if (C.push(E), S && C.push(S), Array.prototype.splice.apply(t, C), 1 != I && n.matchGrammar(e, t, r, b, k, !0, u), i) break;
+                } else if (i) break;
+              }
+            }
+          }
+        }
+      }
+    }, tokenize: function tokenize(e, t) {
+      var r = [e],
+          a = t.rest;if (a) {
+        for (var l in a) {
+          t[l] = a[l];
+        }delete t.rest;
+      }return n.matchGrammar(e, r, t, 0, 0, !1), r;
+    }, hooks: { all: {}, add: function add(e, t) {
+        var r = n.hooks.all;r[e] = r[e] || [], r[e].push(t);
+      }, run: function run(e, t) {
+        var r = n.hooks.all[e];if (r && r.length) for (var a, l = 0; a = r[l++];) {
+          a(t);
+        }
+      } } },
+      r = n.Token = function (e, t, n, r, a) {
+    this.type = e, this.content = t, this.alias = n, this.length = 0 | (r || "").length, this.greedy = !!a;
+  };if (r.stringify = function (e, t, a) {
+    if ("string" == typeof e) return e;if ("Array" === n.util.type(e)) return e.map(function (n) {
+      return r.stringify(n, t, e);
+    }).join("");var l = { type: e.type, content: r.stringify(e.content, t, a), tag: "span", classes: ["token", e.type], attributes: {}, language: t, parent: a };if (e.alias) {
+      var i = "Array" === n.util.type(e.alias) ? e.alias : [e.alias];Array.prototype.push.apply(l.classes, i);
+    }n.hooks.run("wrap", l);var o = Object.keys(l.attributes).map(function (e) {
+      return e + '="' + (l.attributes[e] || "").replace(/"/g, "&quot;") + '"';
+    }).join(" ");return "<" + l.tag + ' class="' + l.classes.join(" ") + '"' + (o ? " " + o : "") + ">" + l.content + "</" + l.tag + ">";
+  }, !_self.document) return _self.addEventListener ? (n.disableWorkerMessageHandler || _self.addEventListener("message", function (e) {
+    var t = JSON.parse(e.data),
+        r = t.language,
+        a = t.code,
+        l = t.immediateClose;_self.postMessage(n.highlight(a, n.languages[r], r)), l && _self.close();
+  }, !1), _self.Prism) : _self.Prism;var a = document.currentScript || [].slice.call(document.getElementsByTagName("script")).pop();return a && (n.filename = a.src, n.manual || a.hasAttribute("data-manual") || ("loading" !== document.readyState ? window.requestAnimationFrame ? window.requestAnimationFrame(n.highlightAll) : window.setTimeout(n.highlightAll, 16) : document.addEventListener("DOMContentLoaded", n.highlightAll))), _self.Prism;
+}();"undefined" != typeof module && module.exports && (module.exports = Prism), "undefined" != typeof global && (global.Prism = Prism);
+Prism.languages.markup = { comment: /<!--[\s\S]*?-->/, prolog: /<\?[\s\S]+?\?>/, doctype: /<!DOCTYPE[\s\S]+?>/i, cdata: /<!\[CDATA\[[\s\S]*?]]>/i, tag: { pattern: /<\/?(?!\d)[^\s>\/=$<%]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+))?)*\s*\/?>/i, greedy: !0, inside: { tag: { pattern: /^<\/?[^\s>\/]+/i, inside: { punctuation: /^<\/?/, namespace: /^[^\s>\/:]+:/ } }, "attr-value": { pattern: /=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+)/i, inside: { punctuation: [/^=/, { pattern: /(^|[^\\])["']/, lookbehind: !0 }] } }, punctuation: /\/?>/, "attr-name": { pattern: /[^\s>\/]+/, inside: { namespace: /^[^\s>\/:]+:/ } } } }, entity: /&#?[\da-z]{1,8};/i }, Prism.languages.markup.tag.inside["attr-value"].inside.entity = Prism.languages.markup.entity, Prism.hooks.add("wrap", function (a) {
+  "entity" === a.type && (a.attributes.title = a.content.replace(/&amp;/, "&"));
+}), Prism.languages.xml = Prism.languages.markup, Prism.languages.html = Prism.languages.markup, Prism.languages.mathml = Prism.languages.markup, Prism.languages.svg = Prism.languages.markup;
+Prism.languages.css = { comment: /\/\*[\s\S]*?\*\//, atrule: { pattern: /@[\w-]+?.*?(?:;|(?=\s*\{))/i, inside: { rule: /@[\w-]+/ } }, url: /url\((?:(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1|.*?)\)/i, selector: /[^{}\s][^{};]*?(?=\s*\{)/, string: { pattern: /("|')(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/, greedy: !0 }, property: /[-_a-z\xA0-\uFFFF][-\w\xA0-\uFFFF]*(?=\s*:)/i, important: /\B!important\b/i, "function": /[-a-z0-9]+(?=\()/i, punctuation: /[(){};:]/ }, Prism.languages.css.atrule.inside.rest = Prism.languages.css, Prism.languages.markup && (Prism.languages.insertBefore("markup", "tag", { style: { pattern: /(<style[\s\S]*?>)[\s\S]*?(?=<\/style>)/i, lookbehind: !0, inside: Prism.languages.css, alias: "language-css", greedy: !0 } }), Prism.languages.insertBefore("inside", "attr-value", { "style-attr": { pattern: /\s*style=("|')(?:\\[\s\S]|(?!\1)[^\\])*\1/i, inside: { "attr-name": { pattern: /^\s*style/i, inside: Prism.languages.markup.tag.inside }, punctuation: /^\s*=\s*['"]|['"]\s*$/, "attr-value": { pattern: /.+/i, inside: Prism.languages.css } }, alias: "language-css" } }, Prism.languages.markup.tag));
+Prism.languages.clike = { comment: [{ pattern: /(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/, lookbehind: !0 }, { pattern: /(^|[^\\:])\/\/.*/, lookbehind: !0, greedy: !0 }], string: { pattern: /(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/, greedy: !0 }, "class-name": { pattern: /((?:\b(?:class|interface|extends|implements|trait|instanceof|new)\s+)|(?:catch\s+\())[\w.\\]+/i, lookbehind: !0, inside: { punctuation: /[.\\]/ } }, keyword: /\b(?:if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/, "boolean": /\b(?:true|false)\b/, "function": /\w+(?=\()/, number: /\b0x[\da-f]+\b|(?:\b\d+\.?\d*|\B\.\d+)(?:e[+-]?\d+)?/i, operator: /--?|\+\+?|!=?=?|<=?|>=?|==?=?|&&?|\|\|?|\?|\*|\/|~|\^|%/, punctuation: /[{}[\];(),.:]/ };
+Prism.languages.javascript = Prism.languages.extend("clike", { "class-name": [Prism.languages.clike["class-name"], { pattern: /(^|[^$\w\xA0-\uFFFF])[_$A-Z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\.(?:prototype|constructor))/, lookbehind: !0 }], keyword: [{ pattern: /((?:^|})\s*)(?:catch|finally)\b/, lookbehind: !0 }, /\b(?:as|async|await|break|case|class|const|continue|debugger|default|delete|do|else|enum|export|extends|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|var|void|while|with|yield)\b/], number: /\b(?:(?:0[xX][\dA-Fa-f]+|0[bB][01]+|0[oO][0-7]+)n?|\d+n|NaN|Infinity)\b|(?:\b\d+\.?\d*|\B\.\d+)(?:[Ee][+-]?\d+)?/, "function": /[_$a-zA-Z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\s*\(|\.(?:apply|bind|call)\()/, operator: /-[-=]?|\+[+=]?|!=?=?|<<?=?|>>?>?=?|=(?:==?|>)?|&[&=]?|\|[|=]?|\*\*?=?|\/=?|~|\^=?|%=?|\?|\.{3}/ }), Prism.languages.javascript["class-name"][0].pattern = /(\b(?:class|interface|extends|implements|instanceof|new)\s+)[\w.\\]+/, Prism.languages.insertBefore("javascript", "keyword", { regex: { pattern: /((?:^|[^$\w\xA0-\uFFFF."'\])\s])\s*)\/(\[[^\]\r\n]+]|\\.|[^\/\\\[\r\n])+\/[gimyu]{0,5}(?=\s*($|[\r\n,.;})\]]))/, lookbehind: !0, greedy: !0 }, "function-variable": { pattern: /[_$a-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*(?=\s*[=:]\s*(?:function\b|(?:\([^()]*\)|[_$a-z\xA0-\uFFFF][$\w\xA0-\uFFFF]*)\s*=>))/i, alias: "function" }, constant: /\b[A-Z][A-Z\d_]*\b/ }), Prism.languages.insertBefore("javascript", "string", { "template-string": { pattern: /`(?:\\[\s\S]|\${[^}]+}|[^\\`])*`/, greedy: !0, inside: { interpolation: { pattern: /\${[^}]+}/, inside: { "interpolation-punctuation": { pattern: /^\${|}$/, alias: "punctuation" }, rest: Prism.languages.javascript } }, string: /[\s\S]+/ } } }), Prism.languages.markup && Prism.languages.insertBefore("markup", "tag", { script: { pattern: /(<script[\s\S]*?>)[\s\S]*?(?=<\/script>)/i, lookbehind: !0, inside: Prism.languages.javascript, alias: "language-javascript", greedy: !0 } }), Prism.languages.js = Prism.languages.javascript;
+!function () {
+  function e(e, t) {
+    return Array.prototype.slice.call((t || document).querySelectorAll(e));
+  }function t(e, t) {
+    return t = " " + t + " ", (" " + e.className + " ").replace(/[\n\t]/g, " ").indexOf(t) > -1;
+  }function n(e, n, i) {
+    n = "string" == typeof n ? n : e.getAttribute("data-line");for (var o, l = n.replace(/\s+/g, "").split(","), a = +e.getAttribute("data-line-offset") || 0, s = r() ? parseInt : parseFloat, d = s(getComputedStyle(e).lineHeight), u = t(e, "line-numbers"), c = 0; o = l[c++];) {
+      var p = o.split("-"),
+          m = +p[0],
+          f = +p[1] || m,
+          h = e.querySelector('.line-highlight[data-range="' + o + '"]') || document.createElement("div");if (h.setAttribute("aria-hidden", "true"), h.setAttribute("data-range", o), h.className = (i || "") + " line-highlight", u && Prism.plugins.lineNumbers) {
+        var g = Prism.plugins.lineNumbers.getLine(e, m),
+            y = Prism.plugins.lineNumbers.getLine(e, f);g && (h.style.top = g.offsetTop + "px"), y && (h.style.height = y.offsetTop - g.offsetTop + y.offsetHeight + "px");
+      } else h.setAttribute("data-start", m), f > m && h.setAttribute("data-end", f), h.style.top = (m - a - 1) * d + "px", h.textContent = new Array(f - m + 2).join(" \n");u ? e.appendChild(h) : (e.querySelector("code") || e).appendChild(h);
+    }
+  }function i() {
+    var t = location.hash.slice(1);e(".temporary.line-highlight").forEach(function (e) {
+      e.parentNode.removeChild(e);
+    });var i = (t.match(/\.([\d,-]+)$/) || [, ""])[1];if (i && !document.getElementById(t)) {
+      var r = t.slice(0, t.lastIndexOf(".")),
+          o = document.getElementById(r);o && (o.hasAttribute("data-line") || o.setAttribute("data-line", ""), n(o, i, "temporary "), document.querySelector(".temporary.line-highlight").scrollIntoView());
+    }
+  }if ("undefined" != typeof self && self.Prism && self.document && document.querySelector) {
+    var r = function () {
+      var e;return function () {
+        if ("undefined" == typeof e) {
+          var t = document.createElement("div");t.style.fontSize = "13px", t.style.lineHeight = "1.5", t.style.padding = 0, t.style.border = 0, t.innerHTML = "&nbsp;<br />&nbsp;", document.body.appendChild(t), e = 38 === t.offsetHeight, document.body.removeChild(t);
+        }return e;
+      };
+    }(),
+        o = 0;Prism.hooks.add("before-sanity-check", function (t) {
+      var n = t.element.parentNode,
+          i = n && n.getAttribute("data-line");if (n && i && /pre/i.test(n.nodeName)) {
+        var r = 0;e(".line-highlight", n).forEach(function (e) {
+          r += e.textContent.length, e.parentNode.removeChild(e);
+        }), r && /^( \n)+$/.test(t.code.slice(-r)) && (t.code = t.code.slice(0, -r));
+      }
+    }), Prism.hooks.add("complete", function l(e) {
+      var r = e.element.parentNode,
+          a = r && r.getAttribute("data-line");if (r && a && /pre/i.test(r.nodeName)) {
+        clearTimeout(o);var s = Prism.plugins.lineNumbers,
+            d = e.plugins && e.plugins.lineNumbers;t(r, "line-numbers") && s && !d ? Prism.hooks.add("line-numbers", l) : (n(r, a), o = setTimeout(i, 1));
+      }
+    }), window.addEventListener("hashchange", i), window.addEventListener("resize", function () {
+      var e = document.querySelectorAll("pre[data-line]");Array.prototype.forEach.call(e, function (e) {
+        n(e);
+      });
+    });
+  }
+}();
+!function () {
+  if ("undefined" != typeof self && self.Prism && self.document) {
+    var e = "line-numbers",
+        t = /\n(?!$)/g,
+        n = function n(e) {
+      var n = r(e),
+          s = n["white-space"];if ("pre-wrap" === s || "pre-line" === s) {
+        var l = e.querySelector("code"),
+            i = e.querySelector(".line-numbers-rows"),
+            a = e.querySelector(".line-numbers-sizer"),
+            o = l.textContent.split(t);a || (a = document.createElement("span"), a.className = "line-numbers-sizer", l.appendChild(a)), a.style.display = "block", o.forEach(function (e, t) {
+          a.textContent = e || "\n";var n = a.getBoundingClientRect().height;i.children[t].style.height = n + "px";
+        }), a.textContent = "", a.style.display = "none";
+      }
+    },
+        r = function r(e) {
+      return e ? window.getComputedStyle ? getComputedStyle(e) : e.currentStyle || null : null;
+    };window.addEventListener("resize", function () {
+      Array.prototype.forEach.call(document.querySelectorAll("pre." + e), n);
+    }), Prism.hooks.add("complete", function (e) {
+      if (e.code) {
+        var r = e.element.parentNode,
+            s = /\s*\bline-numbers\b\s*/;if (r && /pre/i.test(r.nodeName) && (s.test(r.className) || s.test(e.element.className)) && !e.element.querySelector(".line-numbers-rows")) {
+          s.test(e.element.className) && (e.element.className = e.element.className.replace(s, " ")), s.test(r.className) || (r.className += " line-numbers");var l,
+              i = e.code.match(t),
+              a = i ? i.length + 1 : 1,
+              o = new Array(a + 1);o = o.join("<span></span>"), l = document.createElement("span"), l.setAttribute("aria-hidden", "true"), l.className = "line-numbers-rows", l.innerHTML = o, r.hasAttribute("data-start") && (r.style.counterReset = "linenumber " + (parseInt(r.getAttribute("data-start"), 10) - 1)), e.element.appendChild(l), n(r), Prism.hooks.run("line-numbers", e);
+        }
+      }
+    }), Prism.hooks.add("line-numbers", function (e) {
+      e.plugins = e.plugins || {}, e.plugins.lineNumbers = !0;
+    }), Prism.plugins.lineNumbers = { getLine: function getLine(t, n) {
+        if ("PRE" === t.tagName && t.classList.contains(e)) {
+          var r = t.querySelector(".line-numbers-rows"),
+              s = parseInt(t.getAttribute("data-start"), 10) || 1,
+              l = s + (r.children.length - 1);s > n && (n = s), n > l && (n = l);var i = n - s;return r.children[i];
+        }
+      } };
+  }
+}();
+!function () {
+  if ("undefined" != typeof self && self.Prism && self.document) {
+    var t = [],
+        e = {},
+        n = function n() {};Prism.plugins.toolbar = {};var a = Prism.plugins.toolbar.registerButton = function (n, a) {
+      var o;o = "function" == typeof a ? a : function (t) {
+        var e;return "function" == typeof a.onClick ? (e = document.createElement("button"), e.type = "button", e.addEventListener("click", function () {
+          a.onClick.call(this, t);
+        })) : "string" == typeof a.url ? (e = document.createElement("a"), e.href = a.url) : e = document.createElement("span"), e.textContent = a.text, e;
+      }, t.push(e[n] = o);
+    },
+        o = Prism.plugins.toolbar.hook = function (a) {
+      var o = a.element.parentNode;if (o && /pre/i.test(o.nodeName) && !o.parentNode.classList.contains("code-toolbar")) {
+        var r = document.createElement("div");r.classList.add("code-toolbar"), o.parentNode.insertBefore(r, o), r.appendChild(o);var i = document.createElement("div");i.classList.add("toolbar"), document.body.hasAttribute("data-toolbar-order") && (t = document.body.getAttribute("data-toolbar-order").split(",").map(function (t) {
+          return e[t] || n;
+        })), t.forEach(function (t) {
+          var e = t(a);if (e) {
+            var n = document.createElement("div");n.classList.add("toolbar-item"), n.appendChild(e), i.appendChild(n);
+          }
+        }), r.appendChild(i);
+      }
+    };a("label", function (t) {
+      var e = t.element.parentNode;if (e && /pre/i.test(e.nodeName) && e.hasAttribute("data-label")) {
+        var n,
+            a,
+            o = e.getAttribute("data-label");try {
+          a = document.querySelector("template#" + o);
+        } catch (r) {}return a ? n = a.content : (e.hasAttribute("data-url") ? (n = document.createElement("a"), n.href = e.getAttribute("data-url")) : n = document.createElement("span"), n.textContent = o), n;
+      }
+    }), Prism.hooks.add("complete", o);
+  }
+}();
+!function () {
+  if ("undefined" != typeof self && self.Prism && self.document && document.createElement) {
+    var e = { javascript: "clike", actionscript: "javascript", arduino: "cpp", aspnet: ["markup", "csharp"], bison: "c", c: "clike", csharp: "clike", cpp: "c", coffeescript: "javascript", crystal: "ruby", "css-extras": "css", d: "clike", dart: "clike", django: "markup", erb: ["ruby", "markup-templating"], fsharp: "clike", flow: "javascript", glsl: "clike", gml: "clike", go: "clike", groovy: "clike", haml: "ruby", handlebars: "markup-templating", haxe: "clike", java: "clike", jolie: "clike", kotlin: "clike", less: "css", markdown: "markup", "markup-templating": "markup", n4js: "javascript", nginx: "clike", objectivec: "c", opencl: "cpp", parser: "markup", php: ["clike", "markup-templating"], "php-extras": "php", plsql: "sql", processing: "clike", protobuf: "clike", pug: "javascript", qore: "clike", jsx: ["markup", "javascript"], tsx: ["jsx", "typescript"], reason: "clike", ruby: "clike", sass: "css", scss: "css", scala: "java", smarty: "markup-templating", soy: "markup-templating", swift: "clike", tap: "yaml", textile: "markup", tt2: ["clike", "markup-templating"], twig: "markup", typescript: "javascript", vbnet: "basic", velocity: "markup", wiki: "markup", xeora: "markup", xquery: "markup" },
+        a = {},
+        c = "none",
+        t = document.getElementsByTagName("script");t = t[t.length - 1];var r = "components/";if (t.hasAttribute("data-autoloader-path")) {
+      var s = t.getAttribute("data-autoloader-path").trim();s.length > 0 && !/^[a-z]+:\/\//i.test(t.src) && (r = s.replace(/\/?$/, "/"));
+    } else /[\w-]+\.js$/.test(t.src) && (r = t.src.replace(/[\w-]+\.js$/, "components/"));var i = Prism.plugins.autoloader = { languages_path: r, use_minified: !0 },
+        t = function t(e, a, c) {
+      var t = document.createElement("script");t.src = e, t.async = !0, t.onload = function () {
+        document.body.removeChild(t), a && a();
+      }, t.onerror = function () {
+        document.body.removeChild(t), c && c();
+      }, document.body.appendChild(t);
+    },
+        n = function n(e) {
+      return i.languages_path + "prism-" + e + (i.use_minified ? ".min" : "") + ".js";
+    },
+        l = function l(e, c) {
+      var t = a[e];t || (t = a[e] = {});var r = c.getAttribute("data-dependencies");!r && c.parentNode && "pre" === c.parentNode.tagName.toLowerCase() && (r = c.parentNode.getAttribute("data-dependencies")), r = r ? r.split(/\s*,\s*/g) : [], o(r, function () {
+        p(e, function () {
+          Prism.highlightElement(c);
+        });
+      });
+    },
+        o = function o(e, a, c) {
+      "string" == typeof e && (e = [e]);var t = 0,
+          r = e.length,
+          s = function s() {
+        r > t ? p(e[t], function () {
+          t++, s();
+        }, function () {
+          c && c(e[t]);
+        }) : t === r && a && a(e);
+      };s();
+    },
+        p = function p(c, r, s) {
+      var i = function i() {
+        var e = !1;c.indexOf("!") >= 0 && (e = !0, c = c.replace("!", ""));var i = a[c];if (i || (i = a[c] = {}), r && (i.success_callbacks || (i.success_callbacks = []), i.success_callbacks.push(r)), s && (i.error_callbacks || (i.error_callbacks = []), i.error_callbacks.push(s)), !e && Prism.languages[c]) u(c);else if (!e && i.error) m(c);else if (e || !i.loading) {
+          i.loading = !0;var l = n(c);t(l, function () {
+            i.loading = !1, u(c);
+          }, function () {
+            i.loading = !1, i.error = !0, m(c);
+          });
+        }
+      },
+          l = e[c];l && l.length ? o(l, i) : i();
+    },
+        u = function u(e) {
+      a[e] && a[e].success_callbacks && a[e].success_callbacks.length && a[e].success_callbacks.forEach(function (a) {
+        a(e);
+      });
+    },
+        m = function m(e) {
+      a[e] && a[e].error_callbacks && a[e].error_callbacks.length && a[e].error_callbacks.forEach(function (a) {
+        a(e);
+      });
+    };Prism.hooks.add("complete", function (e) {
+      e.element && e.language && !e.grammar && e.language !== c && l(e.language, e.element);
+    });
+  }
+}();
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ })
 /******/ ]);
