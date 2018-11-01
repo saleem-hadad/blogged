@@ -3,7 +3,7 @@
 return [
     /*
     |--------------------------------------------------------------------------
-    | Documentation Routes
+    | Blogged Routes
     |--------------------------------------------------------------------------
     |
     | These options configure the behavior of the LaRecipe docs basic route
@@ -20,7 +20,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Documentation Settings
+    | Blogged Settings
     |--------------------------------------------------------------------------
     |
     | These options configure the additional behaviors of your documentation
@@ -65,31 +65,6 @@ return [
         ],
     ],
 
-    /*
-    |--------------------------------------------------------------------------
-    | SEO
-    |--------------------------------------------------------------------------
-    |
-    | These options configure the SEO settings of your docs. You can set the
-    | author, the description and the keywords. Also, LaRecipe by default
-    | sets the canonical link to the viewed page's link automatically.
-    |
-    |
-    */
-
-    'seo'                 => [
-        'author'          => '',
-        'description'     => '',
-        'keywords'        => '',
-        'og'              => [
-            'title'       => '',
-            'type'        => 'article',
-            'url'         => '',
-            'image'       => '',
-            'description' => '',
-        ]
-    ],
-
    /*
    |--------------------------------------------------------------------------
    | Forum
@@ -108,7 +83,7 @@ return [
         'default'           => 'disqus',
         'services'          => [
             'disqus'        => [
-                'site_name' => '', // yoursite.disqus.com
+                'site_name' => '',
             ]
         ]
     ]
