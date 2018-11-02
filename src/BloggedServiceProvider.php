@@ -42,7 +42,7 @@ class BloggedServiceProvider extends ServiceProvider
     protected function routesConfig()
     {
         return [
-            'prefix'     => config('blogged.routes.blog', 'blog'),
+            'prefix'     => config('blogged.routes.root', 'blog'),
             'namespace'  => 'BinaryTorch\Blogged\Http\Controllers',
             'as'         => 'blogged.',
             'middleware' => ['web'],

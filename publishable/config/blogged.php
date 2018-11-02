@@ -13,9 +13,9 @@ return [
     |
     */
 
-    'routes' => [
-        'blog'  => 'blog',
-        'admin' => 'blog/admin',
+    'routes'        => [
+        'root'      => 'blog',
+        'dashboard' => 'dashboard',
     ],
 
     /*

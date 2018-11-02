@@ -37,4 +37,6 @@
             </div>
         </section>
     </div>
+
+    @include('blogged::partials.footer')
 @endsection

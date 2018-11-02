@@ -30,4 +30,6 @@
 
         @include('blogged::partials.share', ['url' => $article->path()])
     </div>
+
+    @include('blogged::partials.footer')
 @endsection

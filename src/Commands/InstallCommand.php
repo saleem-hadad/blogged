@@ -45,7 +45,9 @@ class InstallCommand extends Command
         $this->info('Adding the storage symlink to your public folder');
         $this->call('storage:link');
 
-        $this->info('Successfully installed Blogged! Visit /blog in your browser.');
+        $this->line('Successfully installed Blogged!');
+        $this->info('Visit /blog to see the blog articles.');
+        $this->info('Visit /blog/dashboard to see the admin panel.');
     }
 
     /**
