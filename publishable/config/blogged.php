@@ -50,16 +50,17 @@ return [
     |
     */
 
-    'ui'                 => [
-        'show_app_name'  => true,
-        'fav'            => '', // e.g.: /fav.png
-        'code'           => 'dark',
-        'back_to_top'    => true,
-        'primary_color'  => '#787AF6',
-        'additional_css' => [
+    'ui'                   => [
+        'show_app_name'    => true,
+        'show_author_name' => true,
+        'fav'              => '', // e.g.: /fav.png
+        'code'             => 'dark',
+        'back_to_top'      => true,
+        'primary_color'    => '#787AF6',
+        'additional_css'   => [
             //'css/custom.css',
         ],
-        'additional_js'  => [
+        'additional_js'    => [
             //'js/custom.js',
         ],
     ],

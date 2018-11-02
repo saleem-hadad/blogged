@@ -31,6 +31,10 @@
             @yield('content')
             
             @include('blogged::partials.footer')
+
+            @if(config('blogged.ui.back_to_top'))
+                <back-to-top></back-to-top>
+            @endif
         </div>
     </body>
 </html>

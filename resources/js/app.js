@@ -2,9 +2,12 @@ require('./bootsrap');
 require('./argon');
 
 import Vue from "vue";
+import BackToTop from "./components/BackToTop";
 
 Vue.config.productionTip = false;
 const noDelimiter = {replace: () => '(?!x)x'};
+
+Vue.component(BackToTop.name, BackToTop);
 
 new Vue({
   el: '#app',
