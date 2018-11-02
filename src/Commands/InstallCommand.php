@@ -30,17 +30,33 @@ class InstallCommand extends Command
     public function handle()
     {
         $this->line('Publishing assets and congigurations.. 🍪');
-
         $this->call('vendor:publish', ['--provider' => BloggedServiceProvider::class, '--tag' => ['blogged_assets', 'blogged_config']]);
 
-        $this->line('Dumping the autoloaded files and reloading all new files.. 🍪');
+        $this->dumpAutoLoad();
+
+        $this->info('Migrating the database tables into your application');
+        $this->call('migrate');
+
+        if ($this->confirm('Do you wish to include dummy data?')) {
+            $this->line('Seeding dummy data into the database');
+            $this->seed('BloggedSeeder');
+        }
+
+        $this->info('Adding the storage symlink to your public folder');
+        $this->call('storage:link');
+
+        $this->info('Successfully installed Blogged! Visit /blog in your browser.');
+    }
+
+    /**
+     * @return void
+     */
+    public function dumpAutoLoad()
+    {
         $composer = $this->findComposer();
         $process = new Process($composer.' dump-autoload');
         $process->setTimeout(null);
         $process->setWorkingDirectory(base_path())->run();
-
-        $this->info('Blogged successfully installed! Enjoy 😍');
-        $this->info('Visit /blog in your browser 👻');
     }
 
     /**
@@ -55,5 +71,20 @@ class InstallCommand extends Command
         }
 
         return 'composer';
+    }
+
+    /**
+     * @param $class
+     * @return void
+     */
+    public function seed($class)
+    {
+        if (!class_exists($class)) {
+            $seedersPath = dirname(__DIR__) . '/../database/seeds/';
+
+            require_once $seedersPath.$class.'.php';
+        }
+
+        with(new $class())->run();
     }
 }

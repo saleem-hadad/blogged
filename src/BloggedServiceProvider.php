@@ -18,8 +18,10 @@ class BloggedServiceProvider extends ServiceProvider
         $this->registerRoutes();
         
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'blogged');
-
+        
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+
+        $this->app->make('Illuminate\Database\Eloquent\Factory')->load(__DIR__ . '/../database/factories');
     }
 
     /**
@@ -85,7 +87,7 @@ class BloggedServiceProvider extends ServiceProvider
      */
     protected function registerPublishableResources()
     {
-        $publishablePath = dirname(__DIR__).'/publishable';
+        $publishablePath = dirname(__DIR__) . '/publishable';
 
         $publishable = [
             'blogged_config' => [
