@@ -28,6 +28,6 @@
             </div>
         </section>
 
-        @include('blogged::partials.share')
+        @include('blogged::partials.share', ['url' => $article->path()])
     </div>
 @endsection
