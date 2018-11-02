@@ -13,6 +13,16 @@
         {{-- CSS --}}
         <link rel="stylesheet" href="{{ blogged_assets('css/app.css') }}">
 
+        <style>
+            .row.is-flex {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .row.is-flex > [class*='col-'] {
+                display: flex;
+            }
+        </style>
+
         {{-- JS --}}
         <script src="{{ blogged_assets('js/app.js') }}" defer></script>
     </head>

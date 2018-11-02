@@ -12,7 +12,7 @@
         <section class="section">
             <div class="container" style="margin-top: -100px">
                 @forelse ($articles->chunk(2) as $chunk)
-                    <div class="row" style="display: flex">
+                    <div class="row is-flex">
                         @foreach($chunk as $article)
                             <div class="col-md-6 pb-5">
                                 @include('blogged::partials.card', [
