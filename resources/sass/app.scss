@@ -6,6 +6,14 @@
     border: none;
 }
 
+.row.is-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+.row.is-flex > [class*='col-'] {
+    display: flex;
+}
+
 article {
     img {
         max-width: 100%;
