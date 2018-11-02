@@ -1,7 +1,7 @@
 <div class="section">
     <div class="container">
         <div class="text-lg-center">
-            <h3 class="display-3 font-weight-light mb-2">Share this article!</h3>
+            <h3 class="display-3 font-weight-light mb-2">Share this article on</h3>
         </div>
         <div class="text-lg-center btn-wrapper">
             @if(config('blogged.social.twitter'))
@@ -23,8 +23,8 @@
             @endif
 
             @if(config('blogged.social.google'))
-                <a target="_blank" href="https://plus.google.com/share?url=http%3A%2F%2Fsharingbuttons.io" class="btn btn-neutral btn-linkedin btn-round btn-lg">
-                    <i class="fa fa-google-square"></i> Google+
+                <a target="_blank" href="https://plus.google.com/share?url=http%3A%2F%2Fsharingbuttons.io" class="btn btn-neutral btn-google-plus btn-round btn-lg">
+                    <i class="fa fa-google-plus-square"></i> Google+
                 </a>
             @endif
 
@@ -41,8 +41,8 @@
             @endif
 
             @if(config('blogged.social.pinterest'))
-                <a target="_blank" href="https://pinterest.com/pin/create/button/?url=http%3A%2F%2Fsharingbuttons.io&amp;media=http%3A%2F%2Fsharingbuttons.io&amp;description=Super%20fast%20and%20easy%20Social%20Media%20Sharing%20Buttons.%20No%20JavaScript.%20No%20tracking." class="btn btn-neutral btn-linkedin btn-round btn-lg">
-                    <i class="fa fa-google-square"></i> Pinterest
+                <a target="_blank" href="https://pinterest.com/pin/create/button/?url=http%3A%2F%2Fsharingbuttons.io&amp;media=http%3A%2F%2Fsharingbuttons.io&amp;description=Super%20fast%20and%20easy%20Social%20Media%20Sharing%20Buttons.%20No%20JavaScript.%20No%20tracking." class="btn btn-neutral btn-pinterest btn-round btn-lg">
+                    <i class="fa fa-pinterest-square"></i> Pinterest
                 </a>
             @endif
 

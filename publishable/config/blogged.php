@@ -82,7 +82,7 @@ return [
         'google'    => true,
         'tumblr'    => false,
         'email'     => false,
-        'pinterest' => false,
+        'pinterest' => true,
         'reddit'    => false,
         'whatsApp'  => false,
         'telegram'  => false,
