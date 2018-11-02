@@ -92,6 +92,6 @@ class Article extends Model
      */
     public function path()
     {
-        return 'blog/' . $this->slug;
+        return config('blogged.routes.blog') . $this->slug;
     }
 }
