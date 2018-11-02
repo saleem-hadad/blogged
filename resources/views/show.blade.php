@@ -4,8 +4,10 @@
     <div class="main-content">
         <!-- Navbar -->
         @include('blogged::partials.navbar')
+
         <!-- Header -->
         <div class="header bg-primary py-8"></div>
+
         <!-- Page content -->
         <section class="section">
             <div class="container">
@@ -25,5 +27,7 @@
                 </div>
             </div>
         </section>
+
+        @include('blogged::partials.share')
     </div>
 @endsection
