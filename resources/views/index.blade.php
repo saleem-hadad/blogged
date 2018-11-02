@@ -15,7 +15,7 @@
                     @forelse ($articles as $article)
                         <div class="col-md-6">
                             @include('blogged::partials.card', [
-                                'image' => 'https://i1.wp.com/wp.laravel-news.com/wp-content/uploads/2016/10/docker.png?resize=2200%2C1125',
+                                'image' => $article->image,
                                 'title' => $article->title,
                                 'body' => $article->excerpt,
                                 'url' => url($article->path()),
