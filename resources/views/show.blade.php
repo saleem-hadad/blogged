@@ -10,7 +10,7 @@
 
         <!-- Page content -->
         <section class="section">
-            <div class="container" style="margin-top: -100px">
+            <div class="container" style="margin-top: -100px; margin-bottom: 100px">
                 <div class="card shadow no-border pb-2">
                     <img class="card-img-top" src="https://i1.wp.com/wp.laravel-news.com/wp-content/uploads/2016/10/docker.png?resize=2200%2C1125" alt="Card image cap">
                     <div class="bg-secondary px-5 py-2">
