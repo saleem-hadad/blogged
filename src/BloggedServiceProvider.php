@@ -4,6 +4,7 @@ namespace BinaryTorch\Blogged;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use BinaryTorch\Blogged\Commands\InstallCommand;
 
 class BloggedServiceProvider extends ServiceProvider
 {
@@ -57,6 +58,7 @@ class BloggedServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->registerPublishableResources();
+            $this->registerConsoleCommands();
         }
     }
 
@@ -97,5 +99,13 @@ class BloggedServiceProvider extends ServiceProvider
         foreach ($publishable as $group => $paths) {
             $this->publishes($paths, $group);
         }
+    }
+
+    /**
+     * Register the commands accessible from the Console.
+     */
+    protected function registerConsoleCommands()
+    {
+        $this->commands(InstallCommand::class);
     }
 }
