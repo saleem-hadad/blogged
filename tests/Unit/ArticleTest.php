@@ -128,7 +128,7 @@ class ArticleTest extends TestCase
     {
         $article = factory(Article::class)->create(['slug' => 'how-to-cook-laravel-application']);
 
-        $this->assertEquals('blog/how-to-cook-laravel-application', $article->path());
+        $this->assertEquals(route('blogged.show', $article->slug), $article->path());
     }
 
     /** @test */
