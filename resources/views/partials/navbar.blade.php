@@ -1,19 +1,13 @@
 <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
     <div class="container px-4">
         
-        {{-- app brand --}}
         <a class="navbar-brand" href="{{ url('/') }}" >
-            {{-- app logo --}}
             @include('blogged::partials.logo')
-            {{-- /app logo --}}
     
-            {{-- app name --}}
             @if (config('larecipe.ui.show_app_name'))
                 <span>{{ config('app.name') }}</span>
             @endif
-            {{-- /app name --}}
         </a>
-        {{-- /app brand --}}
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-main" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
