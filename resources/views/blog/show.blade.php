@@ -15,8 +15,12 @@
                     <img class="card-img-top" src="{{ $article->image }}" alt="Card image cap">
 
                     <div class="bg-secondary px-5 py-2">
-                        <b>Published on:</b> <span class="description">{{ $article->publish_date->toFormattedDateString() }}</span>
-                        <button type="button" class="btn btn-outline-danger btn-sm pull-right">Education</button>
+                        <div class="pull-left">
+                            Category: <button type="button" class="btn btn-outline-danger btn-sm ml-1">Education</button>
+                        </div>
+                        <div class="pull-right">
+                            <b>Published on:</b> <span class="description">{{ $article->publish_date->toFormattedDateString() }}</span>
+                        </div>
                     </div>
 
                     <div class="card-body px-5">
