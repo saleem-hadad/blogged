@@ -12,4 +12,13 @@ class ShowDashboardTest extends TestCase
         $this->get('/blog/dashboard')
             ->assertRedirect('/login');
     }
+
+    /** @test */
+    public function authorized_users_can_view_dashboard()
+    {
+        $this->authenticate();
+
+        $this->get('/blog/dashboard')
+            ->assertStatus(200);
+    }
 }
