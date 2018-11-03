@@ -34,6 +34,7 @@
         </section>
 
         @include('blogged::partials.share', ['url' => $article->path()])
+        @include('blogged::plugins.forum', ['url' => $article->path(), 'slug' => $article->slug])
     </div>
 
     @include('blogged::partials.footer')
