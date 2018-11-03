@@ -13,7 +13,7 @@ class ArticleController extends Controller
     {
         $articles = Article::paginate(10);
 
-        return view('blogged::index', compact('articles'));
+        return view('blogged::blog.index', compact('articles'));
     }
 
     /**
@@ -21,6 +21,6 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        return view('blogged::show', compact('article'));
+        return view('blogged::blog.show', compact('article'));
     }
 }
