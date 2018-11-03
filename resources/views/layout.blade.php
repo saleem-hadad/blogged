@@ -17,6 +17,9 @@
         <link rel="apple-touch-icon" href="{{ asset(config('blogged.ui.fav')) }}">
         <link rel="shortcut icon" type="image/png" href="{{ asset(config('blogged.ui.fav')) }}"/>
 
+        {{-- Dynamic color --}}
+        @include('blogged::partials.style')
+
         {{-- JS --}}
         <script src="{{ blogged_assets('js/app.js') }}" defer></script>
 
@@ -42,5 +45,17 @@
                 <script type="text/javascript" src="{{ asset($js) }}"></script>
             @endforeach
         @endif
+
+        {{-- Google Analytics --}}
+        @if(config('blogged.settings.ga_id'))
+            <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('blogged.settings.ga_id') }}"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', "{{ config('blogged.settings.ga_id') }}");
+            </script>
+        @endif
+        {{-- /Google Analytics --}}
     </body>
 </html>
