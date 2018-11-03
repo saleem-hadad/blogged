@@ -40,6 +40,7 @@ return [
     'settings'       => [
         'ga_id'      => '',
         'pagination' => 10,
+        'columns'    => 2, // 2, 3, 4
         'nav_links'  => [
             [
                 'name'       => 'Home',
