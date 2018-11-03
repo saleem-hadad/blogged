@@ -37,6 +37,10 @@
             @if(config('blogged.ui.back_to_top'))
                 <back-to-top></back-to-top>
             @endif
+
+            <div class="container text-center">
+                <p>Made with love by <a href="https://binarytorch.com.my?ref=blogged" target="__blank">Binary Torch Sdn. Bhd.</a> · v1.0.0</p>
+            </div>
         </div>
 
         {{-- Custom JS --}}
