@@ -15,11 +15,13 @@
                     <img class="card-img-top" src="{{ $article->image }}" alt="Card image cap">
 
                     <div class="bg-secondary px-5 py-2">
-                        <div class="pull-left">
-                            Category: <button type="button" class="btn btn-outline-danger btn-sm ml-1">Education</button>
-                        </div>
-                        <div class="pull-right">
-                            <b>Published on:</b> <span class="description">{{ $article->publish_date->toFormattedDateString() }}</span>
+                        <div class="row">
+                            <div class="col-md-6">
+                                Category: <button type="button" class="btn btn-outline-danger btn-sm ml-1">Education</button>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <b>Published on:</b> <span class="description">{{ $article->publish_date->toFormattedDateString() }}</span>
+                            </div>
                         </div>
                     </div>
 
