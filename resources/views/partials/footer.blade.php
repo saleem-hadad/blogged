@@ -4,20 +4,20 @@
             <div class="col-md-6">
                 <div class="copyright">
                     © 2018
-                    <a href="/">MySenior</a>.
+                    <a href="/">{{ config('app.name') }}</a>
                 </div>
             </div>
             <div class="col-md-6">
                 <ul class="nav nav-footer justify-content-end">
-                    <li class="nav-item">
-                        <a href="/" class="nav-link">Website</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/presentation" class="nav-link">Privacy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/" class="nav-link">Terms</a>
-                    </li>
+                    @if(config('blogged.settings.footer_links') !== null)
+                        @foreach(config('blogged.settings.footer_links') as $link)
+                            @if($link['url'] !== '')
+                                <li class="nav-item">
+                                    <a href="{{ $link['url'] }}" class="nav-link">{{ $link['name'] }}</a>
+                                </li>
+                            @endif
+                        @endforeach
+                    @endif
                 </ul>
             </div>
         </div>

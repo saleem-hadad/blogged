@@ -39,7 +39,31 @@ return [
 
     'settings'       => [
         'ga_id'      => '',
-        'pagination' => 20,
+        'pagination' => 10,
+        'nav_links'  => [
+            [
+                'name'       => 'Home',
+                'url'        => '/',
+                'icon'       => 'planet',
+                'icon_pack'  => 'ni', // ni, fa
+            ],
+            [
+                'name'       => 'Blog',
+                'url'        => '/blog',
+                'icon'       => 'book-bookmark',
+                'icon_pack'  => 'ni', // ni, fa
+            ],
+        ],
+        'footer_links'       => [
+            [
+                'name'       => 'Home',
+                'url'        => '/',
+            ],
+            [
+                'name'       => 'Privacy',
+                'url'        => '/privacy',
+            ],
+        ]
     ],
 
     /*
