@@ -2,9 +2,11 @@
 
 namespace BinaryTorch\Blogged;
 
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use BinaryTorch\Blogged\Commands\InstallCommand;
+use BinaryTorch\Blogged\Http\Middleware\BloggedMiddleware;
 
 class BloggedServiceProvider extends ServiceProvider
 {
@@ -13,11 +15,13 @@ class BloggedServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Router $router)
     {
         $this->registerRoutes();
         
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'blogged');
+
+        $router->aliasMiddleware('blogged', BloggedMiddleware::class);
         
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 

@@ -16,6 +16,7 @@ return [
     'routes'        => [
         'root'      => 'blog',
         'dashboard' => 'dashboard',
+        'login'     => 'login',
     ],
 
     /*
