@@ -39,8 +39,8 @@ return [
 
     'settings'       => [
         'ga_id'      => '',
-        'pagination' => 12,
-        'columns'    => 3, // 2, 3, 4
+        'pagination' => 10,
+        'columns'    => 2, // 2, 3, 4
     ],
 
     /*
