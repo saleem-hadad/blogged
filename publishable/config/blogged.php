@@ -148,7 +148,7 @@ return [
         'fav'              => '', // e.g.: /fav.png
         'code'             => 'dark',
         'back_to_top'      => true,
-        'primary_color'    => '#787AF6',
+        'primary_color'    => '#ab3f61',
         'additional_css'   => [
             //'css/custom.css',
         ],
