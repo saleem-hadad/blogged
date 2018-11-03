@@ -9,8 +9,8 @@
             </div>
             <div class="col-md-6">
                 <ul class="nav nav-footer justify-content-end">
-                    @if(config('blogged.settings.footer_links') !== null)
-                        @foreach(config('blogged.settings.footer_links') as $link)
+                    @if(config('blogged.footer_links') !== null)
+                        @foreach(config('blogged.footer_links') as $link)
                             @if($link['url'] !== '')
                                 <li class="nav-item">
                                     <a href="{{ $link['url'] }}" class="nav-link">{{ $link['name'] }}</a>

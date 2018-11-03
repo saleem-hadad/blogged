@@ -31,8 +31,8 @@
             </div>
             <!-- Navbar items -->
             <ul class="navbar-nav ml-auto">
-                @if(config('blogged.settings.nav_links') !== null)
-                    @foreach(config('blogged.settings.nav_links') as $link)
+                @if(config('blogged.nav_links') !== null)
+                    @foreach(config('blogged.nav_links') as $link)
                         @if($link['url'] !== '')
                             <li class="nav-item">
                                 <a class="nav-link nav-link-icon" href="{{ $link['url'] }}">

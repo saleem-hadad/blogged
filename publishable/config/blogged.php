@@ -39,32 +39,64 @@ return [
 
     'settings'       => [
         'ga_id'      => '',
-        'pagination' => 10,
-        'columns'    => 2, // 2, 3, 4
-        'nav_links'  => [
-            [
-                'name'       => 'Home',
-                'url'        => '/',
-                'icon'       => 'planet',
-                'icon_pack'  => 'ni', // ni, fa
-            ],
-            [
-                'name'       => 'Blog',
-                'url'        => '/blog',
-                'icon'       => 'book-bookmark',
-                'icon_pack'  => 'ni', // ni, fa
-            ],
+        'pagination' => 12,
+        'columns'    => 3, // 2, 3, 4
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Blogged Settings
+    |--------------------------------------------------------------------------
+    |
+    | These options configure the additional behaviors of your documentation
+    | where you can limit the access to only authenticated users in your
+    | system. It is false initially so that guests can view your docs.
+    |
+    | You may also specify links to show under the auth dropdown menu.
+    | Logout link will show by default.
+    |
+    |
+    */
+
+    'nav_links'  => [
+        [
+            'name'       => 'Home',
+            'url'        => '/',
+            'icon'       => 'planet',
+            'icon_pack'  => 'ni', // ni, fa
         ],
-        'footer_links'       => [
-            [
-                'name'       => 'Home',
-                'url'        => '/',
-            ],
-            [
-                'name'       => 'Privacy',
-                'url'        => '/privacy',
-            ],
-        ]
+        [
+            'name'       => 'Blog',
+            'url'        => '/blog',
+            'icon'       => 'book-bookmark',
+            'icon_pack'  => 'ni', // ni, fa
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Blogged Settings
+    |--------------------------------------------------------------------------
+    |
+    | These options configure the additional behaviors of your documentation
+    | where you can limit the access to only authenticated users in your
+    | system. It is false initially so that guests can view your docs.
+    |
+    | You may also specify links to show under the auth dropdown menu.
+    | Logout link will show by default.
+    |
+    |
+    */
+
+    'footer_links'       => [
+        [
+            'name'       => 'Home',
+            'url'        => '/',
+        ],
+        [
+            'name'       => 'Privacy',
+            'url'        => '/privacy',
+        ],
     ],
 
     /*
