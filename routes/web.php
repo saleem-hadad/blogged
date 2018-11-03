@@ -2,11 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Dashboard routes..
-Route::get(config('blogged.routes.dashboard'), 'DashboardController@index')->middleware('blogged')->name('dashboard');
+// Dashboard route..
+Route::view(config('blogged.routes.dashboard'), 'blogged::dashboard.index')->middleware('blogged');
 
 // Blog routes..
-Route::get('/', 'ArticleController@index')->name('index');
+Route::get('/', 'BlogController@index')->name('index');
 
 // Dynamic model matching..
-Route::get('/{article}', 'ArticleController@show')->name('show');
+Route::get('/{article}', 'BlogController@show')->name('show');

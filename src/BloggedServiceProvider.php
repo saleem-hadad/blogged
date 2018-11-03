@@ -63,9 +63,9 @@ class BloggedServiceProvider extends ServiceProvider
     protected function apiRoutesConfig()
     {
         return [
-            'namespace'  => 'BinaryTorch\Blogged\Http\Controllers\Api',
+            'namespace'  => 'BinaryTorch\Blogged\Http\Controllers',
             'domain'     => config('blogged.domain', null),
-            'prefix'     => 'blog.api',
+            'prefix'     => 'blogged-api',
             'middleware' => 'blogged',
         ];
     }
