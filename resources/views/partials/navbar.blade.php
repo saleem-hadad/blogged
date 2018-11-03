@@ -4,7 +4,7 @@
         <a class="navbar-brand" href="{{ url('/') }}" >
             @include('blogged::partials.logo')
     
-            @if (config('larecipe.ui.show_app_name'))
+            @if (config('blogged.ui.show_app_name'))
                 <span>{{ config('app.name') }}</span>
             @endif
         </a>
