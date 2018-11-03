@@ -34,21 +34,39 @@ class BloggedServiceProvider extends ServiceProvider
      */
     protected function registerRoutes()
     {
-        Route::group($this->routesConfig(), function () {
+        Route::group($this->webRoutesConfig(), function () {
             $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        });
+
+        Route::group($this->apiRoutesConfig(), function () {
+            $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
         });
     }
 
     /**
      * @return array
      */
-    protected function routesConfig()
+    protected function webRoutesConfig()
     {
         return [
-            'prefix'     => config('blogged.routes.root', 'blog'),
             'namespace'  => 'BinaryTorch\Blogged\Http\Controllers',
+            'domain'     => config('blogged.domain', null),
+            'prefix'     => config('blogged.routes.root', 'blog'),
             'as'         => 'blogged.',
-            'middleware' => ['web'],
+            'middleware' => 'web',
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    protected function apiRoutesConfig()
+    {
+        return [
+            'namespace'  => 'BinaryTorch\Blogged\Http\Controllers\Api',
+            'domain'     => config('blogged.domain', null),
+            'prefix'     => 'blog.api',
+            'middleware' => 'blogged',
         ];
     }
 
