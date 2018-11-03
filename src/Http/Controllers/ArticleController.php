@@ -11,7 +11,9 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::paginate(10);
+        $pagination = config('blogged.settings.pagination');
+
+        $articles = Article::paginate($pagination);
 
         return view('blogged::blog.index', compact('articles'));
     }

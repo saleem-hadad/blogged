@@ -34,8 +34,9 @@ return [
     |
     */
 
-    'settings' => [
-        'ga_id' => ''
+    'settings'       => [
+        'ga_id'      => '',
+        'pagination' => 20,
     ],
 
     /*
