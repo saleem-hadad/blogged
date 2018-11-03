@@ -6,7 +6,6 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use BinaryTorch\Blogged\Commands\InstallCommand;
-use BinaryTorch\Blogged\Http\Middleware\BloggedMiddleware;
 
 class BloggedServiceProvider extends ServiceProvider
 {
@@ -15,13 +14,13 @@ class BloggedServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Router $router)
+    public function boot()
     {
         $this->registerRoutes();
         
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'blogged');
 
-        $router->aliasMiddleware('blogged', BloggedMiddleware::class);
+        Route::middlewareGroup('blogged', config('blogged.middleware', []));
         
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 

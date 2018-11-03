@@ -1,5 +1,8 @@
 <?php
 
+use BinaryTorch\Blogged\Http\Middleware\Authorize;
+use BinaryTorch\Blogged\Http\Middleware\Authenticate;
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -41,6 +44,36 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Authentication Guard
+    |--------------------------------------------------------------------------
+    |
+    | This configuration option defines the authentication guard that will
+    | be used to protect your Blog routes. This option should match one
+    | of the authentication guards defined in the "auth" config file.
+    |
+    */
+
+    'guard' => env('BLOGGED_GUARD', null),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Routes Middleware
+    |--------------------------------------------------------------------------
+    |
+    | These middleware will be assigned to every Dashboard route, giving you the
+    | chance to add your own middleware to this stack or override any of
+    | the existing middleware. Or, you can just stick with this stack.
+    |
+    */
+
+    'middleware' => [
+        'web',
+        Authenticate::class,
+        Authorize::class,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Appearance
     |--------------------------------------------------------------------------
     |
@@ -66,17 +99,17 @@ return [
             //'js/custom.js',
         ],
     ],
-
-   /*
-   |--------------------------------------------------------------------------
-   | Social
-   |--------------------------------------------------------------------------
-   |
-   | Giving a chance to your users to post their questions or feedback
-   | directly on your docs, is pretty nice way to engage them more.
-   | However, you can also enable/disable the forum's visibility.
-   |
-   */
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Social
+    |--------------------------------------------------------------------------
+    |
+    | Giving a chance to your users to post their questions or feedback
+    | directly on your docs, is pretty nice way to engage them more.
+    | However, you can also enable/disable the forum's visibility.
+    |
+    */
 
     'social'        => [
         'twitter'   => true,
