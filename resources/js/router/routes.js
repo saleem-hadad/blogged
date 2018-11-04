@@ -7,4 +7,16 @@ export default [
         component: Dashboard,
         props: true,
     },
+    {
+        name: 'articles',
+        path: '/articles',
+        component: Dashboard,
+        props: true,
+    },
+    {
+        name: 'new',
+        path: '/articles/new',
+        component: Dashboard,
+        props: true,
+    },
 ]

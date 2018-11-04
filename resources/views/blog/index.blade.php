@@ -27,7 +27,7 @@
                 @empty
                     <div class="col-md-12">
                         <div class="card shadow no-border">
-                            <img class="card-img-top" src="https://i1.wp.com/wp.laravel-news.com/wp-content/uploads/2016/10/docker.png?resize=2200%2C1125" alt="Card image cap">
+                            <img class="card-img-top" width="100%" src="https://s3-ap-southeast-1.amazonaws.com/myseniorio/zino.png" alt="Card image cap">
                         </div>
                     </div>
                 @endforelse
