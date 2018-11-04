@@ -46,7 +46,7 @@ class ArticleTest extends TestCase
     {
         $article = factory(Article::class)->create(['body' => 'bla bla blo']);
 
-        $this->assertEquals('bla bla blo', $article->excerpt);
+        $this->assertEquals('bla bla blo...', $article->excerpt);
     }
 
     /** @test */
