@@ -151,6 +151,7 @@ return [
     'ui'                   => [
         'show_app_name'    => true,
         'show_author_name' => true,
+        'logo'             => '', // e.g.: /logo.svg
         'fav'              => '', // e.g.: /fav.png
         'code'             => 'dark',
         'back_to_top'      => true,
