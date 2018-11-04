@@ -71,6 +71,12 @@ return [
             'icon'       => 'book-bookmark',
             'icon_pack'  => 'ni', // ni, fa
         ],
+        [
+            'name'       => 'Dashboard',
+            'url'        => '/blog/dashboard',
+            'icon'       => 'palette',
+            'icon_pack'  => 'ni', // ni, fa
+        ],
     ],
 
     /*
