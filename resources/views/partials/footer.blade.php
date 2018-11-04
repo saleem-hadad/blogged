@@ -24,4 +24,4 @@
     </div>
 </footer>
 
-<p style="font-size: 0.7rem; text-align: center; background: #f4f5f7;" class="mb-0 py-1"><a href="https://blogged.binarytorch.com.my" target="__blank">Blogged</a> · Made with love by Binary Torch Sdn. Bhd. · {{ blogged_version() }}</p>
+<p style="font-size: 0.8rem; text-align: center; background: #f4f5f7;" class="mb-0 py-1"><a href="https://blogged.binarytorch.com.my" target="__blank">Blogged</a> · Made with love by Binary Torch Sdn. Bhd. · {{ blogged_version() }}</p>
