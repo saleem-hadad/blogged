@@ -1,4 +1,6 @@
 import Dashboard from '../views/Dashboard'
+import Articles from '../views/Articles'
+import NewArticle from '../views/NewArticle'
 
 export default [
     {
@@ -10,13 +12,13 @@ export default [
     {
         name: 'articles',
         path: '/articles',
-        component: Dashboard,
+        component: Articles,
         props: true,
     },
     {
         name: 'new',
         path: '/articles/new',
-        component: Dashboard,
+        component: NewArticle,
         props: true,
     },
 ]
