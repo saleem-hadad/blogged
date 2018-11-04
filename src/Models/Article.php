@@ -44,7 +44,7 @@ class Article extends Model
      */
     public function getExcerptAttribute()
     {
-        return substr($this->body, 0, 75);
+        return substr($this->body, 0, 50) . '...';
     }
 
     /**
