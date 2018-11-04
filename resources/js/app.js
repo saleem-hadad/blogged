@@ -2,6 +2,7 @@ require('./bootsrap');
 require('./argon');
 
 import Vue from "vue";
+import router from "./router";
 import BackToTop from "./components/BackToTop";
 
 Vue.config.productionTip = false;
@@ -12,6 +13,7 @@ Vue.component(BackToTop.name, BackToTop);
 new Vue({
   el: '#app',
   delimiters: [noDelimiter, noDelimiter],
+  router,
   mounted() {
     this.parseArticleContent();
   },

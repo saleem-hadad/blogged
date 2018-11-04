@@ -20,9 +20,6 @@
         {{-- Dynamic color --}}
         @include('blogged::partials.style')
 
-        {{-- JS --}}
-        <script src="{{ blogged_assets('js/app.js') }}" defer></script>
-
         {{-- Custom CSS --}}
         @if(!empty(config('blogged.ui.additional_css')))
             @foreach(config('blogged.ui.additional_css') as $css)
@@ -42,6 +39,13 @@
                 <p>Made with love by <a href="https://binarytorch.com.my?ref=blogged" target="__blank">Binary Torch Sdn. Bhd.</a> · v1.0.0</p>
             </div>
         </div>
+
+        <script>
+            window.base = "{{ blogged_dashboard_path() }}";
+        </script>
+
+        {{-- JS --}}
+        <script src="{{ blogged_assets('js/app.js') }}"></script>
 
         {{-- Custom JS --}}
         @if(!empty(config('blogged.ui.additional_js')))

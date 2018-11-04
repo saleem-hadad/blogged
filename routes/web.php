@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 Route::view(config('blogged.routes.dashboard'), 'blogged::dashboard.index')->middleware('blogged');
 
 // Blog routes..
-Route::get('/', 'BlogController@index')->name('index');
+Route::get(config('blogged.routes.blog') . '/', 'BlogController@index')->name('index');
 
 // Dynamic model matching..
-Route::get('/{article}', 'BlogController@show')->name('show');
+Route::get(config('blogged.routes.blog') . '/{article}', 'BlogController@show')->name('show');

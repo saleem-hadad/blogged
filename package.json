@@ -17,6 +17,7 @@
     "vue": "^2.5.16"
   },
   "dependencies": {
-    "smoothscroll-for-websites": "1.4.6"
+    "smoothscroll-for-websites": "1.4.6",
+    "vue-router": "^3.0.1"
   }
 }

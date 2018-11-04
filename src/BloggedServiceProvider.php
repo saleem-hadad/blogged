@@ -51,7 +51,6 @@ class BloggedServiceProvider extends ServiceProvider
         return [
             'namespace'  => 'BinaryTorch\Blogged\Http\Controllers',
             'domain'     => config('blogged.domain', null),
-            'prefix'     => config('blogged.routes.root', 'blog'),
             'as'         => 'blogged.',
             'middleware' => 'web',
         ];
