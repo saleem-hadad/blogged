@@ -24,3 +24,11 @@ if (! function_exists('blogged_dashboard_path'))
         return config('blogged.routes.dashboard', 'blog/dashboard');
     }
 }
+
+if (! function_exists('blogged_version')) 
+{
+    function blogged_version()
+    {
+        return 'v1.0.0';
+    }
+}

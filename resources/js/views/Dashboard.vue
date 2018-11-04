@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- sidebar -->
-        <!-- <sidebar></sidebar> -->
+        <side-bar></side-bar>
 
         <div class="main-content">
             <!-- Navbar -->
@@ -128,3 +128,13 @@
         </div>
     </div>
 </template>
+
+<script>
+import SideBar from '../components/SideBar'
+
+export default {
+    components: {
+        SideBar
+    }
+}
+</script>
