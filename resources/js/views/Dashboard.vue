@@ -84,8 +84,8 @@
                                     <tr v-for="article in data.data" :key="article.id">
                                         <th scope="row">
                                             <div class="media align-items-center">
-                                            <a href="#" class=" rounded mr-3">
-                                                <img width="200px" alt="article image" :src="article.image">
+                                            <a href="#" class="rounded">
+                                                <img class="rounded" width="150px" alt="article image" :src="article.image">
                                             </a>
                                             </div>
                                         </th>

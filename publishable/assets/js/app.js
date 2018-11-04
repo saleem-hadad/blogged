@@ -33250,13 +33250,14 @@ var render = function() {
                               _c(
                                 "a",
                                 {
-                                  staticClass: " rounded mr-3",
+                                  staticClass: "rounded",
                                   attrs: { href: "#" }
                                 },
                                 [
                                   _c("img", {
+                                    staticClass: "rounded",
                                     attrs: {
-                                      width: "200px",
+                                      width: "150px",
                                       alt: "article image",
                                       src: article.image
                                     }
