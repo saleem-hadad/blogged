@@ -1,5 +1,12 @@
 @extends('blogged::layout')
 
 @section('content')
-<router-view></router-view>
+@include('blogged::dashboard.sidebar')
+
+<div class="main-content">
+    @include('blogged::partials.navbar')
+    
+    <router-view></router-view>
+</div>
+
 @endsection
