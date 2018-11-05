@@ -7,5 +7,7 @@
     @include('blogged::partials.navbar')
     
     <router-view></router-view>
+
+    <p style="font-size: 0.8rem; text-align: center;" class="my-5"><a href="https://blogged.binarytorch.com.my" target="__blank">Blogged</a> · Made with love by Binary Torch Sdn. Bhd. · {{ blogged_version() }}</p>
 </div>
 @endsection
