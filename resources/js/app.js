@@ -23,6 +23,12 @@ new Vue({
       $('article').find('table').each(function () {
         $(this).addClass('table table-bordered table-hover shadow shadow-sm--hover');
       });
+
+      var readingTime = require('reading-time');
+
+      var stats = readingTime($('article').text());
+
+      $('.readingTime').html(stats.text);
       
       // custom blockquote icons
       $('article blockquote p:first-child').each(function() {

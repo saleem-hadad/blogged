@@ -1,5 +1,9 @@
 @extends('blogged::layout')
 
+@section('title')
+    {{ $article->title }}
+@endsection
+
 @section('content')
     <div class="main-content">
         <!-- Navbar -->
@@ -17,7 +21,7 @@
                     <div class="bg-secondary px-5 py-2">
                         <div class="row">
                             <div class="col-md-6">
-                                Category: <button type="button" class="btn btn-outline-danger btn-sm ml-1">Education</button>
+                                Category: <button type="button" class="btn btn-outline-danger btn-sm ml-1">Education</button> (<span class="readingTime"></span>)
                             </div>
                             <div class="col-md-6 text-right">
                                 <b>Published on:</b> <span class="description">{{ $article->publish_date->toFormattedDateString() }}</span>
