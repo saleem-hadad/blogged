@@ -33635,53 +33635,84 @@ var staticRenderFns = [
       _c("div", { staticClass: "container-fluid mt--7" }, [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col" }, [
-            _c("div", { staticClass: "card shadow" }, [
-              _c("div", { staticClass: "card-header border-0" }, [
-                _c("h3", { staticClass: "mb-0" }, [_vm._v("New Article")])
-              ]),
+            _c("div", { staticClass: "card shadow no-border pb-2" }, [
+              _c("img", {
+                staticClass: "card-img-top",
+                attrs: {
+                  src:
+                    "https://s3-ap-southeast-1.amazonaws.com/myseniorio/blogged-showcase.png",
+                  alt: "Card image cap"
+                }
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: "card-body border-0" }, [
-                _c("form", { attrs: { role: "form" } }, [
-                  _c("div", { staticClass: "form-group mb-3" }, [
-                    _c(
-                      "div",
-                      { staticClass: "input-group input-group-alternative" },
-                      [
-                        _c("div", { staticClass: "input-group-prepend" }, [
-                          _c("span", { staticClass: "input-group-text" }, [
-                            _c("i", { staticClass: "ni ni-email-83" })
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("input", {
-                          staticClass: "form-control",
-                          attrs: { placeholder: "Title", type: "text" }
-                        })
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("textarea", {
-                      staticClass: "form-control form-control-alternative",
-                      attrs: {
-                        rows: "3",
-                        placeholder: "Write a large text here ..."
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "text-center" }, [
+              _c("div", { staticClass: "bg-secondary px-5 py-2" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _vm._v("\n                                Category: "),
                     _c(
                       "button",
                       {
-                        staticClass: "btn btn-primary my-4",
+                        staticClass: "btn btn-outline-danger btn-sm ml-1",
                         attrs: { type: "button" }
                       },
-                      [_vm._v("Publish Now")]
+                      [_vm._v("Education")]
                     )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6 text-right" }, [
+                    _c("b", [_vm._v("Published on:")]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "description" }, [_vm._v("Date")])
                   ])
                 ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body px-5" }, [
+                _c("div", { staticClass: "form-group mb-3" }, [
+                  _c(
+                    "div",
+                    { staticClass: "input-group input-group-alternative" },
+                    [
+                      _c("div", { staticClass: "input-group-prepend" }, [
+                        _c("span", { staticClass: "input-group-text" }, [
+                          _c("i", { staticClass: "ni ni-email-83" })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "form-control",
+                        attrs: { placeholder: "Title", type: "text" }
+                      })
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("article", { staticClass: "pt-2 is-light" }, [
+                  _c("textarea", {
+                    staticClass: "form-control form-control-alternative",
+                    attrs: {
+                      rows: "3",
+                      placeholder: "Write a large text here ..."
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center my-4" }, [
+                _c(
+                  "button",
+                  { staticClass: "btn btn-primary", attrs: { type: "button" } },
+                  [_vm._v("Publish Now")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-outline-primary",
+                    attrs: { type: "button" }
+                  },
+                  [_vm._v("Save Draft")]
+                )
               ])
             ])
           ])
