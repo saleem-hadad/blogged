@@ -10,20 +10,21 @@
                     <div class="card shadow no-border pb-2">
                         <img class="card-img-top" src="https://s3-ap-southeast-1.amazonaws.com/myseniorio/blogged-showcase.png" alt="Card image cap">
 
-                        <div class="bg-secondary px-5 py-2">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    Category: <button type="button" class="btn btn-outline-danger btn-sm ml-1">Education</button>
-                                </div>
-                                <div class="col-md-6 text-right">
-                                    <b>Published on:</b> <span class="description">Date</span>
+                        <div class="card-body px-5">
+                            <div class="form-group mb-4">
+                                <span class="mr-2">Category:</span>
+                                    
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select One</button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Education</a>
+                                        <a class="dropdown-item" href="#">Development</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="card-body px-5">
-                            <div class="form-group mb-3">
-                                <div class="input-group input-group-alternative">
+                            <div class="form-group mb-4">
+                                <div class="input-group">
                                     <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                     </div>
@@ -31,14 +32,23 @@
                                 </div>
                             </div>
                             
-                            <article class="pt-2 is-light">
-                                <textarea class="form-control form-control-alternative" rows="3" placeholder="Write a large text here ..."></textarea>
+                            <article class="mb-4 is-light">
+                                <textarea class="form-control" rows="10" placeholder="Write a great content..."></textarea>
                             </article>
+
+                            <div class="form-group mb-4">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                    </div>
+                                    <input class="form-control datepicker" placeholder="Select Publish date" type="text">
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="text-center my-4">
-                            <button type="button" class="btn btn-primary">Publish Now</button>
-                            <button type="button" class="btn btn-outline-primary">Save Draft</button>
+                        <div class="text-center mb-4">
+                            <button type="button" class="btn btn-primary"><i class="ni ni-spaceship"></i> Publish Now</button>
+                            <button type="button" class="btn btn-outline-primary"><i class="ni ni-calendar-grid-58"></i> Save Draft</button>
                         </div>
                     </div>
                 </div>

@@ -33645,64 +33645,93 @@ var staticRenderFns = [
                 }
               }),
               _vm._v(" "),
-              _c("div", { staticClass: "bg-secondary px-5 py-2" }, [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _vm._v("\n                                Category: "),
+              _c("div", { staticClass: "card-body px-5" }, [
+                _c("div", { staticClass: "form-group mb-4" }, [
+                  _c("span", { staticClass: "mr-2" }, [_vm._v("Category:")]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "btn-group" }, [
                     _c(
                       "button",
                       {
-                        staticClass: "btn btn-outline-danger btn-sm ml-1",
-                        attrs: { type: "button" }
+                        staticClass: "btn btn-outline-primary dropdown-toggle",
+                        attrs: {
+                          type: "button",
+                          "data-toggle": "dropdown",
+                          "aria-haspopup": "true",
+                          "aria-expanded": "false"
+                        }
                       },
-                      [_vm._v("Education")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-6 text-right" }, [
-                    _c("b", [_vm._v("Published on:")]),
+                      [_vm._v("Select One")]
+                    ),
                     _vm._v(" "),
-                    _c("span", { staticClass: "description" }, [_vm._v("Date")])
+                    _c("div", { staticClass: "dropdown-menu" }, [
+                      _c(
+                        "a",
+                        { staticClass: "dropdown-item", attrs: { href: "#" } },
+                        [_vm._v("Education")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        { staticClass: "dropdown-item", attrs: { href: "#" } },
+                        [_vm._v("Development")]
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group mb-4" }, [
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("div", { staticClass: "input-group-prepend" }, [
+                      _c("span", { staticClass: "input-group-text" }, [
+                        _c("i", { staticClass: "ni ni-email-83" })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: { placeholder: "Title", type: "text" }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("article", { staticClass: "mb-4 is-light" }, [
+                  _c("textarea", {
+                    staticClass: "form-control",
+                    attrs: {
+                      rows: "10",
+                      placeholder: "Write a great content..."
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group mb-4" }, [
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("div", { staticClass: "input-group-prepend" }, [
+                      _c("span", { staticClass: "input-group-text" }, [
+                        _c("i", { staticClass: "ni ni-calendar-grid-58" })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control datepicker",
+                      attrs: {
+                        placeholder: "Select Publish date",
+                        type: "text"
+                      }
+                    })
                   ])
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "card-body px-5" }, [
-                _c("div", { staticClass: "form-group mb-3" }, [
-                  _c(
-                    "div",
-                    { staticClass: "input-group input-group-alternative" },
-                    [
-                      _c("div", { staticClass: "input-group-prepend" }, [
-                        _c("span", { staticClass: "input-group-text" }, [
-                          _c("i", { staticClass: "ni ni-email-83" })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        staticClass: "form-control",
-                        attrs: { placeholder: "Title", type: "text" }
-                      })
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("article", { staticClass: "pt-2 is-light" }, [
-                  _c("textarea", {
-                    staticClass: "form-control form-control-alternative",
-                    attrs: {
-                      rows: "3",
-                      placeholder: "Write a large text here ..."
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "text-center my-4" }, [
+              _c("div", { staticClass: "text-center mb-4" }, [
                 _c(
                   "button",
                   { staticClass: "btn btn-primary", attrs: { type: "button" } },
-                  [_vm._v("Publish Now")]
+                  [
+                    _c("i", { staticClass: "ni ni-spaceship" }),
+                    _vm._v(" Publish Now")
+                  ]
                 ),
                 _vm._v(" "),
                 _c(
@@ -33711,7 +33740,10 @@ var staticRenderFns = [
                     staticClass: "btn btn-outline-primary",
                     attrs: { type: "button" }
                   },
-                  [_vm._v("Save Draft")]
+                  [
+                    _c("i", { staticClass: "ni ni-calendar-grid-58" }),
+                    _vm._v(" Save Draft")
+                  ]
                 )
               ])
             ])
