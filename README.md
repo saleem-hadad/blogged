@@ -8,7 +8,7 @@
 
 
 <h6 align="center">
-    Write gorgeous blog articles for your website using MarkDown inside your Laravel app.
+    Write gorgeous blog articles for your website using Markdown inside your Laravel app.
 </h6>
     
 
