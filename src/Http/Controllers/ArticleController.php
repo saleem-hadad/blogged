@@ -4,6 +4,7 @@ namespace BinaryTorch\Blogged\Http\Controllers;
 
 use BinaryTorch\Blogged\Models\Article;
 use BinaryTorch\Blogged\Http\Resources\ArticleResource;
+use BinaryTorch\Blogged\Http\Requests\CreateArticleFormRequest;
 
 class ArticleController extends Controller
 {
@@ -17,5 +18,13 @@ class ArticleController extends Controller
         $articles = Article::paginate($pagination);
 
         return ArticleResource::collection($articles);
+    }
+
+    /**
+     * Create new blog article.
+     */
+    public function store(CreateArticleFormRequest $request)
+    {
+        return response()->json([], 201);
     }
 }

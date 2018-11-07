@@ -40,4 +40,14 @@ class DashboardTest extends TestCase
             ])
             ->assertStatus(200);
     }
+
+    /** @test */
+    public function authorized_users_can_create_new_article()
+    {
+        $this->authenticate();
+
+        $this->post('/blogged-api/articles', [
+            'title' => 'How are you?',
+        ])->assertStatus(201);
+    }
 }
