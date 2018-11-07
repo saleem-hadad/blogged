@@ -3,6 +3,7 @@
 namespace BinaryTorch\Blogged\Tests\Feature;
 
 use BinaryTorch\Blogged\Tests\TestCase;
+use BinaryTorch\Blogged\Models\Article;
 
 class DashboardTest extends TestCase
 {
@@ -27,9 +28,14 @@ class DashboardTest extends TestCase
     {
         $this->authenticate();
 
+        factory(Article::class, 2)->create();
+
         $this->get('/blogged-api/articles')
+            ->assertJsonCount(2, 'data')
             ->assertJsonStructure([
-                'data' => [],
+                'data' => [
+                    ['id', 'title']
+                ],
                 'links',
             ])
             ->assertStatus(200);
