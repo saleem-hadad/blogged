@@ -46,7 +46,7 @@ class DashboardTest extends TestCase
     {
         $this->authenticate();
 
-        $this->post('/blogged-api/articles', [
+        $this->json('POST', '/blogged-api/articles', [
             'title' => 'How are you?',
         ])->assertStatus(201);
     }
