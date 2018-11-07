@@ -4,7 +4,7 @@ namespace BinaryTorch\Blogged\Tests\Feature;
 
 use BinaryTorch\Blogged\Tests\TestCase;
 
-class ShowDashboardTest extends TestCase
+class DashboardTest extends TestCase
 {
     /** @test */
     public function a_guest_may_not_visit_dashboard()
@@ -23,11 +23,15 @@ class ShowDashboardTest extends TestCase
     }
 
     /** @test */
-    public function authorized_users_can_view_all_()
+    public function authorized_users_can_fetch_all_articles_with_pagination()
     {
         $this->authenticate();
 
         $this->get('/blogged-api/articles')
+            ->assertJsonStructure([
+                'data' => [],
+                'links',
+            ])
             ->assertStatus(200);
     }
 }

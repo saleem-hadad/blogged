@@ -3,6 +3,7 @@
 namespace BinaryTorch\Blogged\Http\Controllers;
 
 use BinaryTorch\Blogged\Models\Article;
+use BinaryTorch\Blogged\Http\Resources\ArticleResource;
 
 class ArticleController extends Controller
 {
@@ -15,6 +16,6 @@ class ArticleController extends Controller
 
         $articles = Article::paginate($pagination);
 
-        return response()->json(['data' => $articles]);
+        return ArticleResource::collection($articles);
     }
 }

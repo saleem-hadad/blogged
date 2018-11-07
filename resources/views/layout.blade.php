@@ -32,9 +32,7 @@
         <div id="app">
             @yield('content')
 
-            @if(config('blogged.ui.back_to_top'))
-                <back-to-top></back-to-top>
-            @endif
+            <back-to-top></back-to-top>
         </div>
 
         <script>

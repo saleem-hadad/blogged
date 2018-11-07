@@ -5,7 +5,7 @@ namespace BinaryTorch\Blogged\Tests\Feature;
 use BinaryTorch\Blogged\Tests\TestCase;
 use BinaryTorch\Blogged\Models\Article;
 
-class ShowBlogTest extends TestCase
+class BlogTest extends TestCase
 {
     /** @test */
     public function a_guest_can_view_the_blog_home_page()

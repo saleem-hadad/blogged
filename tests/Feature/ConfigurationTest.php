@@ -9,16 +9,6 @@ use BinaryTorch\Blogged\Models\Article;
 class ConfigurationTest extends TestCase
 {
     /** @test */
-    public function back_to_top_button_is_visible_only_if_enabled()
-    {
-        Config::set('blogged.ui.back_to_top', false);
-        $this->get('/blog')->assertDontSee('<back-to-top></back-to-top>');
-
-        Config::set('blogged.ui.back_to_top', true);
-        $this->get('/blog')->assertSee('<back-to-top></back-to-top>');
-    }
-
-    /** @test */
     public function ga_script_is_visible_only_if_ga_id_is_set()
     {
         Config::set('blogged.settings.ga_id', '');
@@ -49,6 +39,7 @@ class ConfigurationTest extends TestCase
     public function dynamic_color_palette()
     {
         Config::set('blogged.ui.primary_color', '#custom_color');
+        
         $this->get('/blog')
             ->assertSee('#custom_color');
     }
@@ -60,7 +51,7 @@ class ConfigurationTest extends TestCase
         
         Config::set('blogged.forum.default', '');
         Config::set('blogged.forum.enabled', false);
-        $this->get('/docs/1.0')
+        $this->get($article->path())
             ->assertDontSee('disqus_thread');
             
         Config::set('blogged.forum.default', 'disqus');
