@@ -11,27 +11,35 @@
         <!-- Page content -->
         <section class="section">
             <div class="container" style="margin-top: -100px">
-                @forelse ($articles->chunk(config('blogged.settings.columns')) as $chunk)
-                    <div class="row is-flex">
-                        @foreach($chunk as $article)
-                            <div class="col-md-{{ 12 / config('blogged.settings.columns') }} pb-5">
-                                @include('blogged::partials.card', [
-                                    'image' => $article->image,
-                                    'title' => $article->title,
-                                    'date' => $article->publish_date->toFormattedDateString(),
-                                    'body' => $article->excerpt,
-                                    'url' => url($article->path()),
-                                ])
+                <div class="row">
+                    <div class="{{ config('blogged.ui.sidebar') ? 'col-md-8' : 'col-md-12' }}">
+                        @forelse ($articles->chunk(config('blogged.ui.columns')) as $chunk)
+                            <div class="row is-flex">
+                                @foreach($chunk as $article)
+                                    <div class="col-md-{{ 12 / config('blogged.ui.columns') }} pb-5">
+                                        @include('blogged::partials.card', [
+                                            'image' => $article->image,
+                                            'title' => $article->title,
+                                            'date' => $article->publish_date->toFormattedDateString(),
+                                            'body' => $article->excerpt,
+                                            'url' => url($article->path()),
+                                        ])
+                                    </div>
+                                @endforeach
                             </div>
-                        @endforeach
+                        @empty
+                            <div class="card shadow no-border">
+                                <img class="card-img-top" width="100%" src="https://s3-ap-southeast-1.amazonaws.com/myseniorio/zino.png" alt="Card image cap">
+                            </div>
+                        @endforelse
                     </div>
-                @empty
-                    <div class="col-md-12">
-                        <div class="card shadow no-border">
-                            <img class="card-img-top" width="100%" src="https://s3-ap-southeast-1.amazonaws.com/myseniorio/zino.png" alt="Card image cap">
+    
+                    @if(config('blogged.ui.sidebar'))
+                        <div class="col-md-4">
+                            @include('blogged::partials.sidebar')
                         </div>
-                    </div>
-                @endforelse
+                    @endif
+                </div>
             </div>
             <div class="justify-content-center pt-5">
                 {{ $articles->links() }}

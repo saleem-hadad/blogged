@@ -40,7 +40,6 @@ return [
     'settings'       => [
         'ga_id'      => '',
         'pagination' => 10,
-        'columns'    => 2, // 2, 3, 4
     ],
 
     /*
@@ -150,12 +149,12 @@ return [
 
     'ui'                   => [
         'show_app_name'    => true,
-        'show_author_name' => true,
-        'logo'             => '', // e.g.: /logo.svg
-        'fav'              => '', // e.g.: /fav.png
-        'code'             => 'dark',
-        'back_to_top'      => true,
+        'logo'             => '',   // e.g.: /logo.svg
+        'fav'              => '',   // e.g.: /fav.png
+        'columns'          => 2,    // 2, 3, 4
+        'sidebar'          => false,
         'primary_color'    => '#ab3f61',
+        'code'             => 'dark',
         'additional_css'   => [
             //'css/custom.css',
         ],
