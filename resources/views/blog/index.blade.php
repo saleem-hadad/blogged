@@ -18,6 +18,7 @@
                                 @include('blogged::partials.card', [
                                     'image' => $article->image,
                                     'title' => $article->title,
+                                    'date' => $article->publish_date->toFormattedDateString(),
                                     'body' => $article->excerpt,
                                     'url' => url($article->path()),
                                 ])
