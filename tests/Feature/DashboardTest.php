@@ -47,7 +47,10 @@ class DashboardTest extends TestCase
         $this->authenticate();
 
         $this->json('POST', '/blogged-api/articles', [
-            'title' => 'How are you?',
+            'title'    => 'How are you?',
+            'slug'     => 'how-are-you',
+            'body'     => 'you are cool',
+            'featured' => true,
         ])->assertStatus(201);
     }
 }

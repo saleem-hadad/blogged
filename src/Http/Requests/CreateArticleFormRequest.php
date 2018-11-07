@@ -24,7 +24,10 @@ class CreateArticleFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|max:254',
+            'title'    => 'required|string|max:254',
+            'slug'     => 'required|string|max:254',
+            'body'     => 'required|string',
+            'featured' => 'required',
         ];
     }
 }
