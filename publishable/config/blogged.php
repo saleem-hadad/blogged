@@ -52,6 +52,12 @@ return [
             'icon'       => 'palette',
             'icon_pack'  => 'ni', // ni, fa
         ],
+        [
+            'name'       => 'Docs',
+            'url'        => '/docs',
+            'icon'       => 'books',
+            'icon_pack'  => 'ni', // ni, fa
+        ],
     ],
 
     /*
