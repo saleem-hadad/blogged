@@ -8,12 +8,6 @@ return [
     |--------------------------------------------------------------------------
     | Blogged Routes
     |--------------------------------------------------------------------------
-    |
-    | These options configure the behavior of the LaRecipe docs basic route
-    | where you can specify the url of your documentations, the location
-    | of your docs and the landing page when a user visits /docs route.
-    |
-    |
     */
 
     'routes'        => [
@@ -26,15 +20,6 @@ return [
     |--------------------------------------------------------------------------
     | Blogged Settings
     |--------------------------------------------------------------------------
-    |
-    | These options configure the additional behaviors of your documentation
-    | where you can limit the access to only authenticated users in your
-    | system. It is false initially so that guests can view your docs.
-    |
-    | You may also specify links to show under the auth dropdown menu.
-    | Logout link will show by default.
-    |
-    |
     */
 
     'settings'       => [
@@ -46,15 +31,6 @@ return [
     |--------------------------------------------------------------------------
     | Blogged Settings
     |--------------------------------------------------------------------------
-    |
-    | These options configure the additional behaviors of your documentation
-    | where you can limit the access to only authenticated users in your
-    | system. It is false initially so that guests can view your docs.
-    |
-    | You may also specify links to show under the auth dropdown menu.
-    | Logout link will show by default.
-    |
-    |
     */
 
     'nav_links'  => [
@@ -82,15 +58,6 @@ return [
     |--------------------------------------------------------------------------
     | Blogged Settings
     |--------------------------------------------------------------------------
-    |
-    | These options configure the additional behaviors of your documentation
-    | where you can limit the access to only authenticated users in your
-    | system. It is false initially so that guests can view your docs.
-    |
-    | You may also specify links to show under the auth dropdown menu.
-    | Logout link will show by default.
-    |
-    |
     */
 
     'footer_links'       => [
@@ -139,9 +106,9 @@ return [
     | Appearance
     |--------------------------------------------------------------------------
     |
-    | Here you can add configure the appearance of your docs. For example,
+    | Here you can add configure the appearance of your blog. For example,
     | you can swap the default logo to custom one that matches your Id
-    | Also, you can change the theme of your docs if you prefer that
+    | Also, you can change the theme of your blog if you prefer that
     |
     | Supported Themes: 'light', 'dark'
     |
@@ -167,11 +134,6 @@ return [
     |--------------------------------------------------------------------------
     | Social
     |--------------------------------------------------------------------------
-    |
-    | Giving a chance to your users to post their questions or feedback
-    | directly on your docs, is pretty nice way to engage them more.
-    | However, you can also enable/disable the forum's visibility.
-    |
     */
 
     'social'        => [
