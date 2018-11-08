@@ -23,24 +23,6 @@
 
 # Blogged 🖍
 
-
-## Requirements
-
-* Laravel 5.4 or higher 
-* PHP 7.1 or higher
-
-## Getting Started
-
-☝️ Install the package via composer.
-
-    composer require binarytorch/blogged
-
-✌️ Run the install command.
-
-    php artisan blogged:install
-
-Visit your app domain with `/blog` endpoint. That's it.
-
 #### See [full documentation](https://blogged.binarytorch.com.my/)
 
 ## License
