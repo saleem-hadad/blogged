@@ -23,7 +23,7 @@
 
 # Blogged 🖍
 
-#### See [full documentation](https://blogged.binarytorch.com.my/)
+#### See [full documentation](https://blogged.binarytorch.com.my/docs)
 
 ## License
 
