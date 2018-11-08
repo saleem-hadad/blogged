@@ -8,7 +8,7 @@
 
 
 <h6 align="center">
-    🖍 (In development) Write beautiful blog articles using Markdown inside your Laravel app.
+    Write beautiful blog articles using Markdown inside your Laravel app.
 </h6>
     
 
@@ -23,9 +23,6 @@
 
 # Blogged 🖍
 
-
-
-Made with ❤️ by [Binary Torch](https://binarytorch.com.my/)
 
 ## Requirements
 
