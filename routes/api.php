@@ -21,5 +21,5 @@ Route::post('/tags', 'TagController@store');
 Route::put('/tags/{tag}', 'TagController@update');
 Route::delete('/tags/{tag}', 'TagController@delete');
 
-// Blog Files Uploads..
-Route::post('/files', 'FileController@store');
+// Blog Images Uploads..
+Route::post('/images', 'ImageController@store');
