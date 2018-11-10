@@ -22,5 +22,4 @@ Route::put('/tags/{tag}', 'TagController@update');
 Route::delete('/tags/{tag}', 'TagController@delete');
 
 // Blog Images Uploads..
-Route::get('/images', 'ImageController@index');
 Route::post('/images', 'ImageController@store');
