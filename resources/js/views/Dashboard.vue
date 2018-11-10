@@ -12,7 +12,7 @@
                         <div class="row">
                         <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">Total Articles</h5>
-                            <span class="h2 font-weight-bold mb-0">{{ data.total }}</span>
+                            <span class="h2 font-weight-bold mb-0">{{ totalArticles }}</span>
                         </div>
                         <div class="col-auto">
                             <div class="icon icon-shape bg-primary text-white rounded-circle shadow">
@@ -29,7 +29,7 @@
                         <div class="row">
                         <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">Published Articles</h5>
-                            <span class="h2 font-weight-bold mb-0">{{ data.total }}</span>
+                            <span class="h2 font-weight-bold mb-0">{{ totalArticles }}</span>
                         </div>
                         <div class="col-auto">
                             <div class="icon icon-shape bg-primary text-white rounded-circle shadow">
@@ -46,7 +46,7 @@
                         <div class="row">
                         <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">Featured Articles</h5>
-                            <span class="h2 font-weight-bold mb-0">{{ data.total }}</span>
+                            <span class="h2 font-weight-bold mb-0">{{ totalArticles }}</span>
                         </div>
                         <div class="col-auto">
                             <div class="icon icon-shape bg-primary text-white rounded-circle shadow">
@@ -116,10 +116,19 @@ export default {
             data: []
         }
     },
+    computed: {
+        totalArticles() {
+            if(!this.data.meta) {
+                return 0
+            }
+            
+            return this.data.meta.total
+        }
+    },
     created() {
         axios.get('/blogged-api/articles')
             .then((response) => {
-                this.data = response.data.data
+                this.data = response.data
             });
     }
 }
