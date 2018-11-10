@@ -5,7 +5,7 @@
         </div>
         <div class="text-lg-center btn-wrapper">
             @if(config('blogged.social.twitter'))
-                <a target="_blank" href="https://twitter.com/intent/tweet/?text=Super%20fast%20and%20easy%20Social%20Media%20Sharing%20Buttons.%20No%20JavaScript.%20No%20tracking.&amp;url=http%3A%2F%2Fsharingbuttons.io" class="btn btn-neutral  btn-twitter btn-round btn-lg">
+                <a target="_blank" href="https://twitter.com/intent/tweet/?text={{ $description }}&amp;url={{ $url }}" class="btn btn-neutral  btn-twitter btn-round btn-lg">
                     <i class="fa fa-twitter"></i> Twitter
                 </a>
             @endif

@@ -39,7 +39,7 @@
             </div>
         </section>
 
-        @include('blogged::partials.share', ['url' => $article->path()])
+        @include('blogged::partials.share', ['url' => $article->path(), 'description' => $article->excerpt ])
         @include('blogged::plugins.forum', ['url' => $article->path(), 'slug' => $article->slug])
     </div>
 
