@@ -3,7 +3,7 @@
 
     <div class="card-body">
         <h3>
-            To edit this sidebar area, please run the command below to publish the releated view which will be located under your views 
+            To edit this sidebar area, please make sure you published the releated view which will be located under your views:
         </h3>
 
         <article class="is-dark">
@@ -12,5 +12,9 @@
                 <div class="toolbar"></div>
             </div>
         </article>
+
+        <h3>
+            Refer back to the <a href="/docs">documentation</a> for more information.
+        </h3>
     </div>
 </div>

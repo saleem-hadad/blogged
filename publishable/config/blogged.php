@@ -24,7 +24,7 @@ return [
 
     'settings'       => [
         'ga_id'      => '',
-        'pagination' => 10,
+        'pagination' => 4,
     ],
 
     /*
@@ -70,10 +70,6 @@ return [
         [
             'name'       => 'Home',
             'url'        => '/',
-        ],
-        [
-            'name'       => 'Privacy',
-            'url'        => '/privacy',
         ],
     ],
 
@@ -124,8 +120,8 @@ return [
         'show_app_name'    => true,
         'logo'             => '',   // e.g.: /logo.svg
         'fav'              => '',   // e.g.: /fav.png
-        'columns'          => 2,    // 2, 3, 4
-        'sidebar'          => false,
+        'columns'          => 1,    // 2, 3, 4
+        'sidebar'          => true,
         'primary_color'    => '#ab3f61',
         'code'             => 'dark',
         'additional_css'   => [

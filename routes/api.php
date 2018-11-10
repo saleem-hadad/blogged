@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Blogged Articles
+// Blogged Articles...
 Route::get('/articles', 'ArticleController@index');
 Route::post('/articles', 'ArticleController@store');
 Route::get('/articles/{article}', 'ArticleController@show');
