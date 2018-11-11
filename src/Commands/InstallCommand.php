@@ -30,8 +30,9 @@ class InstallCommand extends Command
     public function handle()
     {
         $this->line('Publishing assets and congigurations.. 🍪');
-        $this->call('vendor:publish', ['--provider' => BloggedServiceProvider::class, '--tag' => ['blogged_assets', 'blogged_config']]);
-
+        $tags = ['blogged_assets', 'blogged_config', 'blogged_views'];
+        $this->call('vendor:publish', ['--provider' => BloggedServiceProvider::class, '--tag' => $tags]);
+        
         $this->dumpAutoLoad();
 
         $this->info('Migrating the database tables into your application');

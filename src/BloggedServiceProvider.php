@@ -117,6 +117,9 @@ class BloggedServiceProvider extends ServiceProvider
             'blogged_assets' => [
                 "{$publishablePath}/assets/" => public_path('vendor/binarytorch/blogged/assets'),
             ],
+            'blogged_views' => [
+                __DIR__.'/../resources/views/partials/sidebar.blade.php' => resource_path('views/vendor/blogged/partials/sidebar.blade.php'),
+            ],
         ];
 
         foreach ($publishable as $group => $paths) {

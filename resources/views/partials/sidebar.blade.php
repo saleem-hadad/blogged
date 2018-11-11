@@ -3,7 +3,7 @@
 
     <div class="card-body">
         <h3>
-            To edit this sidebar area, please make sure you published the releated view which will be located under your views:
+            You can edit this sidebar area by editing the file <b>sidebar.blade.php</b> under your view resources:
         </h3>
 
         <article class="is-dark">
