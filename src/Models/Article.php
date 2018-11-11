@@ -49,14 +49,6 @@ class Article extends Model
     /**
      * @return String
      */
-    public function getExcerptAttribute()
-    {
-        return substr($this->body, 0, 50) . '...';
-    }
-
-    /**
-     * @return String
-     */
     public function getParsedBodyAttribute()
     {
         return $this->parse($this->body);
