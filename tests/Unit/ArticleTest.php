@@ -2,7 +2,6 @@
 
 namespace BinaryTorch\Blogged\Tests\Unit;
 
-use Illuminate\Support\Facades\Config;
 use BinaryTorch\Blogged\Models\Article;
 use BinaryTorch\Blogged\Tests\TestCase;
 use BinaryTorch\Blogged\Models\Category;
@@ -10,18 +9,6 @@ use BinaryTorch\Blogged\Tests\Fixture\User;
 
 class ArticleTest extends TestCase
 {
-    /**
-     * @return void
-     */
-    public function setUp()
-    {
-        parent::setUp();
-
-        $this->loadMigrationsFrom(__DIR__.'/../Fixture/Migrations');
-
-        $this->artisan('migrate');
-    }
-
     /** @test */
     public function it_has_title()
     {
@@ -157,10 +144,7 @@ class ArticleTest extends TestCase
     /** @test */
     public function it_has_author()
     {
-        Config::set('blogged.settings.user', User::class);
-        
-        $user = User::create();
-        $article = factory(Article::class)->create(['author_id' => $user->id]);
+        $article = factory(Article::class)->create();
 
         $this->assertInstanceOf(User::class, $article->author);
     }

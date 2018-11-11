@@ -23,6 +23,8 @@ class BlogController extends Controller
      */
     public function show(Article $article)
     {
+        $article->load('author');
+
         return view('blogged::blog.show', compact('article'));
     }
 }

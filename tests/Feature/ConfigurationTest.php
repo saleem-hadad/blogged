@@ -57,6 +57,7 @@ class ConfigurationTest extends TestCase
         Config::set('blogged.forum.default', 'disqus');
         Config::set('blogged.forum.enabled', true);
         Config::set('blogged.forum.services.disqus.site_name', 'blogged');
+
         $this->get($article->path())
             ->assertSee('disqus_thread');
     }

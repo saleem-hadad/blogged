@@ -3,6 +3,8 @@
 namespace BinaryTorch\Blogged\Tests;
 
 use Mockery;
+use Illuminate\Support\Facades\Config;
+use BinaryTorch\Blogged\Tests\Fixture\User;
 use Illuminate\Contracts\Auth\Authenticatable;
 use BinaryTorch\Blogged\BloggedServiceProvider;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -24,8 +26,21 @@ class TestCase extends \Orchestra\Testbench\TestCase
     public function setUp()
     {
         parent::setUp();
+
+        $this->loadMigrationsFrom(__DIR__.'/Fixture/Migrations');
         
         $this->artisan('migrate');
+
+        $this->createDummyUser();
+    }
+
+    /**
+     * @return void
+     */
+    protected function createDummyUser()
+    {
+        Config::set('blogged.settings.user', User::class);
+        User::create(['name' => 'Saleem']);
     }
 
     /**
