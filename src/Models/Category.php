@@ -27,11 +27,6 @@ class Category extends Model
         return $this->hasMany(Article::class);
     }
 
-    public function addArticle(Article $article)
-    {
-        return $this->articles()->save($article);
-    }
-
     /**
      * Get the route key for the model.
      *

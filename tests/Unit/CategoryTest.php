@@ -31,7 +31,7 @@ class CategoryTest extends TestCase
     {
         $category = factory(Category::class)->create();
         
-        $category->addArticle(factory(Article::class)->make());
+        factory(Article::class)->create(['category_id' => $category->id]);
 
         $this->assertCount(1, $category->articles);
     }
