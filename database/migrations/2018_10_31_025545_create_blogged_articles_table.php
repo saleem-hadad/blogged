@@ -25,8 +25,9 @@ class CreateBloggedArticlesTable extends Migration
             $table->boolean('published')->default(false);
             $table->boolean('featured')->default(false);
             
-            $table->unsignedInteger('user_id')->nullable()->index();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
+            $table->unsignedInteger('author_id')->index();
+            // TODO: users table should be dynamic..
+            $table->foreign('author_id')->references('id')->on('users')->onDelete('cascade');;
             // $table->unsignedInteger('category_id')->nullable()->index();
             // $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');;
             $table->timestamps();

@@ -69,6 +69,16 @@ class Article extends Model
     }
 
     /**
+     * author
+     *
+     * @return belongsTo
+     */
+    public function author()
+    {
+        return $this->belongsTo(config('blogged.settings.user'), 'author_id');
+    }
+
+    /**
      * @return void
      */
     public function feature()

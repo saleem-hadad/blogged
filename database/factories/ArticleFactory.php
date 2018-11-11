@@ -16,5 +16,6 @@ $factory->define(Article::class, function (Faker\Generator $faker) {
         'publish_date' => $faker->dateTime,
         'published'    => false,
         'featured'     => false,
+        'author_id'    => 1
     ];
 });

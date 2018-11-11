@@ -21,7 +21,7 @@ class BloggedServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'blogged');
 
         Route::middlewareGroup('blogged', config('blogged.middleware', []));
-        
+
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         $this->app->make('Illuminate\Database\Eloquent\Factory')->load(__DIR__ . '/../database/factories');

@@ -23,6 +23,7 @@ return [
     */
 
     'settings'       => [
+        'user'       => App\User::class,
         'ga_id'      => '',
         'pagination' => 4,
     ],
