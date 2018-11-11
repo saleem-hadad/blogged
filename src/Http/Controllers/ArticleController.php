@@ -25,6 +25,8 @@ class ArticleController extends Controller
      */
     public function store(CreateArticleFormRequest $request)
     {
+        Article::authorizeToCreate($request);
+        
         return response()->json([], 201);
     }
 }

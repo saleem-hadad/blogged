@@ -4,9 +4,12 @@ namespace BinaryTorch\Blogged\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use BinaryTorch\Blogged\Traits\Authorizable;
 
 class Category extends Model
 {
+    use Authorizable;
+    
     /**
      * @var array
      */

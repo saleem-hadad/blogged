@@ -4,11 +4,12 @@ namespace BinaryTorch\Blogged\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use BinaryTorch\Blogged\Traits\Authorizable;
 use BinaryTorch\Blogged\Traits\HasMarkdownParser;
 
 class Article extends Model
 {
-    use HasMarkdownParser;
+    use HasMarkdownParser, Authorizable;
 
     /**
      * @var array
