@@ -2,7 +2,4 @@
 
 namespace BinaryTorch\Blogged\Tests\Fixture;
 
-class ArticlePolicy
-{
-    //
-}
+class ArticlePolicy {}
