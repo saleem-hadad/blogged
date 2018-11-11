@@ -37,15 +37,10 @@ class InstallCommand extends Command
         $this->info('Migrating the database tables into your application');
         $this->call('migrate');
 
-        if ($this->confirm('Do you wish to include dummy data?')) {
-            $this->line('Seeding dummy data into the database');
-            $this->seed('BloggedSeeder');
-        }
-
         $this->info('Adding the storage symlink to your public folder');
         $this->call('storage:link');
 
-        $this->line('Successfully installed Blogged!');
+        $this->line('Blogged successfully installed!');
         $this->info('Visit /blog to see the blog articles.');
         $this->info('Visit /blog/dashboard to see the admin panel.');
     }
@@ -73,20 +68,5 @@ class InstallCommand extends Command
         }
 
         return 'composer';
-    }
-
-    /**
-     * @param $class
-     * @return void
-     */
-    public function seed($class)
-    {
-        if (!class_exists($class)) {
-            $seedersPath = dirname(__DIR__) . '/../database/seeds/';
-
-            require_once $seedersPath.$class.'.php';
-        }
-
-        with(new $class())->run();
     }
 }
