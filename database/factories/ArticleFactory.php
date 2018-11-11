@@ -1,6 +1,7 @@
 <?php
 
 use BinaryTorch\Blogged\Models\Article;
+use BinaryTorch\Blogged\Models\Category;
 
 $factory->define(Article::class, function (Faker\Generator $faker) {
     return [
@@ -16,6 +17,9 @@ $factory->define(Article::class, function (Faker\Generator $faker) {
         'publish_date' => $faker->dateTime,
         'published'    => false,
         'featured'     => false,
-        'author_id'    => 1
+        'author_id'    => 1,
+        'category_id'  => function() {
+            return factory(Category::class)->create()->id;
+        },
     ];
 });

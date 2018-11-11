@@ -23,6 +23,13 @@ class Article extends Model
     protected $table = 'blogged_articles';
 
     /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    protected $with = ['category'];
+
+    /**
      * The attributes that should be mutated to dates.
      *
      * @var array
@@ -76,6 +83,16 @@ class Article extends Model
     public function author()
     {
         return $this->belongsTo(config('blogged.settings.user'), 'author_id');
+    }
+
+    /**
+     * category
+     *
+     * @return belongsTo
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     /**

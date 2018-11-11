@@ -5,6 +5,7 @@ namespace BinaryTorch\Blogged\Tests\Unit;
 use Illuminate\Support\Facades\Config;
 use BinaryTorch\Blogged\Models\Article;
 use BinaryTorch\Blogged\Tests\TestCase;
+use BinaryTorch\Blogged\Models\Category;
 use BinaryTorch\Blogged\Tests\Fixture\User;
 
 class ArticleTest extends TestCase
@@ -162,5 +163,13 @@ class ArticleTest extends TestCase
         $article = factory(Article::class)->create(['author_id' => $user->id]);
 
         $this->assertInstanceOf(User::class, $article->author);
+    }
+
+    /** @test */
+    public function it_belongs_to_category()
+    {        
+        $article = factory(Article::class)->create();
+
+        $this->assertInstanceOf(Category::class, $article->category);
     }
 }
