@@ -18,11 +18,12 @@
                                 @foreach($chunk as $article)
                                     <div class="col-md-{{ 12 / config('blogged.ui.columns') }} pb-5">
                                         @include('blogged::partials.card', [
-                                            'image' => $article->image,
-                                            'title' => $article->title,
-                                            'date' => $article->publish_date->toFormattedDateString(),
-                                            'body' => $article->excerpt,
-                                            'url' => url($article->path()),
+                                            'image'    => $article->image,
+                                            'title'    => $article->title,
+                                            'category' => $article->category,
+                                            'date'     => $article->publish_date->toFormattedDateString(),
+                                            'body'     => $article->excerpt,
+                                            'url'      => url($article->path()),
                                         ])
                                     </div>
                                 @endforeach

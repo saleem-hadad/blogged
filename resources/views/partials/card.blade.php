@@ -2,7 +2,7 @@
     <img width="100%" class="card-img-top" src="{{ $image }}" alt="article image">
 
     <div class="bg-secondary px-3 py-2">
-        <button type="button" class="btn btn-link btn-sm ml-1">Education</button>/ {{ $date }}
+        <a href="{{ $category->path() }}" class="btn btn-link btn-sm ml-1">{{ $category->title }}</a>/ {{ $date }}
     </div>
 
     <div class="card-body">
