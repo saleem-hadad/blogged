@@ -9,4 +9,4 @@ Route::view(config('blogged.routes.dashboard') . '/{page?}', 'blogged::dashboard
 Route::get(config('blogged.routes.blog') . '/', 'BlogController@index')->name('index');
 
 // Dynamic model matching..
-Route::get(config('blogged.routes.blog') . '/{article}', 'BlogController@show')->name('show');
+Route::get(config('blogged.routes.blog') . '/{category}/{article}', 'BlogController@show')->name('show');

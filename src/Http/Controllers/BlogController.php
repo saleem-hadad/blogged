@@ -3,6 +3,7 @@
 namespace BinaryTorch\Blogged\Http\Controllers;
 
 use BinaryTorch\Blogged\Models\Article;
+use BinaryTorch\Blogged\Models\Category;
 
 class BlogController extends Controller
 {
@@ -21,7 +22,7 @@ class BlogController extends Controller
     /**
      * Show a given article.
      */
-    public function show(Article $article)
+    public function show(Category $category, Article $article)
     {
         $article->load('author');
 

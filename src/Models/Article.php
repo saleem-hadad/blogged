@@ -119,6 +119,6 @@ class Article extends Model
      */
     public function path()
     {
-        return route('blogged.show', $this->slug);
+        return route('blogged.show', [$this->category->slug, $this->slug]);
     }
 }
