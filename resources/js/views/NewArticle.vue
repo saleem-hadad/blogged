@@ -8,7 +8,15 @@
             <div class="row">
                 <div class="col">
                     <div class="card shadow no-border pb-2">
-                        <img class="card-img-top" src="https://s3-ap-southeast-1.amazonaws.com/myseniorio/blogged-showcase.png" alt="Card image cap">
+                        <img class="card-img-top" src="https://s3.ap-southeast-1.amazonaws.com/myseniorio/new.svg" alt="Card image">
+
+                        <div class="alert alert-secondary alert-dismissible fade show" style="border-radius: 0px" role="alert">
+                            <span class="alert-inner--icon"><i class="ni ni-like-2"></i></span>
+                            <span class="alert-inner--text"><strong>SEO Tip!</strong> {{ randomSeoTip }}</span>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
                         <div class="card-body px-5">
                             <div class="form-group mb-4">
@@ -24,26 +32,35 @@
                             </div>
 
                             <div class="form-group mb-4">
-                                <div class="input-group">
+                                <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                     </div>
                                     <input class="form-control" placeholder="Title" type="text">
                                 </div>
                             </div>
-                            
-                            <article class="mb-4 is-light">
-                                <textarea class="form-control" rows="10" placeholder="Write a great content..."></textarea>
-                            </article>
 
                             <div class="form-group mb-4">
-                                <div class="input-group">
+                                <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                     </div>
-                                    <input class="form-control datepicker" placeholder="Select Publish date" type="text">
+                                    <input class="form-control" placeholder="Url" type="text">
                                 </div>
                             </div>
+
+                            <div class="form-group mb-4">
+                                <div class="input-group input-group-alternative">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                    </div>
+                                    <input class="form-control" placeholder="Excerpt (short description)" type="text">
+                                </div>
+                            </div>
+
+                            <article class="mb-4 is-light">
+                                <textarea class="form-control form-control-alternative" rows="10" placeholder="Write a great content..."></textarea>
+                            </article>
                         </div>
 
                         <div class="text-center mb-4">
@@ -56,3 +73,25 @@
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            SEO: [
+                'Keep your title short and precise with less than 60 chars!',
+                'Keep your excerpt short and precise with less than 160 chars!',
+                'Try to include CTA phrases in your article (such as Learn More, Click here..) to grab readers\' attention!',
+            ]
+        }
+    },
+    computed: {
+        randomSeoTip() { 
+            return this.SEO[Math.floor(Math.random() * this.SEO.length)];
+        }
+    },
+    mounted() {
+        // axios.get('/blogged-api/categories')
+    }
+}
+</script>
