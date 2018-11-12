@@ -10,14 +10,14 @@ class ArticleFilters extends Filters
      * @var array
      */
     protected $filters = [
-        'query',
+        'search',
     ];
 
     /**
      * @param $$value
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    protected function query($value)
+    protected function search($value)
     {
         return $this->builder->where(function ($query) use ($value) {
             $query->where('title', 'LIKE', "%$$value%")

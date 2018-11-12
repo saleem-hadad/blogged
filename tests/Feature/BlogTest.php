@@ -55,11 +55,11 @@ class BlogTest extends TestCase
             'category_id' => $category->id
         ]);
 
-        $this->get($category->path() . '?query=nothere')
+        $this->get($category->path() . '?search=nothere')
             ->assertStatus(200)
             ->assertDontSee('BlaBla');
 
-        $this->get($category->path() . '?query=blob')
+        $this->get($category->path() . '?search=blob')
             ->assertStatus(200)
             ->assertDontSee('BlaBla');
     }
