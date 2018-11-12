@@ -10,7 +10,7 @@
         
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-
+        
         {{-- CSS --}}
         <link rel="stylesheet" href="{{ blogged_assets('css/app.css') }}">
 

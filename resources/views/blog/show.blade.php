@@ -36,8 +36,8 @@
                         </article>
                     </div>
 
-                    <div class="card-footer">
-                        <h2>Writen By: {{ $article->author->name }}</h2>
+                    <div class="card-footer px-5">
+                            @include('blogged::partials.author', ['author' => $article->author ])
                     </div>
                 </div>
             </div>
