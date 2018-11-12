@@ -31,20 +31,7 @@
             </div>
             <!-- Navbar items -->
             <ul class="navbar-nav ml-auto">
-                @if(config('blogged.nav_links') !== null)
-                    @foreach(config('blogged.nav_links') as $link)
-                        @if($link['url'] !== '')
-                            <li class="nav-item">
-                                <a class="nav-link nav-link-icon" href="{{ $link['url'] }}">
-                                    @if($link['icon'] !== '')
-                                        <i class="{{ $link['icon_pack'] }} {{ $link['icon_pack'] }}-{{ $link['icon'] }}"></i>
-                                    @endif
-                                    <span class="nav-link-inner--text">{{ $link['name'] }}</span>
-                                </a>
-                            </li>
-                        @endif
-                    @endforeach
-                @endif
+                @include('blogged::partials.navlinks')
             </ul>
         </div>
     </div>

@@ -20,89 +20,18 @@ return [
     |--------------------------------------------------------------------------
     | Blogged Settings
     |--------------------------------------------------------------------------
+    |
+    | Blogged doesn't use any additional `users` table. By default the author
+    | of the articles will be pointed to App\User class and the storage to
+    | the `local`. Pagination # will relfect how many articles per page.
+    |
     */
 
     'settings'       => [
         'user'       => App\User::class,
         'storage'    => env('BLOGGED_STORAGE', 'local'),
         'ga_id'      => env('BLOGGED_GA', ''),
-        'pagination' => 4,
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Blogged Navbar Links
-    |--------------------------------------------------------------------------
-    */
-
-    'nav_links'  => [
-        [
-            'name'       => 'Home',
-            'url'        => '/',
-            'icon'       => 'planet',
-            'icon_pack'  => 'ni', // ni, fa
-        ],
-        [
-            'name'       => 'Blog',
-            'url'        => '/blog',
-            'icon'       => 'book-bookmark',
-            'icon_pack'  => 'ni', // ni, fa
-        ],
-        [
-            'name'       => 'Dashboard',
-            'url'        => '/blog/dashboard',
-            'icon'       => 'palette',
-            'icon_pack'  => 'ni', // ni, fa
-        ],
-        [
-            'name'       => 'Docs',
-            'url'        => '/docs',
-            'icon'       => 'books',
-            'icon_pack'  => 'ni', // ni, fa
-        ],
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Blogged Footer Links
-    |--------------------------------------------------------------------------
-    */
-
-    'footer_links'       => [
-        [
-            'name'       => 'Home',
-            'url'        => '/',
-        ],
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Authentication Guard
-    |--------------------------------------------------------------------------
-    |
-    | This configuration option defines the authentication guard that will
-    | be used to protect your Blog routes. This option should match one
-    | of the authentication guards defined in the "auth" config file.
-    |
-    */
-
-    'guard' => env('BLOGGED_GUARD', null),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Routes Middleware
-    |--------------------------------------------------------------------------
-    |
-    | These middleware will be assigned to every Dashboard route, giving you the
-    | chance to add your own middleware to this stack or override any of
-    | the existing middleware. Or, you can just stick with this stack.
-    |
-    */
-
-    'middleware' => [
-        'web',
-        Authenticate::class,
-        Authorize::class,
+        'pagination' => 10,
     ],
 
     /*
@@ -170,8 +99,38 @@ return [
         'default'           => 'disqus',
         'services'          => [
             'disqus'        => [
-                'site_name' => '', // {site_name}.disqus.com
+                'site_name' => env('BLOGGED_DISQUS_SITE', ''),
             ]
         ]
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Authentication Guard
+    |--------------------------------------------------------------------------
+    |
+    | This configuration option defines the authentication guard that will
+    | be used to protect your Blog routes. This option should match one
+    | of the authentication guards defined in the "auth" config file.
+    |
+    */
+
+    'guard' => env('BLOGGED_GUARD', null),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Routes Middleware
+    |--------------------------------------------------------------------------
+    |
+    | These middleware will be assigned to every Dashboard route, giving you the
+    | chance to add your own middleware to this stack or override any of
+    | the existing middleware. Or, you can just stick with this stack.
+    |
+    */
+
+    'middleware' => [
+        'web',
+        Authenticate::class,
+        Authorize::class,
     ],
 ];
