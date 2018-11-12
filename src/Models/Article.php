@@ -95,7 +95,7 @@ class Article extends Model
     public function authorAvatar()
     {
         if ($this->author instanceof BloggedUser) {
-            return $table->author->avatar;
+            return $this->author->avatar;
         }
 
         return 'https://secure.gravatar.com/avatar/' . md5(strtolower(trim($this->author->email))) . '?s=80';
