@@ -44,4 +44,19 @@ class BlogTest extends TestCase
             ->assertStatus(200)
             ->assertSee('BlaBla');
     }
+
+    /** @test */
+    public function a_guest_can_filter_articles_by_title_or_slug()
+    {
+        $category = factory(Category::class)->create();
+        $article = factory(Article::class)->create([
+            'title'       => 'BlaBla',
+            'slug'        => 'bloblo',
+            'category_id' => $category->id
+        ]);
+
+        $this->get($category->path() . '?query=nothere')
+            ->assertStatus(200)
+            ->assertDontSee('BlaBla');
+    }
 }

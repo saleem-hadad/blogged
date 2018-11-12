@@ -4,25 +4,26 @@ namespace BinaryTorch\Blogged\Http\Controllers;
 
 use BinaryTorch\Blogged\Models\Article;
 use BinaryTorch\Blogged\Models\Category;
+use BinaryTorch\Blogged\Filters\ArticleFilters;
 
 class BlogController extends Controller
 {
     /**
      * Show the blog home page.
      */
-    public function index($category=null)
+    public function index($category=null, ArticleFilters $filters)
     {
         $pagination = config('blogged.settings.pagination');
 
         if($category) {
             $category = Category::whereSlug($category)->firstOrFail();
 
-            $articles = $category->articles()->paginate($pagination);
+            $articles = $category->articles()->filter($filters)->paginate($pagination);
             
             return view('blogged::blog.index', compact('articles'));
         }
 
-        $articles = Article::with('category')->paginate($pagination);
+        $articles = Article::with('category')->filter($filters)->paginate($pagination);
 
         return view('blogged::blog.index', compact('articles'));
     }
