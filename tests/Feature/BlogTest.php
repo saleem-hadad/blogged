@@ -58,5 +58,9 @@ class BlogTest extends TestCase
         $this->get($category->path() . '?query=nothere')
             ->assertStatus(200)
             ->assertDontSee('BlaBla');
+
+        $this->get($category->path() . '?query=blob')
+            ->assertStatus(200)
+            ->assertDontSee('BlaBla');
     }
 }
