@@ -37,7 +37,10 @@
                     </div>
 
                     <div class="card-footer px-5">
-                            @include('blogged::partials.author', ['author' => $article->author ])
+                            @include('blogged::partials.author', [
+                                'avatar' => $article->authorAvatar(),
+                                'name'   => $article->author->name
+                            ])
                     </div>
                 </div>
             </div>

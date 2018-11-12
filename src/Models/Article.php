@@ -5,6 +5,7 @@ namespace BinaryTorch\Blogged\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use BinaryTorch\Blogged\Traits\Authorizable;
+use BinaryTorch\Blogged\Contracts\BloggedUser;
 use BinaryTorch\Blogged\Traits\HasMarkdownParser;
 
 class Article extends Model
@@ -84,6 +85,20 @@ class Article extends Model
     public function author()
     {
         return $this->belongsTo(config('blogged.settings.user'), 'author_id');
+    }
+
+    /**
+     * author
+     *
+     * @return string
+     */
+    public function authorAvatar()
+    {
+        if ($this->author instanceof BloggedUser) {
+            return $table->author->avatar;
+        }
+
+        return 'https://secure.gravatar.com/avatar/' . md5(strtolower(trim($this->author->email))) . '?s=80';
     }
 
     /**
