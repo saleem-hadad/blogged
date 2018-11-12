@@ -12,10 +12,10 @@ class AuthorizationTest extends TestCase
     /** @test */
     public function a_model_with_policy_all_its_actions_will_follow_it()
     {
-        $this->assertFalse(Article::authorizable());
+        $this->assertFalse(Article::hasAuthorizationGate());
 
         Gate::policy(Article::class, ArticlePolicy::class);
 
-        $this->assertTrue(Article::authorizable());
+        $this->assertTrue(Article::hasAuthorizationGate());
     }
 }

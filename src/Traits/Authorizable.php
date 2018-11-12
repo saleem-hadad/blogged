@@ -14,7 +14,7 @@ trait Authorizable
      *
      * @return bool
      */
-    public static function authorizable()
+    public static function hasAuthorizationGate()
     {
         return ! is_null(Gate::getPolicyFor(new static));
     }
@@ -53,7 +53,7 @@ trait Authorizable
      */
     public static function authorizedToCreate(Request $request)
     {
-        if (! static::authorizable()) {
+        if (! static::hasAuthorizationGate()) {
             return true;
         }
         
@@ -109,6 +109,6 @@ trait Authorizable
      */
     public function authorizedTo(Request $request, $ability)
     {
-        return static::authorizable() ? Gate::check($ability, $this) : true;
+        return static::hasAuthorizationGate() ? Gate::check($ability, $this) : true;
     }
 }
