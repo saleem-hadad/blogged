@@ -51,16 +51,7 @@
             <h6 class="navbar-heading text-muted">Quick Actions</h6>
             <!-- Navigation -->
             <ul class="navbar-nav mb-md-3">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">
-                        <i class="ni ni-spaceship"></i> Blog Page
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/">
-                        <i class="ni ni-palette"></i> Site Page
-                    </a>
-                </li>
+                @include('blogged::partials.dashboard-links')
             </ul>
         </div>
     </div>

@@ -9,7 +9,7 @@
             </div>
             <div class="col-md-6">
                 <ul class="nav nav-footer justify-content-end">
-                    @include('blogged::partials.footerlinks')
+                    @include('blogged::partials.footer-links')
                 </ul>
             </div>
         </div>

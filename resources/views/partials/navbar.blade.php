@@ -31,7 +31,7 @@
             </div>
             <!-- Navbar items -->
             <ul class="navbar-nav ml-auto">
-                @include('blogged::partials.navlinks')
+                @include('blogged::partials.nav-links')
             </ul>
         </div>
     </div>
