@@ -25,7 +25,7 @@ return [
     'settings'       => [
         'user'       => App\User::class,
         'storage'    => env('BLOGGED_STORAGE', 'local'),
-        'ga_id'      => '',
+        'ga_id'      => env('BLOGGED_GA', ''),
         'pagination' => 4,
     ],
 
