@@ -35,4 +35,12 @@ class CategoryTest extends TestCase
 
         $this->assertCount(1, $category->articles);
     }
+
+    /** @test */
+    public function it_has_uri_path()
+    {
+        $category = factory(Category::class)->create(['slug' => 'education']);
+
+        $this->assertEquals(route('blogged.index', $category->slug), $category->path());
+    }
 }

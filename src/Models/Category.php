@@ -39,4 +39,12 @@ class Category extends Model
     {
         return 'slug';
     }
+
+    /**
+     * @return String
+     */
+    public function path()
+    {
+        return route('blogged.index', $this->slug);
+    }
 }

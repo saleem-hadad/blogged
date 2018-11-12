@@ -21,7 +21,7 @@
                     <div class="bg-secondary px-5 py-2">
                         <div class="row">
                             <div class="col-md-6">
-                                Category: <button type="button" class="btn btn-outline-danger btn-sm ml-1">{{ $article->category->title }}</button> (<span class="readingTime"></span>)
+                                Category: <a href="{{ $article->category->path() }}" class="btn btn-outline-danger btn-sm ml-1">{{ $article->category->title }}</a> (<span class="readingTime"></span>)
                             </div>
                             <div class="col-md-6 text-right">
                                 <b>Published on:</b> <span class="description">{{ $article->publish_date->toFormattedDateString() }}</span>

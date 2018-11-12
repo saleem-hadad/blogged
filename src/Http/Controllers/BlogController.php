@@ -10,11 +10,19 @@ class BlogController extends Controller
     /**
      * Show the blog home page.
      */
-    public function index()
+    public function index($category=null)
     {
         $pagination = config('blogged.settings.pagination');
 
-        $articles = Article::paginate($pagination);
+        if($category) {
+            $category = Category::whereSlug($category)->firstOrFail();
+
+            $articles = $category->articles()->paginate($pagination);
+            
+            return view('blogged::blog.index', compact('articles'));
+        }
+
+        $articles = Article::with('category')->paginate($pagination);
 
         return view('blogged::blog.index', compact('articles'));
     }
@@ -24,6 +32,8 @@ class BlogController extends Controller
      */
     public function show(Category $category, Article $article)
     {
+        abort_if($category->id != $article->category_id, 404);
+
         $article->load('author');
 
         return view('blogged::blog.show', compact('article'));
