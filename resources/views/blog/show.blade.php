@@ -19,14 +19,7 @@
                     <img class="card-img-top" src="{{ $article->image }}" alt="Card image cap">
 
                     <div class="bg-secondary px-5 py-2">
-                        <div class="row">
-                            <div class="col-md-6">
-                                Category: <a href="{{ $article->category->path() }}" class="btn btn-outline-danger btn-sm ml-1">{{ $article->category->title }}</a> (<span class="readingTime"></span>)
-                            </div>
-                            <div class="col-md-6 text-right">
-                                <b>Published on:</b> <span class="description">{{ $article->publish_date->toFormattedDateString() }}</span>
-                            </div>
-                        </div>
+                        <a href="{{ $article->category->path() }}" class="btn btn-link btn-sm" style="margin-right: 0px">{{ $article->category->title }}</a>/ <span class="description">{{ $article->publish_date->toFormattedDateString() }}</span> (<span class="readingTime"></span>)
                     </div>
 
                     <div class="card-body px-5">
