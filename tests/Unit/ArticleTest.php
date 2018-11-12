@@ -151,7 +151,7 @@ class ArticleTest extends TestCase
 
     /** @test */
     public function it_belongs_to_category()
-    {        
+    {
         $article = factory(Article::class)->create();
 
         $this->assertInstanceOf(Category::class, $article->category);
