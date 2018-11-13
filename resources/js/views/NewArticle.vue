@@ -129,7 +129,7 @@ export default {
             // Change whitespace to "-"
             slug = slug.replace(/\s+/g, '-');
             
-            return this.form.category + '/' + slug;
+            return slug;
         },
     },
     created() {
