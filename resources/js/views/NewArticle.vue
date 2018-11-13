@@ -8,7 +8,13 @@
             <div class="row">
                 <div class="col">
                     <div class="card shadow no-border pb-2">
-                        <img class="card-img-top" src="https://s3.ap-southeast-1.amazonaws.com/myseniorio/new.svg" alt="Card image">
+                        <img class="card-img-top" id="pick-image" :src="articleImage" alt="Card image">
+
+                        <image-uploader
+                            trigger="#pick-image"
+                            @uploaded="handleUploaded"
+                            upload-form-name="image"
+                            upload-url="/blogged-api/images"/>
 
                         <div class="alert alert-secondary alert-dismissible fade show" style="border-radius: 0px" role="alert">
                             <span class="alert-inner--icon"><i class="ni ni-like-2"></i></span>
@@ -75,6 +81,8 @@
 </template>
 
 <script>
+import ImageUploader from '../components/ImageUploader';
+
 export default {
     data() {
         return {
@@ -82,16 +90,28 @@ export default {
                 'Keep your title short and precise with less than 60 chars!',
                 'Keep your excerpt short and precise with less than 160 chars!',
                 'Try to include CTA phrases in your article (such as Learn More, Click here..) to grab readers\' attention!',
-            ]
+            ],
+            articleImage: 'https://s3.ap-southeast-1.amazonaws.com/myseniorio/new.svg'
         }
     },
     computed: {
         randomSeoTip() { 
             return this.SEO[Math.floor(Math.random() * this.SEO.length)];
+        },
+    },
+    methods: {
+        handleUploaded(url) {
+            this.articleImage = url
         }
     },
-    mounted() {
-        // axios.get('/blogged-api/categories')
+    components: {
+        ImageUploader
     }
 }
 </script>
+
+<style>
+#pick-image {
+    cursor: pointer;
+}
+</style>

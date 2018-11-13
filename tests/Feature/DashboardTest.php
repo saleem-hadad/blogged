@@ -2,6 +2,8 @@
 
 namespace BinaryTorch\Blogged\Tests\Feature;
 
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use BinaryTorch\Blogged\Tests\TestCase;
 use BinaryTorch\Blogged\Models\Article;
 
@@ -52,5 +54,20 @@ class DashboardTest extends TestCase
             'body'     => 'you are cool',
             'featured' => true,
         ])->assertStatus(201);
+    }
+
+    /** @test */
+    public function authorized_users_can_upload_images()
+    {
+        Storage::fake(config('blogged.settings.storage'));
+
+        $this->authenticate();
+
+        $image = UploadedFile::fake()->image('image.jpg');
+        $this->json('POST', 'blogged-api/images', [
+            'image' => $image,
+        ])->assertJsonStructure(['url'])->assertStatus(200);
+
+        Storage::disk(config('blogged.settings.storage'))->assertExists('/public/blogged/images', $image->hashName());
     }
 }

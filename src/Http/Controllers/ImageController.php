@@ -2,27 +2,24 @@
 
 namespace BinaryTorch\Blogged\Http\Controllers;
 
+use Illuminate\Http\Request;
 use BinaryTorch\Blogged\Models\Article;
 
 class ImageController extends Controller
 {
     /**
-     * index
+     * store new image.
      *
-     * @return void
+     * @return response
      */
-    public function index()
+    public function store(Request $request)
     {
-        //
-    }
+        $request->validate(['image' => 'required|image']);
 
-    /**
-     * index
-     *
-     * @return void
-     */
-    public function store()
-    {
-        //
+        $path = $request->file('image')->store('/public/blogged/images', config('blogged.settings.storage'));
+
+        $path = str_replace('public/', 'storage/', $path);
+
+        return response()->json(['url' => "/{$path}"]);
     }
 }
