@@ -18,8 +18,9 @@ class ImageController extends Controller
 
         $path = $request->file('image')->store('/public/blogged/images', config('blogged.settings.storage'));
 
-        $path = str_replace('public/', 'storage/', $path);
-
-        return response()->json(['url' => "/{$path}"]);
+        return response()->json([
+            'url'  => \Storage::disk(config('blogged.settings.storage'))->url($path),
+            'path' => "/{$path}"
+        ]);
     }
 }
