@@ -13,9 +13,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return response()->json([
-            'data' => Category::get(['title', 'slug'])
-        ]);
+        $categories = Category::get(['title', 'slug']);
+        
+        return response()->json(['data' => $categories]);
     }
 
     /**
