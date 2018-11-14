@@ -51,7 +51,6 @@ class DashboardTest extends TestCase
 
         factory(Category::class)->create(['slug' => 'category-one']);
 
-        $this->withoutExceptionHandling();
         $this->json('POST', '/blogged-api/articles', [
             'title'       => 'How are you?',
             'slug'        => 'how-are-you',
