@@ -4,6 +4,15 @@
     {{ $article->title }}
 @endsection
 
+@section('head')
+    @include('blogged::partials.seo', [
+        'title'       => $article->title,
+        'description' => $article->excerpt,
+        'url'         => $article->path(),
+        'image'       => $article->image,
+    ])
+@endsection
+
 @section('content')
     <div class="main-content">
         <!-- Navbar -->

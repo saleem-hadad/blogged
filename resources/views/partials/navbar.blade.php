@@ -57,13 +57,6 @@
                         <span class="nav-link-inner--text">Dashboard</span>
                     </a>
                 </li>
-                
-                <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="/docs">
-                        <i class="ni ni-books"></i>
-                        <span class="nav-link-inner--text">Docs</span>
-                    </a>
-                </li>
             </ul>
         </div>
     </div>
