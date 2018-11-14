@@ -15,11 +15,5 @@ Route::post('/categories', 'CategoryController@store');
 Route::put('/categories/{category}', 'CategoryController@update');
 Route::delete('/categories/{category}', 'CategoryController@delete');
 
-// Blogged Tags...
-Route::get('/tags', 'TagController@index');
-Route::post('/tags', 'TagController@store');
-Route::put('/tags/{tag}', 'TagController@update');
-Route::delete('/tags/{tag}', 'TagController@delete');
-
 // Blog Images Uploads..
 Route::post('/images', 'ImageController@store');
