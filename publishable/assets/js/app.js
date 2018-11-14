@@ -33947,6 +33947,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_SEOTips___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_SEOTips__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_ImageUploader__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_ImageUploader___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_ImageUploader__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -34052,11 +34054,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 slug: null,
                 image: {
                     url: '/vendor/binarytorch/blogged/assets/new.svg',
-                    path: ''
+                    path: '/vendor/binarytorch/blogged/assets/new.svg'
                 },
                 excerpt: null,
                 body: null,
-                category: '',
+                category: {
+                    title: 'Select One',
+                    slug: 'selecte-one'
+                },
                 publish_date: null,
                 published: false,
                 featured: false
@@ -34079,7 +34084,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
         },
         publish: function publish() {},
-        save: function save() {}
+        save: function save() {
+            var form = _extends({}, this.form);
+
+            form.image = form.image.path;
+            form.category = form.category.slug;
+
+            axios.post('/blogged-api/articles', _extends({}, form)).then(function (response) {
+                console.log(response.data);
+            }).catch(function (errors) {
+                console.log(errors);
+            });
+        }
     },
     components: {
         ImageUploader: __WEBPACK_IMPORTED_MODULE_1__components_ImageUploader___default.a,
@@ -38047,13 +38063,7 @@ var render = function() {
                         "aria-haspopup": "true",
                         "aria-expanded": "false"
                       },
-                      domProps: {
-                        textContent: _vm._s(
-                          _vm.form.category
-                            ? _vm.form.category.title
-                            : "Select One"
-                        )
-                      }
+                      domProps: { textContent: _vm._s(_vm.form.category.title) }
                     }),
                     _vm._v(" "),
                     _c(

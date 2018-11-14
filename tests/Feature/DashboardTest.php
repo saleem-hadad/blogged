@@ -6,6 +6,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use BinaryTorch\Blogged\Tests\TestCase;
 use BinaryTorch\Blogged\Models\Article;
+use BinaryTorch\Blogged\Models\Category;
 
 class DashboardTest extends TestCase
 {
@@ -48,11 +49,17 @@ class DashboardTest extends TestCase
     {
         $this->authenticate();
 
+        factory(Category::class)->create(['slug' => 'category-one']);
+
         $this->json('POST', '/blogged-api/articles', [
-            'title'    => 'How are you?',
-            'slug'     => 'how-are-you',
-            'body'     => 'you are cool',
-            'featured' => true,
+            'title'     => 'How are you?',
+            'slug'      => 'how-are-you',
+            'body'      => 'you are cool',
+            'excerpt'   => 'you are not cool',
+            'category'  => 'category-one',
+            'image'     => 'image.png',
+            'featured'  => true,
+            'published' => true,
         ])->assertStatus(201);
     }
 

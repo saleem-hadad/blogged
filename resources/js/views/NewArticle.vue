@@ -28,7 +28,7 @@
                                     data-toggle="dropdown" 
                                     aria-haspopup="true" 
                                     aria-expanded="false"
-                                    v-text="form.category ? form.category.title : 'Select One'"></button>
+                                    v-text="form.category.title"></button>
 
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="#" 
@@ -103,11 +103,14 @@ export default {
                 slug: null,
                 image: {
                     url: '/vendor/binarytorch/blogged/assets/new.svg',
-                    path: ''
+                    path: '/vendor/binarytorch/blogged/assets/new.svg'
                 },
                 excerpt: null,
                 body: null,
-                category: '',
+                category: {
+                    title: 'Select One',
+                    slug: 'selecte-one'
+                },
                 publish_date: null,
                 published: false,
                 featured: false,
@@ -131,7 +134,19 @@ export default {
 
         },
         save() {
+            let form = {...this.form};
+                
+            form.image = form.image.path
+            form.category = form.category.slug
 
+            axios.post('/blogged-api/articles', {
+                ...form
+            })
+            .then((response) => {
+                console.log(response.data)
+            }).catch((errors) => {
+                console.log(errors)
+            });
         }
     },
     components: {
