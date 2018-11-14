@@ -119,8 +119,8 @@ class BloggedServiceProvider extends ServiceProvider
             ],
             'blogged_views' => [
                 __DIR__.'/../resources/views/partials/sidebar.blade.php' => resource_path('views/vendor/blogged/partials/sidebar.blade.php'),
-                __DIR__.'/../resources/views/partials/nav-links.blade.php' => resource_path('views/vendor/blogged/partials/nav-links.blade.php'),
-                __DIR__.'/../resources/views/partials/footer-links.blade.php' => resource_path('views/vendor/blogged/partials/footer-links.blade.php'),
+                __DIR__.'/../resources/views/partials/navbar.blade.php' => resource_path('views/vendor/blogged/partials/navbar.blade.php'),
+                __DIR__.'/../resources/views/partials/footer.blade.php' => resource_path('views/vendor/blogged/partials/footer.blade.php'),
                 __DIR__.'/../resources/views/partials/dashboard-links.blade.php' => resource_path('views/vendor/blogged/partials/dashboard-links.blade.php'),
             ],
         ];
