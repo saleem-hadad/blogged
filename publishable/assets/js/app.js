@@ -34048,13 +34048,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             categories: [],
             selectedCategory: null,
-            articleImage: 'https://s3.ap-southeast-1.amazonaws.com/myseniorio/new.svg',
             form: {
                 title: null,
-                slug: '',
+                slug: null,
+                image: '/vendor/binarytorch/blogged/assets/new.svg',
                 excerpt: null,
                 body: null,
-                category: ''
+                category: '',
+                publish_date: null,
+                published: false,
+                featured: false
             }
         };
     },
@@ -34062,18 +34065,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     watch: {
         selectedCategory: function selectedCategory() {
             this.form.category = this.selectedCategory.slug;
-        }
-    },
-    computed: {
-        url: function url() {
-            var slug = this.form.slug;
-
-            // Trim the last whitespace
-            slug = slug.replace(/\s*$/g, '');
-            // Change whitespace to "-"
-            slug = slug.replace(/\s+/g, '-');
-
-            return slug;
         }
     },
     created: function created() {
@@ -34086,7 +34077,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         handleUploaded: function handleUploaded(url) {
-            this.articleImage = url;
+            this.form.image = url;
         }
     },
     components: {
@@ -38026,7 +38017,7 @@ var render = function() {
                 staticClass: "card-img-top",
                 attrs: {
                   id: "pick-image",
-                  src: _vm.articleImage,
+                  src: _vm.form.image,
                   alt: "Card image"
                 }
               }),
@@ -38214,10 +38205,74 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _vm._m(3)
+                _c("div", [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "custom-control custom-control-alternative custom-checkbox mb-3"
+                    },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.featured,
+                            expression: "form.featured"
+                          }
+                        ],
+                        staticClass: "custom-control-input",
+                        attrs: { type: "checkbox" },
+                        domProps: {
+                          checked: Array.isArray(_vm.form.featured)
+                            ? _vm._i(_vm.form.featured, null) > -1
+                            : _vm.form.featured
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.form.featured,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = null,
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 &&
+                                  _vm.$set(
+                                    _vm.form,
+                                    "featured",
+                                    $$a.concat([$$v])
+                                  )
+                              } else {
+                                $$i > -1 &&
+                                  _vm.$set(
+                                    _vm.form,
+                                    "featured",
+                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                  )
+                              }
+                            } else {
+                              _vm.$set(_vm.form, "featured", $$c)
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-control-label",
+                          attrs: { for: "customCheck5" }
+                        },
+                        [_vm._v("Featured")]
+                      )
+                    ]
+                  )
+                ])
               ]),
               _vm._v(" "),
-              _vm._m(4)
+              _vm._m(3)
             ],
             1
           )
@@ -38255,35 +38310,6 @@ var staticRenderFns = [
       _c("span", { staticClass: "input-group-text" }, [
         _c("i", { staticClass: "ni ni-caps-small" })
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c(
-        "div",
-        {
-          staticClass:
-            "custom-control custom-control-alternative custom-checkbox mb-3"
-        },
-        [
-          _c("input", {
-            staticClass: "custom-control-input",
-            attrs: { id: "customCheck5", type: "checkbox" }
-          }),
-          _vm._v(" "),
-          _c(
-            "label",
-            {
-              staticClass: "custom-control-label",
-              attrs: { for: "customCheck5" }
-            },
-            [_vm._v("Featured")]
-          )
-        ]
-      )
     ])
   },
   function() {

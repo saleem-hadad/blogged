@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col">
                     <div class="card shadow no-border pb-2">
-                        <img class="card-img-top" id="pick-image" :src="articleImage" alt="Card image">
+                        <img class="card-img-top" id="pick-image" :src="form.image" alt="Card image">
 
                         <image-uploader
                             trigger="#pick-image"
@@ -73,7 +73,7 @@
 
                             <div>
                                 <div class="custom-control custom-control-alternative custom-checkbox mb-3">
-                                    <input class="custom-control-input" id="customCheck5" type="checkbox">
+                                    <input class="custom-control-input" type="checkbox" v-model="form.featured">
                                     <label class="custom-control-label" for="customCheck5">Featured</label>
                                 </div>
                             </div>
@@ -99,13 +99,16 @@ export default {
         return {
             categories: [],
             selectedCategory: null,
-            articleImage: 'https://s3.ap-southeast-1.amazonaws.com/myseniorio/new.svg',
             form: {
                 title: null,
-                slug: '',
+                slug: null,
+                image: '/vendor/binarytorch/blogged/assets/new.svg',
                 excerpt: null,
                 body: null,
                 category: '',
+                publish_date: null,
+                published: false,
+                featured: false,
             }
         }
     },
@@ -113,18 +116,6 @@ export default {
         selectedCategory() {
             this.form.category = this.selectedCategory.slug
         }
-    },
-    computed: {
-        url() {
-            let slug = this.form.slug
-
-            // Trim the last whitespace
-            slug = slug.replace(/\s*$/g, '');
-            // Change whitespace to "-"
-            slug = slug.replace(/\s+/g, '-');
-            
-            return slug;
-        },
     },
     created() {
         axios.get('/blogged-api/categories')
@@ -134,7 +125,7 @@ export default {
     },
     methods: {
         handleUploaded(url) {
-            this.articleImage = url
+            this.form.image = url
         }
     },
     components: {

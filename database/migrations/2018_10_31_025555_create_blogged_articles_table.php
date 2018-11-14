@@ -24,8 +24,7 @@ class CreateBloggedArticlesTable extends Migration
             $table->datetime('publish_date')->nullable();
             $table->boolean('published')->default(false);
             $table->boolean('featured')->default(false);
-            
-            // TODO: users table should be dynamic..
+
             $table->unsignedInteger('author_id')->index()->references('id')->on('users')->onDelete('cascade');
             $table->unsignedInteger('category_id')->index()->references('id')->on('blogged_categories')->onDelete('cascade');
             $table->timestamps();
