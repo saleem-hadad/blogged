@@ -75,6 +75,14 @@ class Article extends Model
     }
 
     /**
+     * @return String
+     */
+    public function getImageAttribute($value)
+    {
+        return \Storage::disk(config('blogged.settings.storage'))->url($value);
+    }
+
+    /**
      * @return void
      */
     public function publish()

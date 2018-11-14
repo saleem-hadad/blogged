@@ -34099,10 +34099,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 body: null,
                 published: false,
                 featured: false,
-                image: {
-                    url: '/vendor/binarytorch/blogged/assets/new.svg',
-                    path: '/vendor/binarytorch/blogged/assets/new.svg'
-                },
+                image: null,
                 category: {
                     id: 1,
                     title: 'Select One',
@@ -34138,7 +34135,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
             var form = _extends({}, this.form);
 
-            form.image = form.image.path;
+            alert(form.image.path);
+            form.image = form.image ? form.image.path : null;
             form.category_id = form.category.id;
 
             axios.post('/blogged-api/articles', _extends({}, form)).then(function (response) {
@@ -38238,7 +38236,9 @@ var render = function() {
                     staticClass: "card-img-top",
                     attrs: {
                       id: "pick-image",
-                      src: _vm.form.image.url,
+                      src: _vm.form.image
+                        ? _vm.form.image.url
+                        : "/vendor/binarytorch/blogged/assets/new.svg",
                       alt: "Card image"
                     }
                   }),

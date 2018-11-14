@@ -17,7 +17,7 @@ class CreateBloggedArticlesTable extends Migration
             $table->increments('id');
             $table->string('title', 100);
             $table->string('slug', 120)->unique()->index();
-            $table->string('image', 254)->default('/vendor/binarytorch/blogged/assets/new.svg');
+            $table->string('image', 254);
             $table->text('excerpt');
             $table->longtext('body');
 

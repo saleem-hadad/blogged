@@ -20,13 +20,9 @@ class ImageController extends Controller
 
         $url = \Storage::disk(config('blogged.settings.storage'))->url($path);
 
-        if(config('blogged.settings.storage') === 'local') {
-            $path = str_replace('/public', '', $path);
-        }
-
         return response()->json([
             'url'  => $url,
-            'path' => "/{$path}"
+            'path' => $path
         ]);
     }
 }

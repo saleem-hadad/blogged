@@ -12,7 +12,7 @@
                     </div>
 
                     <div v-if="! isLoading" class="card shadow no-border pb-2">
-                        <img class="card-img-top" id="pick-image" :src="form.image.url" alt="Card image">
+                        <img class="card-img-top" id="pick-image" :src="form.image ? form.image.url : '/vendor/binarytorch/blogged/assets/new.svg'" alt="Card image">
 
                         <image-uploader
                             trigger="#pick-image"
@@ -110,10 +110,7 @@ export default {
                 body: null,
                 published: false,
                 featured: false,
-                image: {
-                    url: '/vendor/binarytorch/blogged/assets/new.svg',
-                    path: '/vendor/binarytorch/blogged/assets/new.svg'
-                },
+                image: null,
                 category: {
                     id: 1,
                     title: 'Select One',
@@ -145,7 +142,8 @@ export default {
         save() {
             let form = {...this.form};
                 
-            form.image = form.image.path
+                alert(form.image.path);
+            form.image = form.image ? form.image.path : null
             form.category_id = form.category.id
 
             axios.post('/blogged-api/articles', {
