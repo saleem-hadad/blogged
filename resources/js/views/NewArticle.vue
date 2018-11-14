@@ -7,7 +7,11 @@
         <div class="container-fluid mt--7">
             <div class="row">
                 <div class="col">
-                    <div class="card shadow no-border pb-2">
+                    <div v-if="isLoading" class="card text-center shadow no-border py-8">
+                        <ball-beat-loader color="#8F8F8F"></ball-beat-loader>        
+                    </div>
+
+                    <div v-if="! isLoading" class="card shadow no-border pb-2">
                         <img class="card-img-top" id="pick-image" :src="form.image.url" alt="Card image">
 
                         <image-uploader
@@ -98,6 +102,7 @@ export default {
     data() {
         return {
             categories: [],
+            isLoading: true,
             form: {
                 title: null,
                 slug: null,
@@ -121,6 +126,9 @@ export default {
         axios.get('/blogged-api/categories')
             .then((response) => {
                 this.categories = response.data.data
+                this.isLoading = false;
+            }).catch(() => {
+                this.isLoading = false;
             });
     },
     methods: {
@@ -131,7 +139,7 @@ export default {
             }
         },
         publish() {
-            this.$toasted.show('hello billo')
+            this.$toasted.show('hello billo');
         },
         save() {
             let form = {...this.form};
@@ -145,7 +153,6 @@ export default {
             .then((response) => {
                 console.log(response.data)
             }).catch((errors) => {
-                console.log(errors)
             });
         }
     },

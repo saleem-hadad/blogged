@@ -22,6 +22,7 @@
     "reading-time": "^1.1.3",
     "smoothscroll-for-websites": "1.4.6",
     "vue": "^2.5.16",
+    "vue-loaders": "^2.0.0",
     "vue-router": "^3.0.1",
     "vue-toasted": "^1.1.25"
   }

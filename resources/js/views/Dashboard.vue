@@ -67,7 +67,11 @@
             <!-- Table -->
             <div class="row">
                 <div class="col">
-                    <div class="card shadow">
+                    <div v-if="isLoading" class="card text-center shadow no-border py-8">
+                        <ball-beat-loader color="#8F8F8F"></ball-beat-loader>        
+                    </div>
+
+                    <div v-if="! isLoading" class="card shadow">
                         <div class="card-header border-0">
                             <h3 class="mb-0">Articles</h3>
                         </div>
@@ -113,7 +117,8 @@
 export default {
     data() {
         return {
-            data: []
+            data: [],
+            isLoading: true
         }
     },
     computed: {
@@ -129,6 +134,9 @@ export default {
         axios.get('/blogged-api/articles')
             .then((response) => {
                 this.data = response.data
+                this.isLoading = false;
+            }).catch(() => {
+                this.isLoading = false;
             });
     }
 }

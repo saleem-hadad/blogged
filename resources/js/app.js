@@ -4,10 +4,14 @@ require('./argon');
 import Vue from "vue";
 import router from "./router";
 import Toasted from 'vue-toasted';
+import 'vue-loaders/dist/vue-loaders.css';
+import { BallBeatLoader } from 'vue-loaders';
 import BackToTop from "./components/BackToTop";
 
 Vue.config.productionTip = false;
 const noDelimiter = {replace: () => '(?!x)x'};
+ 
+Vue.component(BallBeatLoader.name, BallBeatLoader);
 
 Vue.use(Toasted, {
   router,
