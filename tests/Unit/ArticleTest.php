@@ -32,7 +32,7 @@ class ArticleTest extends TestCase
     {
         $article = factory(Article::class)->create(['image' => 'image-me.com']);
 
-        $this->assertEquals('/storage/image-me.com', $article->image);
+        $this->assertEquals('image-me.com', $article->image);
     }
 
     /** @test */
