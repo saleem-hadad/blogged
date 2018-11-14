@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col">
                     <div class="card shadow no-border pb-2">
-                        <img class="card-img-top" id="pick-image" :src="form.image" alt="Card image">
+                        <img class="card-img-top" id="pick-image" :src="form.image.url" alt="Card image">
 
                         <image-uploader
                             trigger="#pick-image"
@@ -80,8 +80,8 @@
                         </div>
 
                         <div class="text-center mb-4">
-                            <button type="button" class="btn btn-primary"><i class="ni ni-spaceship"></i> Publish Now</button>
-                            <button type="button" class="btn btn-outline-primary"><i class="ni ni-calendar-grid-58"></i> Save Draft</button>
+                            <button type="button" class="btn btn-primary" @click="publish"><i class="ni ni-spaceship"></i> Publish Now</button>
+                            <button type="button" class="btn btn-outline-primary" @click="save"><i class="ni ni-calendar-grid-58"></i> Save Draft</button>
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,10 @@ export default {
             form: {
                 title: null,
                 slug: null,
-                image: '/vendor/binarytorch/blogged/assets/new.svg',
+                image: {
+                    url: '/vendor/binarytorch/blogged/assets/new.svg',
+                    path: ''
+                },
                 excerpt: null,
                 body: null,
                 category: '',
@@ -118,8 +121,11 @@ export default {
             });
     },
     methods: {
-        handleUploaded(url) {
-            this.form.image = url
+        handleUploaded(url, path) {
+            this.form.image = {
+                url,
+                path
+            }
         },
         publish() {
 

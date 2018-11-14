@@ -125,7 +125,7 @@
 
           axios.post(this.uploadUrl, formData, {headers: {'Content-Type': 'multipart/form-data'}})
             .then((response) => {
-              this.$emit('uploaded', response.data.url)
+              this.$emit('uploaded', response.data.url, response.data.path)
             });
 
         }, this.outputMime, this.outputQuality)

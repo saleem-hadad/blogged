@@ -34050,7 +34050,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             form: {
                 title: null,
                 slug: null,
-                image: '/vendor/binarytorch/blogged/assets/new.svg',
+                image: {
+                    url: '/vendor/binarytorch/blogged/assets/new.svg',
+                    path: ''
+                },
                 excerpt: null,
                 body: null,
                 category: '',
@@ -34069,8 +34072,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        handleUploaded: function handleUploaded(url) {
-            this.form.image = url;
+        handleUploaded: function handleUploaded(url, path) {
+            this.form.image = {
+                url: url,
+                path: path
+            };
         },
         publish: function publish() {},
         save: function save() {}
@@ -34312,7 +34318,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         formData.append(_this.uploadFormName, blob);
 
         axios.post(_this.uploadUrl, formData, { headers: { 'Content-Type': 'multipart/form-data' } }).then(function (response) {
-          _this.$emit('uploaded', response.data.url);
+          _this.$emit('uploaded', response.data.url, response.data.path);
         });
       }, this.outputMime, this.outputQuality);
     }
@@ -38012,7 +38018,7 @@ var render = function() {
                 staticClass: "card-img-top",
                 attrs: {
                   id: "pick-image",
-                  src: _vm.form.image,
+                  src: _vm.form.image.url,
                   alt: "Card image"
                 }
               }),
@@ -38267,7 +38273,33 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(3)
+              _c("div", { staticClass: "text-center mb-4" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button" },
+                    on: { click: _vm.publish }
+                  },
+                  [
+                    _c("i", { staticClass: "ni ni-spaceship" }),
+                    _vm._v(" Publish Now")
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-outline-primary",
+                    attrs: { type: "button" },
+                    on: { click: _vm.save }
+                  },
+                  [
+                    _c("i", { staticClass: "ni ni-calendar-grid-58" }),
+                    _vm._v(" Save Draft")
+                  ]
+                )
+              ])
             ],
             1
           )
@@ -38305,27 +38337,6 @@ var staticRenderFns = [
       _c("span", { staticClass: "input-group-text" }, [
         _c("i", { staticClass: "ni ni-caps-small" })
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center mb-4" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "button" } },
-        [_c("i", { staticClass: "ni ni-spaceship" }), _vm._v(" Publish Now")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-outline-primary", attrs: { type: "button" } },
-        [
-          _c("i", { staticClass: "ni ni-calendar-grid-58" }),
-          _vm._v(" Save Draft")
-        ]
-      )
     ])
   }
 ]
