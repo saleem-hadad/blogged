@@ -16,13 +16,7 @@
                             upload-form-name="image"
                             upload-url="/blogged-api/images"/>
 
-                        <div class="alert alert-secondary alert-dismissible fade show" style="border-radius: 0px" role="alert">
-                            <span class="alert-inner--icon"><i class="ni ni-like-2"></i></span>
-                            <span class="alert-inner--text"><strong>SEO Tip!</strong> {{ randomSeoTip }}</span>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
+                        <SEO-tips></SEO-tips>
 
                         <div class="card-body px-5">
                             <div class="form-group mb-4">
@@ -90,6 +84,7 @@
 </template>
 
 <script>
+import SEOTips from '../components/SEOTips';
 import ImageUploader from '../components/ImageUploader';
 
 export default {
@@ -98,11 +93,6 @@ export default {
             categories: [],
             selectedCategory: null,
             articleImage: 'https://s3.ap-southeast-1.amazonaws.com/myseniorio/new.svg',
-            SEO: [
-                'Keep your title short and precise with less than 60 chars!',
-                'Keep your excerpt short and precise with less than 160 chars!',
-                'Try to include CTA phrases in your article (such as Learn More, Click here..) to grab readers\' attention!',
-            ],
             form: {
                 title: null,
                 slug: '',
@@ -118,9 +108,6 @@ export default {
         }
     },
     computed: {
-        randomSeoTip() { 
-            return this.SEO[Math.floor(Math.random() * this.SEO.length)];
-        },
         url() {
             let slug = this.form.slug
 
@@ -144,7 +131,8 @@ export default {
         }
     },
     components: {
-        ImageUploader
+        ImageUploader,
+        SEOTips
     }
 }
 </script>
