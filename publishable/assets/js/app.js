@@ -34135,7 +34135,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
             var form = _extends({}, this.form);
 
-            alert(form.image.path);
             form.image = form.image ? form.image.path : null;
             form.category_id = form.category.id;
 

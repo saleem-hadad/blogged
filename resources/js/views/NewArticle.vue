@@ -141,8 +141,7 @@ export default {
         },
         save() {
             let form = {...this.form};
-                
-                alert(form.image.path);
+
             form.image = form.image ? form.image.path : null
             form.category_id = form.category.id
 
