@@ -38218,7 +38218,7 @@ var render = function() {
                           }
                         ],
                         staticClass: "custom-control-input",
-                        attrs: { type: "checkbox" },
+                        attrs: { id: "featuredCheckbox", type: "checkbox" },
                         domProps: {
                           checked: Array.isArray(_vm.form.featured)
                             ? _vm._i(_vm.form.featured, null) > -1
@@ -38258,7 +38258,7 @@ var render = function() {
                         "label",
                         {
                           staticClass: "custom-control-label",
-                          attrs: { for: "customCheck5" }
+                          attrs: { for: "featuredCheckbox" }
                         },
                         [_vm._v("Featured")]
                       )

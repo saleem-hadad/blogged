@@ -73,8 +73,8 @@
 
                             <div>
                                 <div class="custom-control custom-control-alternative custom-checkbox mb-3">
-                                    <input class="custom-control-input" type="checkbox" v-model="form.featured">
-                                    <label class="custom-control-label" for="customCheck5">Featured</label>
+                                    <input class="custom-control-input" id="featuredCheckbox" type="checkbox" v-model="form.featured">
+                                    <label class="custom-control-label" for="featuredCheckbox">Featured</label>
                                 </div>
                             </div>
                         </div>
@@ -125,7 +125,7 @@ export default {
 
         },
         save() {
-            
+
         }
     },
     components: {
