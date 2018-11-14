@@ -28,13 +28,13 @@
                                     data-toggle="dropdown" 
                                     aria-haspopup="true" 
                                     aria-expanded="false"
-                                    v-text="selectedCategory ? selectedCategory.title : 'Select One'"></button>
+                                    v-text="form.category ? form.category.title : 'Select One'"></button>
 
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="#" 
                                             v-for="category in categories" 
                                             :key="category.slug"
-                                            @click.prevent="selectedCategory = category"
+                                            @click.prevent="form.category = category"
                                             >{{ category.title }}</a>
                                     </div>
                                 </div>
@@ -98,7 +98,6 @@ export default {
     data() {
         return {
             categories: [],
-            selectedCategory: null,
             form: {
                 title: null,
                 slug: null,
@@ -112,11 +111,6 @@ export default {
             }
         }
     },
-    watch: {
-        selectedCategory() {
-            this.form.category = this.selectedCategory.slug
-        }
-    },
     created() {
         axios.get('/blogged-api/categories')
             .then((response) => {
@@ -126,6 +120,12 @@ export default {
     methods: {
         handleUploaded(url) {
             this.form.image = url
+        },
+        publish() {
+
+        },
+        save() {
+            
         }
     },
     components: {

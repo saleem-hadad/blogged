@@ -34047,7 +34047,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             categories: [],
-            selectedCategory: null,
             form: {
                 title: null,
                 slug: null,
@@ -34061,12 +34060,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         };
     },
-
-    watch: {
-        selectedCategory: function selectedCategory() {
-            this.form.category = this.selectedCategory.slug;
-        }
-    },
     created: function created() {
         var _this = this;
 
@@ -34078,7 +34071,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         handleUploaded: function handleUploaded(url) {
             this.form.image = url;
-        }
+        },
+        publish: function publish() {},
+        save: function save() {}
     },
     components: {
         ImageUploader: __WEBPACK_IMPORTED_MODULE_1__components_ImageUploader___default.a,
@@ -38048,8 +38043,8 @@ var render = function() {
                       },
                       domProps: {
                         textContent: _vm._s(
-                          _vm.selectedCategory
-                            ? _vm.selectedCategory.title
+                          _vm.form.category
+                            ? _vm.form.category.title
                             : "Select One"
                         )
                       }
@@ -38068,7 +38063,7 @@ var render = function() {
                             on: {
                               click: function($event) {
                                 $event.preventDefault()
-                                _vm.selectedCategory = category
+                                _vm.form.category = category
                               }
                             }
                           },
