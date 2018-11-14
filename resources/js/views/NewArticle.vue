@@ -152,7 +152,7 @@ export default {
                     this.$toasted.success('Your article has been ' + action);
                     this.$router.push({ name: 'dashboard' })
                 }).catch((errors) => {
-                    this.$toasted.error('Opps! please check the entered details.');
+                    this.$toasted.error('Opps! Please make sure the entered data is valid.');
                 });
         }
     },

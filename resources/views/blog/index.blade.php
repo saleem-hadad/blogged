@@ -30,7 +30,13 @@
                             </div>
                         @empty
                             <div class="card shadow no-border">
-                                <img class="card-img-top" width="100%" src="https://s3-ap-southeast-1.amazonaws.com/myseniorio/zino.png" alt="Card image cap">
+                                <img class="card-img-top" width="100%" src="/vendor/binarytorch/blogged/assets/new.svg" alt="Card image cap">
+
+                                <div class="card-body text-center">
+                                    <article>
+                                        <h2 class="display-4">No articles found</h2>
+                                    </article>
+                                </div>
                             </div>
                         @endforelse
                     </div>

@@ -1,7 +1,7 @@
 <div class="section">
     <div class="container">
         <div class="text-lg-center">
-            <h3 class="display-3 font-weight-light mb-2">Share this article on</h3>
+            <h3 class="display-3 font-weight-light mb-2">Share this article via</h3>
         </div>
         <div class="text-lg-center btn-wrapper">
             @if(config('blogged.social.twitter'))
