@@ -75,6 +75,18 @@ class Article extends Model
     }
 
     /**
+     * @return String
+     */
+    public function getImageAttribute($value)
+    {
+        if(config('blogged.settings.storage') === 'local') {
+            $value = str_replace('/public', '', $value);
+        }
+
+        return \Storage::disk(config('blogged.settings.storage'))->url($value);
+    }
+
+    /**
      * @return void
      */
     public function publish()
