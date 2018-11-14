@@ -52,14 +52,14 @@ class DashboardTest extends TestCase
         factory(Category::class)->create(['slug' => 'category-one']);
 
         $this->json('POST', '/blogged-api/articles', [
-            'title'     => 'How are you?',
-            'slug'      => 'how-are-you',
-            'body'      => 'you are cool',
-            'excerpt'   => 'you are not cool',
-            'category'  => 'category-one',
-            'image'     => 'image.png',
-            'featured'  => true,
-            'published' => true,
+            'title'       => 'How are you?',
+            'slug'        => 'how-are-you',
+            'body'        => 'you are cool',
+            'excerpt'     => 'you are not cool',
+            'category_id' => 1,
+            'image'       => 'image.png',
+            'featured'    => true,
+            'published'   => true,
         ])->assertStatus(201);
     }
 

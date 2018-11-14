@@ -24,14 +24,15 @@ class CreateArticleFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'     => 'required|string|max:254',
-            'slug'      => 'required|string|max:254',
-            'image'     => 'required|string',
-            'excerpt'   => 'required|string|max:254',
-            'body'      => 'required|string',
-            'category'  => 'required|string|exists:blogged_categories,slug',
-            'published' => 'required',
-            'featured'  => 'required',
+            'title'        => 'required|string|max:254',
+            'slug'         => 'required|string|max:254',
+            'image'        => 'required|string',
+            'excerpt'      => 'required|string|max:254',
+            'body'         => 'required|string',
+            'category_id'  => 'required|exists:blogged_categories,id',
+            'published'    => 'required',
+            'publish_date' => 'sometimes|required|date',
+            'featured'     => 'required',
         ];
     }
 }

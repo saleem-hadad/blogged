@@ -116,6 +116,7 @@ export default {
                     path: '/vendor/binarytorch/blogged/assets/new.svg'
                 },
                 category: {
+                    id: 1,
                     title: 'Select One',
                     slug: 'selecte-one'
                 },
@@ -145,7 +146,7 @@ export default {
             let form = {...this.form};
                 
             form.image = form.image.path
-            form.category = form.category.slug
+            form.category_id = form.category.id
 
             axios.post('/blogged-api/articles', {
                 ...form

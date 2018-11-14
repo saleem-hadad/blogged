@@ -13,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::get(['title', 'slug']);
+        $categories = Category::get(['id', 'title', 'slug']);
         
         return response()->json(['data' => $categories]);
     }

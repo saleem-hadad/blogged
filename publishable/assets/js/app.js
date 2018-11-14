@@ -34103,6 +34103,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                     path: '/vendor/binarytorch/blogged/assets/new.svg'
                 },
                 category: {
+                    id: 1,
                     title: 'Select One',
                     slug: 'selecte-one'
                 }
@@ -34134,7 +34135,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             var form = _extends({}, this.form);
 
             form.image = form.image.path;
-            form.category = form.category.slug;
+            form.category_id = form.category.id;
 
             axios.post('/blogged-api/articles', _extends({}, form)).then(function (response) {
                 console.log(response.data);
