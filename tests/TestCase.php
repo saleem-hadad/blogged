@@ -4,6 +4,7 @@ namespace BinaryTorch\Blogged\Tests;
 
 use Mockery;
 use Illuminate\Support\Facades\Config;
+use Mews\Purifier\PurifierServiceProvider;
 use BinaryTorch\Blogged\Tests\Fixture\User;
 use Illuminate\Contracts\Auth\Authenticatable;
 use BinaryTorch\Blogged\BloggedServiceProvider;
@@ -49,7 +50,10 @@ class TestCase extends \Orchestra\Testbench\TestCase
      */
     protected function getPackageProviders($app)
     {
-        return [BloggedServiceProvider::class];
+        return [
+            BloggedServiceProvider::class,
+            PurifierServiceProvider::class
+        ];
     }
 
     /**

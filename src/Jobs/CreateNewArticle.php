@@ -2,13 +2,14 @@
 
 namespace BinaryTorch\Blogged\Jobs;
 
+use Illuminate\Http\Request;
 use Illuminate\Bus\Queueable;
+use Mews\Purifier\Facades\Purifier;
 use Illuminate\Queue\SerializesModels;
+use BinaryTorch\Blogged\Models\Article;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Http\Request;
-use BinaryTorch\Blogged\Models\Article;
 
 class CreateNewArticle
 {
@@ -21,12 +22,14 @@ class CreateNewArticle
      */
     public function handle()
     {
+        $body = Purifier::clean(request()->body);
+
         $article = Article::create([
             'title'        => request()->title, 
             'slug'         => request()->slug,
             'image'        => request()->image, 
             'excerpt'      => request()->excerpt, 
-            'body'         => request()->body, 
+            'body'         => $body, 
             'publish_date' => request()->publish_date,
             'featured'     => request()->featured,
             'category_id'  => request()->category_id,
