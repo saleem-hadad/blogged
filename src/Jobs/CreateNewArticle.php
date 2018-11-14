@@ -22,7 +22,10 @@ class CreateNewArticle
      */
     public function handle()
     {
-        $body = Purifier::clean(request()->body);
+        $body = Purifier::clean(request()->body, [
+            'AutoFormat.AutoParagraph' => false,
+            'AutoFormat.RemoveEmpty'   => false,
+        ]);
 
         $article = Article::create([
             'title'        => request()->title, 
