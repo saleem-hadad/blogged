@@ -27,11 +27,11 @@ class DashboardTest extends TestCase
     }
 
     /** @test */
-    public function authorized_users_can_fetch_all_articles_with_pagination()
+    public function authorized_users_can_fetch_all_articles_with_pagination_and_statistics()
     {
         $this->authenticate();
 
-        factory(Article::class, 2)->create();
+        factory(Article::class, 2)->create()->each->publish();
 
         $this->get('/blogged-api/articles')
             ->assertJsonCount(2, 'data')
@@ -40,6 +40,7 @@ class DashboardTest extends TestCase
                     ['id', 'title']
                 ],
                 'links',
+                'statistics'
             ])
             ->assertStatus(200);
     }

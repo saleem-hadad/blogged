@@ -29,7 +29,7 @@
                         <div class="row">
                         <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">Published Articles</h5>
-                            <span class="h2 font-weight-bold mb-0">{{ totalArticles }}</span>
+                            <span class="h2 font-weight-bold mb-0">{{ totalPublishedArticles }}</span>
                         </div>
                         <div class="col-auto">
                             <div class="icon icon-shape bg-primary text-white rounded-circle shadow">
@@ -46,7 +46,7 @@
                         <div class="row">
                         <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">Featured Articles</h5>
-                            <span class="h2 font-weight-bold mb-0">{{ totalArticles }}</span>
+                            <span class="h2 font-weight-bold mb-0">{{ totalFeaturedArticles }}</span>
                         </div>
                         <div class="col-auto">
                             <div class="icon icon-shape bg-primary text-white rounded-circle shadow">
@@ -122,11 +122,19 @@ export default {
     },
     computed: {
         totalArticles() {
-            if(!this.data.meta) {
-                return 0
-            }
+            if(!this.data.meta) { return 0 }
             
             return this.data.meta.total
+        },
+        totalPublishedArticles() {
+            if(!this.data.statistics) { return 0 }
+
+            return this.data.statistics.published
+        },
+        totalFeaturedArticles() {
+            if(!this.data.statistics) { return 0 }
+
+            return this.data.statistics.featured
         }
     },
     created() {

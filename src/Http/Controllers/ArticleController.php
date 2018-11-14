@@ -2,6 +2,7 @@
 
 namespace BinaryTorch\Blogged\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use BinaryTorch\Blogged\Models\Article;
 use BinaryTorch\Blogged\Jobs\CreateNewArticle;
 use BinaryTorch\Blogged\Http\Resources\ArticleResource;
@@ -20,7 +21,11 @@ class ArticleController extends Controller
             ->orderBy('publish_date', 'DESC')
             ->paginate($pagination);
 
-        return ArticleResource::collection($articles);
+        return ArticleResource::collection($articles)
+            ->additional(['statistics' => [
+                'published' => Article::published()->count(),
+                'featured'  => Article::featured()->count(),
+            ]]);
     }
 
     /**

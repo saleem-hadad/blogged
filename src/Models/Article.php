@@ -67,6 +67,14 @@ class Article extends Model
     }
 
     /**
+     * @return Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeFeatured(Builder $query)
+    {
+        $query->where('featured', true);
+    }
+
+    /**
      * @return String
      */
     public function getParsedBodyAttribute()
