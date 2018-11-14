@@ -21,17 +21,20 @@ class CreateNewArticle
      */
     public function handle()
     {
-        Article::create([
+        $article = Article::create([
             'title'        => request()->title, 
             'slug'         => request()->slug,
             'image'        => request()->image, 
             'excerpt'      => request()->excerpt, 
             'body'         => request()->body, 
-            'publish_date' => request()->publish_date, 
-            'published'    => request()->published, 
+            'publish_date' => request()->publish_date,
             'featured'     => request()->featured,
             'category_id'  => request()->category_id,
             'author_id'    => auth()->id(),
         ]);
+
+        if(request()->published) {
+            $article->publish();
+        }
     }
 }

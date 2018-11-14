@@ -25,6 +25,20 @@
     border-radius: 5px;
 }
 
+.toasted.success {
+    color: #fff;
+    padding: 0.5rem 1rem;
+    background: $success;
+    border-radius: 5px;
+}
+
+.toasted.error {
+    color: #fff;
+    padding: 0.5rem 1rem;
+    background: $danger;
+    border-radius: 5px;
+}
+
 article {
     img {
         max-width: 100%;

@@ -16,7 +16,7 @@ Vue.component(BallBeatLoader.name, BallBeatLoader);
 Vue.use(Toasted, {
   router,
   theme: 'blogged',
-  position: 'bottom-left',
+  position: 'bottom-right',
   duration: 5000,
 })
 

@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="{{ config('blogged.ui.sidebar') ? 'col-md-8' : 'col-md-12' }}">
                         @forelse ($articles->chunk(config('blogged.ui.columns')) as $chunk)
-                            <div class="row is-flex">
+                            <div class="row">
                                 @foreach($chunk as $article)
                                     <div class="col-md-{{ 12 / config('blogged.ui.columns') }} pb-5">
                                         @include('blogged::partials.card', [

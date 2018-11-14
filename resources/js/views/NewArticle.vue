@@ -139,7 +139,8 @@ export default {
             }
         },
         publish() {
-            this.$toasted.show('hello billo');
+            this.form.published = true;
+            this.save();
         },
         save() {
             let form = {...this.form};
@@ -149,11 +150,13 @@ export default {
 
             axios.post('/blogged-api/articles', {
                 ...form
-            })
-            .then((response) => {
-                console.log(response.data)
-            }).catch((errors) => {
-            });
+            }).then((response) => {
+                    let action = form.published ? 'published.' : 'saved.'
+                    this.$toasted.success('Your article has been ' + action);
+                    this.$router.push({ name: 'dashboard' })
+                }).catch((errors) => {
+                    this.$toasted.error('Opps! please check the entered details.');
+                });
         }
     },
     components: {

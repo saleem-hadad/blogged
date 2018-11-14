@@ -25664,7 +25664,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component(__WEBPACK_IMPORTED_MODULE_
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vue_toasted___default.a, {
   router: __WEBPACK_IMPORTED_MODULE_1__router__["a" /* default */],
   theme: 'blogged',
-  position: 'bottom-left',
+  position: 'bottom-right',
   duration: 5000
 });
 
@@ -34130,17 +34130,24 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             };
         },
         publish: function publish() {
-            this.$toasted.show('hello billo');
+            this.form.published = true;
+            this.save();
         },
         save: function save() {
+            var _this2 = this;
+
             var form = _extends({}, this.form);
 
             form.image = form.image.path;
             form.category_id = form.category.id;
 
             axios.post('/blogged-api/articles', _extends({}, form)).then(function (response) {
-                console.log(response.data);
-            }).catch(function (errors) {});
+                var action = form.published ? 'published.' : 'saved.';
+                _this2.$toasted.success('Your article has been ' + action);
+                _this2.$router.push({ name: 'dashboard' });
+            }).catch(function (errors) {
+                _this2.$toasted.error('Opps! please check the entered details.');
+            });
         }
     },
     components: {
