@@ -17,7 +17,7 @@ class CreateBloggedArticlesTable extends Migration
             $table->increments('id');
             $table->string('title', 100);
             $table->string('slug', 120)->unique()->index();
-            $table->string('image', 254);
+            $table->string('image', 254)->default('/vendor/binarytorch/blogged/assets/new.svg');
             $table->text('excerpt');
             $table->longtext('body');
 
@@ -27,8 +27,7 @@ class CreateBloggedArticlesTable extends Migration
             
             // TODO: users table should be dynamic..
             $table->unsignedInteger('author_id')->index()->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedInteger('category_id')->index();
-            $table->foreign('category_id')->references('id')->on('blogged_categories')->onDelete('cascade');
+            $table->unsignedInteger('category_id')->index()->references('id')->on('blogged_categories')->onDelete('cascade');
             $table->timestamps();
         });
     }

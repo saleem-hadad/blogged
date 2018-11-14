@@ -70,6 +70,13 @@
                             <article class="mb-4 is-light">
                                 <textarea class="form-control form-control-alternative" rows="10" placeholder="Write a great content..." v-model="form.body"></textarea>
                             </article>
+
+                            <div>
+                                <div class="custom-control custom-control-alternative custom-checkbox mb-3">
+                                    <input class="custom-control-input" id="customCheck5" type="checkbox">
+                                    <label class="custom-control-label" for="customCheck5">Featured</label>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="text-center mb-4">

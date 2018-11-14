@@ -34032,6 +34032,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -38205,10 +38212,12 @@ var render = function() {
                       }
                     }
                   })
-                ])
+                ]),
+                _vm._v(" "),
+                _vm._m(3)
               ]),
               _vm._v(" "),
-              _vm._m(3)
+              _vm._m(4)
             ],
             1
           )
@@ -38246,6 +38255,35 @@ var staticRenderFns = [
       _c("span", { staticClass: "input-group-text" }, [
         _c("i", { staticClass: "ni ni-caps-small" })
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "div",
+        {
+          staticClass:
+            "custom-control custom-control-alternative custom-checkbox mb-3"
+        },
+        [
+          _c("input", {
+            staticClass: "custom-control-input",
+            attrs: { id: "customCheck5", type: "checkbox" }
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass: "custom-control-label",
+              attrs: { for: "customCheck5" }
+            },
+            [_vm._v("Featured")]
+          )
+        ]
+      )
     ])
   },
   function() {
