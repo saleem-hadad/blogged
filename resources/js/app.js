@@ -3,10 +3,18 @@ require('./argon');
 
 import Vue from "vue";
 import router from "./router";
+import Toasted from 'vue-toasted';
 import BackToTop from "./components/BackToTop";
 
 Vue.config.productionTip = false;
 const noDelimiter = {replace: () => '(?!x)x'};
+
+Vue.use(Toasted, {
+  router,
+  theme: 'blogged',
+  position: 'bottom-left',
+  duration: 5000,
+})
 
 Vue.component(BackToTop.name, BackToTop);
 

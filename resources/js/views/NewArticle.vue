@@ -101,19 +101,19 @@ export default {
             form: {
                 title: null,
                 slug: null,
+                excerpt: null,
+                body: null,
+                publish_date: null,
+                published: false,
+                featured: false,
                 image: {
                     url: '/vendor/binarytorch/blogged/assets/new.svg',
                     path: '/vendor/binarytorch/blogged/assets/new.svg'
                 },
-                excerpt: null,
-                body: null,
                 category: {
                     title: 'Select One',
                     slug: 'selecte-one'
                 },
-                publish_date: null,
-                published: false,
-                featured: false,
             }
         }
     },
@@ -131,7 +131,7 @@ export default {
             }
         },
         publish() {
-
+            this.$toasted.show('hello billo')
         },
         save() {
             let form = {...this.form};

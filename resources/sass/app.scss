@@ -14,6 +14,17 @@
     display: flex;
 }
 
+.toasted-container.top-center {
+    top: 30px !important;
+}
+  
+.toasted.default {
+    color: #fff;
+    padding: 0.5rem 1rem;
+    background: $primary;
+    border-radius: 5px;
+}
+
 article {
     img {
         max-width: 100%;

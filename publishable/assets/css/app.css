@@ -19450,6 +19450,17 @@ article.is-dark .line-numbers-rows > span:before {
   display: flex;
 }
 
+.toasted-container.top-center {
+  top: 30px !important;
+}
+
+.toasted.default {
+  color: #fff;
+  padding: 0.5rem 1rem;
+  background: #ab3f61;
+  border-radius: 5px;
+}
+
 article img {
   max-width: 100%;
 }
