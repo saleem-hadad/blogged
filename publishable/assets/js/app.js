@@ -33373,7 +33373,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -33633,7 +33632,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Title")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Published")])
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Actions")])
       ])
     ])
   },
@@ -33642,9 +33641,12 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("span", { staticClass: "badge badge-dot mr-4" }, [
-        _c("i", { staticClass: "bg-success" }),
-        _vm._v(" Yes\n                                        ")
+      _c("button", { staticClass: "btn btn-link" }, [
+        _c("i", { staticClass: "fa fa-eye" })
+      ]),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn btn-link" }, [
+        _c("i", { staticClass: "fa fa-edit" })
       ])
     ])
   },

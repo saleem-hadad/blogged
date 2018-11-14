@@ -81,7 +81,7 @@
                                     <tr>
                                         <th scope="col">Image</th>
                                         <th scope="col">Title</th>
-                                        <th scope="col">Published</th>
+                                        <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -95,9 +95,8 @@
                                         </th>
                                         <td v-text="article.title"></td>
                                         <td>
-                                            <span class="badge badge-dot mr-4">
-                                                <i class="bg-success"></i> Yes
-                                            </span>
+                                            <button class="btn btn-link"><i class="fa fa-eye"></i></button>
+                                            <button class="btn btn-link"><i class="fa fa-edit"></i></button>
                                         </td>
                                     </tr>
                                 </tbody>
