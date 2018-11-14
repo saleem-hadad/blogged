@@ -9,17 +9,24 @@ use BinaryTorch\Blogged\Models\Category;
 class BlogTest extends TestCase
 {
     /** @test */
-    public function a_guest_can_view_the_blog_home_page()
+    public function a_guest_can_view_the_blog_home_page_with_published_articles_only()
     {
-        $article = factory(Article::class)->create(['title' => 'How to become a developer in 1 min?']);
+        $article = factory(Article::class)->create([
+            'title' => 'How to become a developer in 1 min?'
+        ]);
 
+        $this->get('/blog')
+            ->assertStatus(200)
+            ->assertDontSee('How to become a developer in 1 min?');
+
+        $article->publish();
         $this->get('/blog')
             ->assertStatus(200)
             ->assertSee('How to become a developer in 1 min?');
     }
 
     /** @test */
-    public function a_guest_can_view_a_given_article()
+    public function a_guest_can_view_a_given_article_if_published()
     {
         $article = factory(Article::class)->create([
             'title' => 'How to become a developer in 1 min?',
@@ -27,6 +34,11 @@ class BlogTest extends TestCase
         ]);
 
         $this->get($article->path())
+            ->assertStatus(403)
+            ->assertDontSee('How to become a developer in 1 min?');
+
+        $article->publish();
+        $this->get('/blog')
             ->assertStatus(200)
             ->assertSee('How to become a developer in 1 min?');
     }
@@ -40,6 +52,7 @@ class BlogTest extends TestCase
             'category_id' => $category->id
         ]);
 
+        $article->publish();
         $this->get($category->path())
             ->assertStatus(200)
             ->assertSee('BlaBla');

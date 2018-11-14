@@ -18,12 +18,12 @@ class BlogController extends Controller
         if($category) {
             $category = Category::whereSlug($category)->firstOrFail();
 
-            $articles = $category->articles()->filter($filters)->paginate($pagination);
+            $articles = $category->articles()->published()->filter($filters)->paginate($pagination);
             
             return view('blogged::blog.index', compact('articles'));
         }
 
-        $articles = Article::with('category')->filter($filters)->paginate($pagination);
+        $articles = Article::published()->with('category')->filter($filters)->paginate($pagination);
 
         return view('blogged::blog.index', compact('articles'));
     }
@@ -33,6 +33,8 @@ class BlogController extends Controller
      */
     public function show(Category $category, Article $article)
     {
+        abort_if(! $article->published, 403);
+        
         abort_if($category->id != $article->category_id, 404);
 
         $article->load('author');

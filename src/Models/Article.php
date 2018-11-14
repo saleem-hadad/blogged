@@ -59,6 +59,14 @@ class Article extends Model
     }
 
     /**
+     * @return Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePublished(Builder $query)
+    {
+        $query->where('published', true);
+    }
+
+    /**
      * @return String
      */
     public function getParsedBodyAttribute()

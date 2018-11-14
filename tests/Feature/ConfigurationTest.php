@@ -47,7 +47,7 @@ class ConfigurationTest extends TestCase
     /** @test */
     public function disqus_forum_will_be_visible_only_if_selected_and_enabled()
     {
-        $article = factory(Article::class)->create();
+        $article = factory(Article::class)->create(['published' => true]);
         
         Config::set('blogged.forum.default', '');
         Config::set('blogged.forum.enabled', false);
