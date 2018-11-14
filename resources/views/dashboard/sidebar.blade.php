@@ -33,12 +33,6 @@
                 </li>
                 
                 <li class="nav-item">
-                    <router-link exact tag="a" to="/articles" class="nav-link">
-                        <i class="ni ni-bullet-list-67 text-primary"></i> My Articles
-                    </router-link>
-                </li>
-                
-                <li class="nav-item">
                     <router-link tag="a" to="/articles/new" class="nav-link">
                         <i class="ni ni-planet text-primary"></i> New Article
                     </router-link>

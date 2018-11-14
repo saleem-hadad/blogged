@@ -23,6 +23,7 @@ class ArticleController extends Controller
 
         return ArticleResource::collection($articles)
             ->additional(['statistics' => [
+                'total'     => $articles->total(),
                 'published' => Article::published()->count(),
                 'featured'  => Article::featured()->count(),
             ]]);

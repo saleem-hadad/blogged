@@ -33181,11 +33181,8 @@ var router = new __WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]({
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__views_Dashboard__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__views_Dashboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__views_Dashboard__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_Articles__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_Articles___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__views_Articles__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_NewArticle__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_NewArticle___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__views_NewArticle__);
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_NewArticle__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_NewArticle___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__views_NewArticle__);
 
 
 
@@ -33195,14 +33192,9 @@ var router = new __WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]({
     component: __WEBPACK_IMPORTED_MODULE_0__views_Dashboard___default.a,
     props: true
 }, {
-    name: 'articles',
-    path: '/articles',
-    component: __WEBPACK_IMPORTED_MODULE_1__views_Articles___default.a,
-    props: true
-}, {
     name: 'new',
     path: '/articles/new',
-    component: __WEBPACK_IMPORTED_MODULE_2__views_NewArticle___default.a,
+    component: __WEBPACK_IMPORTED_MODULE_1__views_NewArticle___default.a,
     props: true
 }]);
 
@@ -33259,6 +33251,10 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Statistics__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Statistics___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Statistics__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -33314,106 +33310,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             data: [],
-            isLoading: true
+            isLoading: true,
+            statistics: {
+                total: 0,
+                published: 0,
+                featured: 0
+            }
         };
-    },
-
-    computed: {
-        totalArticles: function totalArticles() {
-            if (!this.data.meta) {
-                return 0;
-            }
-
-            return this.data.meta.total;
-        },
-        totalPublishedArticles: function totalPublishedArticles() {
-            if (!this.data.statistics) {
-                return 0;
-            }
-
-            return this.data.statistics.published;
-        },
-        totalFeaturedArticles: function totalFeaturedArticles() {
-            if (!this.data.statistics) {
-                return 0;
-            }
-
-            return this.data.statistics.featured;
-        }
     },
     created: function created() {
         var _this = this;
 
         axios.get('/blogged-api/articles').then(function (response) {
             _this.data = response.data;
+            _this.statistics = _extends({}, response.data.statistics);
             _this.isLoading = false;
         }).catch(function () {
             _this.isLoading = false;
         });
+    },
+
+    components: {
+        Statistics: __WEBPACK_IMPORTED_MODULE_0__components_Statistics___default.a
     }
 });
 
@@ -33425,209 +33350,87 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "header bg-primary py-8" }, [
-      _c("div", { staticClass: "container-fluid" }, [
-        _c("div", { staticClass: "header-body" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-lg-4" }, [
-              _c("div", { staticClass: "card card-stats mb-4 mb-xl-0" }, [
-                _c("div", { staticClass: "card-body" }, [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col" }, [
-                      _c(
-                        "h5",
-                        {
-                          staticClass:
-                            "card-title text-uppercase text-muted mb-0"
-                        },
-                        [_vm._v("Total Articles")]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "h2 font-weight-bold mb-0" }, [
-                        _vm._v(_vm._s(_vm.totalArticles))
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(0)
-                  ])
-                ])
-              ])
-            ]),
+  return _c(
+    "div",
+    [
+      _c("statistics", { attrs: { data: _vm.statistics } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "container-fluid mt--7" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col" }, [
+            _vm.isLoading
+              ? _c(
+                  "div",
+                  { staticClass: "card text-center shadow no-border py-8" },
+                  [_c("ball-beat-loader", { attrs: { color: "#8F8F8F" } })],
+                  1
+                )
+              : _vm._e(),
             _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4" }, [
-              _c("div", { staticClass: "card card-stats mb-4 mb-xl-0" }, [
-                _c("div", { staticClass: "card-body" }, [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col" }, [
-                      _c(
-                        "h5",
-                        {
-                          staticClass:
-                            "card-title text-uppercase text-muted mb-0"
-                        },
-                        [_vm._v("Published Articles")]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "h2 font-weight-bold mb-0" }, [
-                        _vm._v(_vm._s(_vm.totalPublishedArticles))
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(1)
-                  ])
+            !_vm.isLoading
+              ? _c("div", { staticClass: "card shadow" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "table-responsive" }, [
+                    _c(
+                      "table",
+                      { staticClass: "table align-items-center table-flush" },
+                      [
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c(
+                          "tbody",
+                          _vm._l(_vm.data.data, function(article) {
+                            return _c("tr", { key: article.id }, [
+                              _c("th", { attrs: { scope: "row" } }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "media align-items-center" },
+                                  [
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass: "rounded",
+                                        attrs: { href: "#" }
+                                      },
+                                      [
+                                        _c("img", {
+                                          staticClass: "rounded",
+                                          attrs: {
+                                            width: "150px",
+                                            alt: "article image",
+                                            src: article.image
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", {
+                                domProps: { textContent: _vm._s(article.title) }
+                              }),
+                              _vm._v(" "),
+                              _vm._m(2, true)
+                            ])
+                          })
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(3)
                 ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4" }, [
-              _c("div", { staticClass: "card card-stats mb-4 mb-xl-0" }, [
-                _c("div", { staticClass: "card-body" }, [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col" }, [
-                      _c(
-                        "h5",
-                        {
-                          staticClass:
-                            "card-title text-uppercase text-muted mb-0"
-                        },
-                        [_vm._v("Featured Articles")]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "h2 font-weight-bold mb-0" }, [
-                        _vm._v(_vm._s(_vm.totalFeaturedArticles))
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(2)
-                  ])
-                ])
-              ])
-            ])
+              : _vm._e()
           ])
         ])
       ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "container-fluid mt--7" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col" }, [
-          _vm.isLoading
-            ? _c(
-                "div",
-                { staticClass: "card text-center shadow no-border py-8" },
-                [_c("ball-beat-loader", { attrs: { color: "#8F8F8F" } })],
-                1
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          !_vm.isLoading
-            ? _c("div", { staticClass: "card shadow" }, [
-                _vm._m(3),
-                _vm._v(" "),
-                _c("div", { staticClass: "table-responsive" }, [
-                  _c(
-                    "table",
-                    { staticClass: "table align-items-center table-flush" },
-                    [
-                      _vm._m(4),
-                      _vm._v(" "),
-                      _c(
-                        "tbody",
-                        _vm._l(_vm.data.data, function(article) {
-                          return _c("tr", { key: article.id }, [
-                            _c("th", { attrs: { scope: "row" } }, [
-                              _c(
-                                "div",
-                                { staticClass: "media align-items-center" },
-                                [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "rounded",
-                                      attrs: { href: "#" }
-                                    },
-                                    [
-                                      _c("img", {
-                                        staticClass: "rounded",
-                                        attrs: {
-                                          width: "150px",
-                                          alt: "article image",
-                                          src: article.image
-                                        }
-                                      })
-                                    ]
-                                  )
-                                ]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", {
-                              domProps: { textContent: _vm._s(article.title) }
-                            }),
-                            _vm._v(" "),
-                            _vm._m(5, true)
-                          ])
-                        })
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _vm._m(6)
-              ])
-            : _vm._e()
-        ])
-      ])
-    ])
-  ])
+    ],
+    1
+  )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-auto" }, [
-      _c(
-        "div",
-        {
-          staticClass:
-            "icon icon-shape bg-primary text-white rounded-circle shadow"
-        },
-        [_c("i", { staticClass: "fa fa-user" })]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-auto" }, [
-      _c(
-        "div",
-        {
-          staticClass:
-            "icon icon-shape bg-primary text-white rounded-circle shadow"
-        },
-        [_c("i", { staticClass: "fa fa-check" })]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-auto" }, [
-      _c(
-        "div",
-        {
-          staticClass:
-            "icon icon-shape bg-primary text-white rounded-circle shadow"
-        },
-        [_c("i", { staticClass: "fa fa-star" })]
-      )
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -33685,187 +33488,8 @@ if (false) {
 }
 
 /***/ }),
-/* 54 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(2)
-/* script */
-var __vue_script__ = null
-/* template */
-var __vue_template__ = __webpack_require__(55)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/views/Articles.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-34a36fdc", Component.options)
-  } else {
-    hotAPI.reload("data-v-34a36fdc", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "header bg-primary py-8" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "container-fluid mt--7" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col" }, [
-            _c("div", { staticClass: "card shadow" }, [
-              _c("div", { staticClass: "card-header border-0" }, [
-                _c("h3", { staticClass: "mb-0" }, [_vm._v("My Articles")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "table-responsive" }, [
-                _c(
-                  "table",
-                  { staticClass: "table align-items-center table-flush" },
-                  [
-                    _c("thead", { staticClass: "thead-light" }, [
-                      _c("tr", [
-                        _c("th", { attrs: { scope: "col" } }, [
-                          _vm._v("Image")
-                        ]),
-                        _vm._v(" "),
-                        _c("th", { attrs: { scope: "col" } }, [
-                          _vm._v("Title")
-                        ]),
-                        _vm._v(" "),
-                        _c("th", { attrs: { scope: "col" } }, [
-                          _vm._v("Publish Date")
-                        ]),
-                        _vm._v(" "),
-                        _c("th", { attrs: { scope: "col" } }, [
-                          _vm._v("Published")
-                        ]),
-                        _vm._v(" "),
-                        _c("th", { attrs: { scope: "col" } }, [
-                          _vm._v("Featured")
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("tbody", [
-                      _c("tr", [
-                        _c("th", { attrs: { scope: "row" } }, [
-                          _c(
-                            "div",
-                            { staticClass: "media align-items-center" },
-                            [
-                              _c(
-                                "a",
-                                {
-                                  staticClass: " rounded mr-3",
-                                  attrs: { href: "#" }
-                                },
-                                [
-                                  _c("img", {
-                                    attrs: {
-                                      width: "200px",
-                                      alt: "Image placeholder",
-                                      src: "#"
-                                    }
-                                  })
-                                ]
-                              )
-                            ]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _vm._v(
-                            "\n                        How to handle http kernel?\n                    "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _vm._v(
-                            "\n                        Nov 20, 2018\n                    "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _c("span", { staticClass: "badge badge-dot mr-4" }, [
-                            _c("i", { staticClass: "bg-warning" }),
-                            _vm._v(" No\n                        ")
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _c("span", { staticClass: "badge badge-dot mr-4" }, [
-                            _c("i", { staticClass: "bg-success" }),
-                            _vm._v(" Yes\n                        ")
-                          ])
-                        ])
-                      ])
-                    ])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "card-footer justify-content-center py-4" },
-                [_c("div", { staticClass: "btn" }, [_vm._v("Load More")])]
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-34a36fdc", module.exports)
-  }
-}
-
-/***/ }),
+/* 54 */,
+/* 55 */,
 /* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -43682,6 +43306,272 @@ module.exports = readingTime
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 86 */,
+/* 87 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(89)
+/* template */
+var __vue_template__ = __webpack_require__(88)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/Statistics.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-8f59d764", Component.options)
+  } else {
+    hotAPI.reload("data-v-8f59d764", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 88 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "header bg-primary py-8" }, [
+    _c("div", { staticClass: "container-fluid" }, [
+      _c("div", { staticClass: "header-body" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-4" }, [
+            _c("div", { staticClass: "card card-stats mb-4 mb-xl-0" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col" }, [
+                    _c(
+                      "h5",
+                      {
+                        staticClass: "card-title text-uppercase text-muted mb-0"
+                      },
+                      [_vm._v("Total Articles")]
+                    ),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "h2 font-weight-bold mb-0" }, [
+                      _vm._v(_vm._s(_vm.data.total))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(0)
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-4" }, [
+            _c("div", { staticClass: "card card-stats mb-4 mb-xl-0" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col" }, [
+                    _c(
+                      "h5",
+                      {
+                        staticClass: "card-title text-uppercase text-muted mb-0"
+                      },
+                      [_vm._v("Published Articles")]
+                    ),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "h2 font-weight-bold mb-0" }, [
+                      _vm._v(_vm._s(_vm.data.published))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(1)
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-4" }, [
+            _c("div", { staticClass: "card card-stats mb-4 mb-xl-0" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col" }, [
+                    _c(
+                      "h5",
+                      {
+                        staticClass: "card-title text-uppercase text-muted mb-0"
+                      },
+                      [_vm._v("Featured Articles")]
+                    ),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "h2 font-weight-bold mb-0" }, [
+                      _vm._v(_vm._s(_vm.data.featured))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(2)
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-auto" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "icon icon-shape bg-primary text-white rounded-circle shadow"
+        },
+        [_c("i", { staticClass: "fa fa-user" })]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-auto" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "icon icon-shape bg-primary text-white rounded-circle shadow"
+        },
+        [_c("i", { staticClass: "fa fa-check" })]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-auto" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "icon icon-shape bg-primary text-white rounded-circle shadow"
+        },
+        [_c("i", { staticClass: "fa fa-star" })]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-8f59d764", module.exports)
+  }
+}
+
+/***/ }),
+/* 89 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['data']
+});
 
 /***/ })
 /******/ ]);
