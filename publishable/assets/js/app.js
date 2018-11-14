@@ -34097,7 +34097,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 slug: null,
                 excerpt: null,
                 body: null,
-                publish_date: null,
                 published: false,
                 featured: false,
                 image: {
