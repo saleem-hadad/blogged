@@ -33244,8 +33244,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            data: [],
+            articles: [],
             isLoading: true,
+            nextPage: 1,
             statistics: {
                 total: 0,
                 published: 0,
@@ -33254,20 +33255,36 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         };
     },
     mounted: function mounted() {
-        var _this = this;
-
-        axios.get('/blogged-api/articles').then(function (response) {
-            _this.data = response.data;
-            _this.statistics = _extends({}, response.data.statistics);
-            _this.isLoading = false;
-        }).catch(function () {
-            _this.isLoading = false;
-        });
+        this.fetchArticles();
     },
 
     methods: {
-        loadMore: function loadMore() {
+        fetchArticles: function fetchArticles() {
+            var _this = this;
+
+            if (!this.nextPage) {
+                return;
+            }
+
             this.isLoading = true;
+
+            axios.get('/blogged-api/articles', { params: { page: this.nextPage } }).then(function (response) {
+                _this.statistics = _extends({}, response.data.statistics);
+
+                response.data.data.forEach(function (article) {
+                    _this.articles.push(article);
+                });
+
+                if (response.data.meta.last_page - response.data.meta.current_page) {
+                    _this.nextPage = response.data.meta.current_page + 1;
+                } else {
+                    _this.nextPage = null;
+                }
+
+                _this.isLoading = false;
+            }).catch(function () {
+                _this.isLoading = false;
+            });
         }
     },
     components: {
@@ -33566,7 +33583,7 @@ var render = function() {
               [
                 _vm._m(0),
                 _vm._v(" "),
-                _c("articles", { attrs: { data: _vm.data.data } }),
+                _c("articles", { attrs: { data: _vm.articles } }),
                 _vm._v(" "),
                 _vm.isLoading
                   ? _c(
@@ -33577,7 +33594,7 @@ var render = function() {
                     )
                   : _vm._e(),
                 _vm._v(" "),
-                !_vm.isLoading
+                !_vm.isLoading && _vm.nextPage
                   ? _c(
                       "div",
                       {
@@ -33586,7 +33603,10 @@ var render = function() {
                       [
                         _c(
                           "div",
-                          { staticClass: "btn", on: { click: _vm.loadMore } },
+                          {
+                            staticClass: "btn",
+                            on: { click: _vm.fetchArticles }
+                          },
                           [_vm._v("Load More")]
                         )
                       ]
@@ -43665,7 +43685,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
+    return _c("td", { staticClass: "text-right" }, [
       _c("button", { staticClass: "btn btn-link" }, [
         _c("i", { staticClass: "fa fa-eye" })
       ]),

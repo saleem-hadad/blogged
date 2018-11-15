@@ -18,7 +18,7 @@
                         </div>
                     </th>
                     <td v-text="article.title"></td>
-                    <td>
+                    <td class="text-right">
                         <button class="btn btn-link"><i class="fa fa-eye"></i></button>
                         <button class="btn btn-link"><i class="fa fa-edit"></i></button>
                     </td>

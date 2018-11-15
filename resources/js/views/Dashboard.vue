@@ -13,14 +13,14 @@
                             <h3 class="mb-0">Articles</h3>
                         </div>
                         
-                        <articles :data="data.data"></articles>
+                        <articles :data="articles"></articles>
 
                         <div v-if="isLoading" class="text-center py-4">
                             <ball-beat-loader color="#8F8F8F"></ball-beat-loader>
                         </div>
 
-                        <div v-if="! isLoading" class="card-footer justify-content-center py-4">
-                            <div @click="loadMore" class="btn">Load More</div>
+                        <div v-if="! isLoading && nextPage" class="card-footer justify-content-center py-4">
+                            <div @click="fetchArticles" class="btn">Load More</div>
                         </div>
                     </div>
                 </div>
@@ -36,8 +36,9 @@ import Statistics from '../components/Statistics';
 export default {
     data() {
         return {
-            data: [],
+            articles: [],
             isLoading: true,
+            nextPage: 1,
             statistics: {
                 total: 0,
                 published: 0,
@@ -46,18 +47,32 @@ export default {
         }
     },
     mounted() {
-        axios.get('/blogged-api/articles')
-            .then((response) => {
-                this.data = response.data;
-                this.statistics = {...response.data.statistics};
-                this.isLoading = false;
-            }).catch(() => {
-                this.isLoading = false;
-            });
+        this.fetchArticles();
     },
     methods: {
-        loadMore() {
+        fetchArticles() {
+            if(! this.nextPage) { return; }
+
             this.isLoading = true;
+
+            axios.get('/blogged-api/articles', { params: { page: this.nextPage } })
+                .then((response) => {
+                    this.statistics = {...response.data.statistics};
+
+                    response.data.data.forEach(article => {
+                        this.articles.push(article);
+                    });
+
+                    if(response.data.meta.last_page - response.data.meta.current_page) {
+                        this.nextPage = response.data.meta.current_page + 1;
+                    }else {
+                        this.nextPage = null;
+                    }
+
+                    this.isLoading = false;
+                }).catch(() => {
+                    this.isLoading = false;
+                });
         }
     },
     components: {
