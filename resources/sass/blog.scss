@@ -1,0 +1,56 @@
+article {
+    img {
+        max-width: 100%;
+    }
+    
+    h1:first-of-type {
+        border-left: 2px solid $primary;
+        padding-left: 1rem;
+        margin-bottom: 1.5rem;
+        font-weight: $font-weight-bold;
+    }
+
+    p {
+        font-size: 1.2rem;
+        word-break: break-word;
+    }
+
+    hr {
+        border-top: 2px dashed $gray-200;
+    }
+
+    :not(pre) > code {
+        background-color: $gray-100;
+        padding: 5px;
+        border-radius: 5px;
+        color: $primary;
+    }
+
+    blockquote {
+        margin: 2rem 0;
+        font-size: 1rem !important;
+
+        &:hover {
+            box-shadow: $input-focus-alternative-box-shadow !important;
+        }
+
+        p { 
+            padding-left: 30px; 
+            margin-bottom: 0px;
+            color: $white
+        }
+    
+        .flag {
+            position: absolute;
+            width: 30px;
+            left: 15px;
+            top: 10px;
+            font-weight: $font-weight-bold;
+            svg {
+                fill: $white;
+                width: 24px;
+                height: 24px;
+            }
+        }
+    }
+}
