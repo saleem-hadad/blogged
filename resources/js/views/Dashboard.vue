@@ -1,6 +1,6 @@
 <template>
     <div>
-        <!-- Header -->
+        <!-- statistics -->
         <statistics :data="statistics"></statistics>
         
         <!-- Page content -->
@@ -16,33 +16,9 @@
                         <div class="card-header border-0">
                             <h3 class="mb-0">Articles</h3>
                         </div>
-                        <div class="table-responsive">
-                            <table class="table align-items-center table-flush">
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th scope="col">Image</th>
-                                        <th scope="col">Title</th>
-                                        <th scope="col">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="article in data.data" :key="article.id">
-                                        <th scope="row">
-                                            <div class="media align-items-center">
-                                            <a href="#" class="rounded">
-                                                <img class="rounded" width="150px" alt="article image" :src="article.image">
-                                            </a>
-                                            </div>
-                                        </th>
-                                        <td v-text="article.title"></td>
-                                        <td>
-                                            <button class="btn btn-link"><i class="fa fa-eye"></i></button>
-                                            <button class="btn btn-link"><i class="fa fa-edit"></i></button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        
+                        <articles :data="data.data"></articles>
+
                         <div class="card-footer justify-content-center py-4">
                             <div class="btn">Load More</div>
                         </div>
@@ -54,6 +30,7 @@
 </template>
 
 <script>
+import Articles from '../components/Articles';
 import Statistics from '../components/Statistics';
 
 export default {
@@ -68,7 +45,7 @@ export default {
             },
         }
     },
-    created() {
+    mounted() {
         axios.get('/blogged-api/articles')
             .then((response) => {
                 this.data = response.data;
@@ -79,6 +56,7 @@ export default {
             });
     },
     components: {
+        Articles,
         Statistics
     }
 }
