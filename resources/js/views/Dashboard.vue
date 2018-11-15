@@ -54,25 +54,24 @@ export default {
             if(! this.nextPage) { return; }
 
             this.isLoading = true;
-
             axios.get('/blogged-api/articles', { params: { page: this.nextPage } })
                 .then((response) => {
+                    this.isLoading = false;
+                    this.prepareNextPage(response)
                     this.statistics = {...response.data.statistics};
-
                     response.data.data.forEach(article => {
                         this.articles.push(article);
                     });
-
-                    if(response.data.meta.last_page - response.data.meta.current_page) {
-                        this.nextPage = response.data.meta.current_page + 1;
-                    }else {
-                        this.nextPage = null;
-                    }
-
-                    this.isLoading = false;
                 }).catch(() => {
                     this.isLoading = false;
                 });
+        },
+        prepareNextPage(response) {
+            if(response.data.meta.last_page - response.data.meta.current_page) {
+                this.nextPage = response.data.meta.current_page + 1;
+            }else {
+                this.nextPage = null;
+            }
         }
     },
     components: {

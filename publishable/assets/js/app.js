@@ -33267,24 +33267,23 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             }
 
             this.isLoading = true;
-
             axios.get('/blogged-api/articles', { params: { page: this.nextPage } }).then(function (response) {
+                _this.isLoading = false;
+                _this.prepareNextPage(response);
                 _this.statistics = _extends({}, response.data.statistics);
-
                 response.data.data.forEach(function (article) {
                     _this.articles.push(article);
                 });
-
-                if (response.data.meta.last_page - response.data.meta.current_page) {
-                    _this.nextPage = response.data.meta.current_page + 1;
-                } else {
-                    _this.nextPage = null;
-                }
-
-                _this.isLoading = false;
             }).catch(function () {
                 _this.isLoading = false;
             });
+        },
+        prepareNextPage: function prepareNextPage(response) {
+            if (response.data.meta.last_page - response.data.meta.current_page) {
+                this.nextPage = response.data.meta.current_page + 1;
+            } else {
+                this.nextPage = null;
+            }
         }
     },
     components: {
