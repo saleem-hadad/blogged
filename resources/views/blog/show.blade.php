@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="card-body px-5">
-                        <h1 class="display-1">{{ $article->title }}</h1>
+                        <h1 class="display-2">@if($article->featured) <span style="display: inline">&#9733;</span>@endif {{ $article->title }}</h1>
                         <article class="pt-2 is-{{ config('blogged.ui.code') }}">
                             {!! $article->parsedBody !!}
                         </article>
