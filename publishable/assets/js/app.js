@@ -33265,6 +33265,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         });
     },
 
+    methods: {
+        loadMore: function loadMore() {
+            this.isLoading = true;
+        }
+    },
     components: {
         Articles: __WEBPACK_IMPORTED_MODULE_0__components_Articles___default.a,
         Statistics: __WEBPACK_IMPORTED_MODULE_1__components_Statistics___default.a
@@ -33555,29 +33560,41 @@ var render = function() {
       _c("div", { staticClass: "container-fluid mt--7" }, [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col" }, [
-            _vm.isLoading
-              ? _c(
-                  "div",
-                  { staticClass: "card text-center shadow no-border py-8" },
-                  [_c("ball-beat-loader", { attrs: { color: "#8F8F8F" } })],
-                  1
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            !_vm.isLoading
-              ? _c(
-                  "div",
-                  { staticClass: "card shadow" },
-                  [
-                    _vm._m(0),
-                    _vm._v(" "),
-                    _c("articles", { attrs: { data: _vm.data.data } }),
-                    _vm._v(" "),
-                    _vm._m(1)
-                  ],
-                  1
-                )
-              : _vm._e()
+            _c(
+              "div",
+              { staticClass: "card shadow" },
+              [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("articles", { attrs: { data: _vm.data.data } }),
+                _vm._v(" "),
+                _vm.isLoading
+                  ? _c(
+                      "div",
+                      { staticClass: "text-center py-4" },
+                      [_c("ball-beat-loader", { attrs: { color: "#8F8F8F" } })],
+                      1
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                !_vm.isLoading
+                  ? _c(
+                      "div",
+                      {
+                        staticClass: "card-footer justify-content-center py-4"
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "btn", on: { click: _vm.loadMore } },
+                          [_vm._v("Load More")]
+                        )
+                      ]
+                    )
+                  : _vm._e()
+              ],
+              1
+            )
           ])
         ])
       ])
@@ -33593,16 +33610,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-header border-0" }, [
       _c("h3", { staticClass: "mb-0" }, [_vm._v("Articles")])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "card-footer justify-content-center py-4" },
-      [_c("div", { staticClass: "btn" }, [_vm._v("Load More")])]
-    )
   }
 ]
 render._withStripped = true

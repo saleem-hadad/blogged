@@ -8,19 +8,19 @@
             <!-- Table -->
             <div class="row">
                 <div class="col">
-                    <div v-if="isLoading" class="card text-center shadow no-border py-8">
-                        <ball-beat-loader color="#8F8F8F"></ball-beat-loader>        
-                    </div>
-
-                    <div v-if="! isLoading" class="card shadow">
+                    <div class="card shadow">
                         <div class="card-header border-0">
                             <h3 class="mb-0">Articles</h3>
                         </div>
                         
                         <articles :data="data.data"></articles>
 
-                        <div class="card-footer justify-content-center py-4">
-                            <div class="btn">Load More</div>
+                        <div v-if="isLoading" class="text-center py-4">
+                            <ball-beat-loader color="#8F8F8F"></ball-beat-loader>
+                        </div>
+
+                        <div v-if="! isLoading" class="card-footer justify-content-center py-4">
+                            <div @click="loadMore" class="btn">Load More</div>
                         </div>
                     </div>
                 </div>
@@ -54,6 +54,11 @@ export default {
             }).catch(() => {
                 this.isLoading = false;
             });
+    },
+    methods: {
+        loadMore() {
+            this.isLoading = true;
+        }
     },
     components: {
         Articles,
