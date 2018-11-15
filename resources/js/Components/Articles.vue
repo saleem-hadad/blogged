@@ -5,7 +5,7 @@
                 <tr>
                     <th scope="col">Image</th>
                     <th scope="col">Title</th>
-                    <th scope="col">Actions</th>
+                    <th class="text-right" scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -19,8 +19,9 @@
                     </th>
                     <td v-text="article.title"></td>
                     <td class="text-right">
-                        <button class="btn btn-link"><i class="fa fa-eye"></i></button>
-                        <button class="btn btn-link"><i class="fa fa-edit"></i></button>
+                        <a href="#" class="p-2"><i class="fa fa-eye"></i></a>
+                        <a href="#" class="p-2"><i class="fa fa-edit"></i></a>
+                        <a href="#" class="p-2"><i class="fa fa-trash"></i></a>
                     </td>
                 </tr>
             </tbody>

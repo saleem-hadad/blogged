@@ -6,7 +6,7 @@
     </div>
 
     <div class="card-body">
-        <h2>{{ $title }}</h2>
+        <h2>@if($featured) <span>&#9733;</span> @endif {{ $title }}</h2>
         <p>{{ $body }}</p>
         <a href="{{ $url }}" class="btn btn-outline-primary">Read More</a>
     </div>

@@ -6,7 +6,7 @@
         </button>
         <!-- Brand -->
         <p class="navbar-brand">
-            Dashboard
+            Blog Dashboard
         </p>
         <!-- Collapse -->
         <div class="collapse navbar-collapse" id="sidenav-collapse-main">

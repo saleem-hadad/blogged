@@ -43620,6 +43620,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['data']
@@ -43676,7 +43677,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Title")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Actions")])
+        _c("th", { staticClass: "text-right", attrs: { scope: "col" } }, [
+          _vm._v("Actions")
+        ])
       ])
     ])
   },
@@ -43685,12 +43688,16 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", { staticClass: "text-right" }, [
-      _c("button", { staticClass: "btn btn-link" }, [
+      _c("a", { staticClass: "p-2", attrs: { href: "#" } }, [
         _c("i", { staticClass: "fa fa-eye" })
       ]),
       _vm._v(" "),
-      _c("button", { staticClass: "btn btn-link" }, [
+      _c("a", { staticClass: "p-2", attrs: { href: "#" } }, [
         _c("i", { staticClass: "fa fa-edit" })
+      ]),
+      _vm._v(" "),
+      _c("a", { staticClass: "p-2", attrs: { href: "#" } }, [
+        _c("i", { staticClass: "fa fa-trash" })
       ])
     ])
   }

@@ -23,6 +23,7 @@
                                             'category' => $article->category,
                                             'date'     => $article->publish_date->toFormattedDateString(),
                                             'body'     => $article->excerpt,
+                                            'featured' => $article->featured,
                                             'url'      => url($article->path()),
                                         ])
                                     </div>
