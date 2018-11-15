@@ -1,6 +1,6 @@
 <div class="section">
     <div class="container">
-        <div class="text-lg-center">
+        <div class="text-center">
             <h3 class="display-3 font-weight-light mb-2">Share this article on</h3>
         </div>
         <div class="text-lg-center btn-wrapper">
