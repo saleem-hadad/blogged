@@ -33132,6 +33132,12 @@ var router = new __WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__views_Dashboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__views_Dashboard__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_NewArticle__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_NewArticle___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__views_NewArticle__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_ViewArticle__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_ViewArticle___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__views_ViewArticle__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_EditArticle__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_EditArticle___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__views_EditArticle__);
+
+
 
 
 
@@ -33144,6 +33150,16 @@ var router = new __WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]({
     name: 'new',
     path: '/articles/new',
     component: __WEBPACK_IMPORTED_MODULE_1__views_NewArticle___default.a,
+    props: true
+}, {
+    name: 'view',
+    path: '/articles/:slug',
+    component: __WEBPACK_IMPORTED_MODULE_2__views_ViewArticle___default.a,
+    props: true
+}, {
+    name: 'edit',
+    path: '/articles/:slug/edit',
+    component: __WEBPACK_IMPORTED_MODULE_3__views_EditArticle___default.a,
     props: true
 }]);
 
@@ -43620,7 +43636,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['data']
@@ -43659,7 +43674,36 @@ var render = function() {
             _vm._v(" "),
             _c("td", { domProps: { textContent: _vm._s(article.title) } }),
             _vm._v(" "),
-            _vm._m(1, true)
+            _c(
+              "td",
+              { staticClass: "text-right" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "p-2",
+                    attrs: {
+                      tag: "a",
+                      to: { name: "view", params: { slug: article.slug } }
+                    }
+                  },
+                  [_c("i", { staticClass: "fa fa-eye" })]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "p-2",
+                    attrs: {
+                      tag: "a",
+                      to: { name: "edit", params: { slug: article.slug } }
+                    }
+                  },
+                  [_c("i", { staticClass: "fa fa-edit" })]
+                )
+              ],
+              1
+            )
           ])
         })
       )
@@ -43682,24 +43726,6 @@ var staticRenderFns = [
         ])
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { staticClass: "text-right" }, [
-      _c("a", { staticClass: "p-2", attrs: { href: "#" } }, [
-        _c("i", { staticClass: "fa fa-eye" })
-      ]),
-      _vm._v(" "),
-      _c("a", { staticClass: "p-2", attrs: { href: "#" } }, [
-        _c("i", { staticClass: "fa fa-edit" })
-      ]),
-      _vm._v(" "),
-      _c("a", { staticClass: "p-2", attrs: { href: "#" } }, [
-        _c("i", { staticClass: "fa fa-trash" })
-      ])
-    ])
   }
 ]
 render._withStripped = true
@@ -43708,6 +43734,140 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-03ba8128", module.exports)
+  }
+}
+
+/***/ }),
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = null
+/* template */
+var __vue_template__ = __webpack_require__(98)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/views/ViewArticle.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2477747c", Component.options)
+  } else {
+    hotAPI.reload("data-v-2477747c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 98 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("h1", [_vm._v("View")])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2477747c", module.exports)
+  }
+}
+
+/***/ }),
+/* 99 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = null
+/* template */
+var __vue_template__ = __webpack_require__(100)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/views/EditArticle.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2fd4713d", Component.options)
+  } else {
+    hotAPI.reload("data-v-2fd4713d", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 100 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("h1", [_vm._v("Edit")])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2fd4713d", module.exports)
   }
 }
 

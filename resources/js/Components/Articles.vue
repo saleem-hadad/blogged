@@ -19,9 +19,8 @@
                     </th>
                     <td v-text="article.title"></td>
                     <td class="text-right">
-                        <a href="#" class="p-2"><i class="fa fa-eye"></i></a>
-                        <a href="#" class="p-2"><i class="fa fa-edit"></i></a>
-                        <a href="#" class="p-2"><i class="fa fa-trash"></i></a>
+                        <router-link tag="a" :to="{ name: 'view', params: { slug: article.slug } }" class="p-2"><i class="fa fa-eye"></i></router-link>
+                        <router-link tag="a" :to="{ name: 'edit', params: { slug: article.slug } }" class="p-2"><i class="fa fa-edit"></i></router-link>
                     </td>
                 </tr>
             </tbody>
@@ -31,6 +30,6 @@
 
 <script>
 export default {
-    props: ['data']
+    props: ['data'],
 }
 </script>
