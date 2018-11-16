@@ -38681,6 +38681,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -38731,36 +38733,40 @@ var render = function() {
                 _c("img", {
                   staticClass: "card-img-top",
                   attrs: { src: _vm.article.image, alt: "Card image" }
-                })
+                }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "card-footer justify-content-center py-4" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "btn btn-outline-info",
+                        attrs: {
+                          tag: "a",
+                          to: {
+                            name: "edit",
+                            params: { slug: _vm.article.slug }
+                          }
+                        }
+                      },
+                      [
+                        _c("i", { staticClass: "fa fa-edit" }),
+                        _vm._v(" Edit this article\n                        ")
+                      ]
+                    )
+                  ],
+                  1
+                )
               ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm._m(0)
+            : _vm._e()
         ])
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center mb-4" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-outline-info", attrs: { type: "button" } },
-        [_c("i", { staticClass: "fa fa-edit" }), _vm._v(" Edit")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-outline-danger", attrs: { type: "button" } },
-        [_c("i", { staticClass: "fa fa-trash" }), _vm._v(" Delete")]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

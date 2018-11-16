@@ -13,12 +13,14 @@
 
                     <div v-if="! isLoading" class="card shadow no-border pb-2">
                         <img class="card-img-top" :src="article.image" alt="Card image">
-                        
-                    </div>
 
-                    <div class="text-center mb-4">
-                        <button type="button" class="btn btn-outline-info"><i class="fa fa-edit"></i> Edit</button>
-                        <button type="button" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Delete</button>
+                        <div class="card-footer justify-content-center py-4">
+                            <router-link tag="a" 
+                                :to="{ name: 'edit', params: { slug: article.slug } }" 
+                                class="btn btn-outline-info">
+                                <i class="fa fa-edit"></i> Edit this article
+                            </router-link>
+                        </div>
                     </div>
                 </div>
             </div>
