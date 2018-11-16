@@ -11,7 +11,7 @@ use BinaryTorch\Blogged\Http\Requests\CreateArticleFormRequest;
 class ArticleController extends Controller
 {
     /**
-     * Show the blog home page.
+     * Get all available articles.
      */
     public function index()
     {
@@ -27,6 +27,16 @@ class ArticleController extends Controller
                 'published' => Article::published()->count(),
                 'featured'  => Article::featured()->count(),
             ]]);
+    }
+
+    /**
+     * Show a given article.
+     */
+    public function show(Article $article)
+    {
+        // Article::authorizeToView($article);
+
+        return new ArticleResource($article);
     }
 
     /**

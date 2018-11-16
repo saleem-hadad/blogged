@@ -46,6 +46,24 @@ class DashboardTest extends TestCase
     }
 
     /** @test */
+    public function authorized_users_can_fetch_any_article()
+    {
+        $this->authenticate();
+
+        factory(Article::class)->create(['slug' => 'how-to-sleep-8h-in-4h']);
+
+        $this->get('/blogged-api/articles/how-to-sleep-8h-in-4h')
+            ->assertStatus(200)
+            ->assertJsonStructure([
+                'data' => [
+                    'id', 
+                    'title',
+                    'slug',
+                ]
+            ]);
+    }
+
+    /** @test */
     public function authorized_users_can_create_new_article()
     {
         $this->authenticate();
