@@ -33351,6 +33351,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -33459,6 +33467,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -33875,9 +33884,48 @@ var render = function() {
               "div",
               { staticClass: "card shadow" },
               [
-                _vm._m(0),
+                !_vm.articles.length
+                  ? _c(
+                      "div",
+                      { staticClass: "text-center my-6" },
+                      [
+                        _c("img", {
+                          attrs: {
+                            width: "300px",
+                            src: "/vendor/binarytorch/blogged/assets/empty.svg"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("h2", { staticClass: "pt-4" }, [
+                          _vm._v("No articles found!")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "btn btn-primary",
+                            attrs: { tag: "a", to: "/articles/new" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            Write New Article\n                        "
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  : _vm._e(),
                 _vm._v(" "),
-                _c("articles", { attrs: { data: _vm.articles } }),
+                _vm.articles.length
+                  ? _c("div", { staticClass: "card-header border-0" }, [
+                      _c("h3", { staticClass: "mb-0" }, [_vm._v("Articles")])
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.articles.length
+                  ? _c("articles", { attrs: { data: _vm.articles } })
+                  : _vm._e(),
                 _vm._v(" "),
                 _vm.isLoading
                   ? _c(
@@ -33916,16 +33964,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header border-0" }, [
-      _c("h3", { staticClass: "mb-0" }, [_vm._v("Articles")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

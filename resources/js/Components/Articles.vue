@@ -8,6 +8,7 @@
                     <th class="text-right" scope="col">Actions</th>
                 </tr>
             </thead>
+
             <tbody>
                 <tr v-for="article in data" :key="article.id">
                     <th scope="row">

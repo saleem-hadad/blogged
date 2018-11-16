@@ -9,11 +9,19 @@
             <div class="row">
                 <div class="col">
                     <div class="card shadow">
-                        <div class="card-header border-0">
+                        <div v-if="! articles.length" class="text-center my-6">
+                            <img width="300px" src="/vendor/binarytorch/blogged/assets/empty.svg">
+                            <h2 class="pt-4">No articles found!</h2>
+                            <router-link tag="a" to="/articles/new" class="btn btn-primary">
+                                Write New Article
+                            </router-link>
+                        </div>
+
+                        <div v-if="articles.length" class="card-header border-0">
                             <h3 class="mb-0">Articles</h3>
                         </div>
                         
-                        <articles :data="articles"></articles>
+                        <articles v-if="articles.length" :data="articles"></articles>
 
                         <div v-if="isLoading" class="text-center py-4">
                             <ball-beat-loader color="#8F8F8F"></ball-beat-loader>
