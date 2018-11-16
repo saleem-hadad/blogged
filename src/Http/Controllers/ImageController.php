@@ -25,4 +25,35 @@ class ImageController extends Controller
             'path' => $path
         ]);
     }
+
+    /**
+     * remove unwanted image.
+     *
+     * @return response
+     */
+    public function destroy(Request $request)
+    {
+        $request->validate(['path' => 'required|string']);
+
+        $this->authorizeDeleteImage($request->path);
+
+        if(\Storage::disk(config('blogged.settings.storage'))->exists($request->path)) {
+            \Storage::disk(config('blogged.settings.storage'))->delete($request->path);
+        }
+
+        return response()->json([], 204);
+    }
+
+    /**
+     * Check if the user can delete an image. A user can delete image only
+     * if it's not associated with an article. 
+     *
+     * @return void
+     */
+    protected function authorizeDeleteImage($path)
+    {
+        $article = Article::where('image', $path)->first();
+
+        abort_if($article, 403);
+    }
 }

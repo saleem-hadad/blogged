@@ -103,6 +103,7 @@ export default {
         return {
             categories: [],
             isLoading: true,
+            articleCreated: false,
             form: {
                 title: null,
                 slug: null,
@@ -118,6 +119,18 @@ export default {
                 },
             }
         }
+    },
+    watch: {
+        'form.image': (newValue, oldValue) => {
+            if(! oldValue) { return }
+
+            this.removeOldImage(oldValue.path);
+        }
+    },
+    beforeRouteLeave (to, from, next) {
+        this.removeOldImage();
+
+        next();
     },
     created() {
         axios.get('/blogged-api/categories')
@@ -148,11 +161,26 @@ export default {
             axios.post('/blogged-api/articles', {
                 ...form
             }).then((response) => {
+                    this.articleCreated = true
+
                     let action = form.published ? 'published.' : 'saved.'
                     this.$toasted.success('Your article has been ' + action);
-                    this.$router.push({ name: 'dashboard' })
+                    
+                    this.$router.push({ name: 'dashboard' });
                 }).catch((errors) => {
                     this.$toasted.error('Opps! Please make sure the entered data is valid.');
+                });
+        },
+        removeOldImage(path) {
+            // if the path given null and no image selected or article create => don't remove the image
+            if(this.articleCreated || (! path && ! this.form.image)) { return }
+
+            // if path not given and image selected => remove it
+            if(! path) { path = this.form.image.path; }
+
+            axios.delete('/blogged-api/images/', { data: { path: path } })
+                .then((response) => {
+                    this.form.image = null
                 });
         }
     },

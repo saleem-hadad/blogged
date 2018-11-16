@@ -17,3 +17,4 @@ Route::delete('/categories/{category}', 'CategoryController@delete');
 
 // Blog Images Uploads..
 Route::post('/images', 'ImageController@store');
+Route::delete('/images', 'ImageController@destroy');
