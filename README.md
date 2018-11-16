@@ -15,8 +15,8 @@
 <p align="center">
 <a href="https://travis-ci.org/saleem-hadad/larecipe"><img src="https://travis-ci.org/saleem-hadad/blogged.svg?branch=master" alt="Build Status"></a>
 <a href="https://github.styleci.io/repos/142787719"><img src="https://github.styleci.io/repos/142787719/shield?branch=master" alt="StyleCI"></a>
-<a href="https://github.com/saleem-hadad/larecipe"><img src="https://img.shields.io/github/release/saleem-hadad/blogged.svg" alt="Release"></a>
-<a href="https://github.com/saleem-hadad/larecipe"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+<a href="https://github.com/saleem-hadad/blogged"><img src="https://img.shields.io/github/release/saleem-hadad/blogged.svg" alt="Release"></a>
+<a href="https://github.com/saleem-hadad/blogged"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 <br/><br/>
 
