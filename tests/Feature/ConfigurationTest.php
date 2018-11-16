@@ -13,11 +13,11 @@ class ConfigurationTest extends TestCase
     {
         Config::set('blogged.settings.ga_id', '');
         $this->get('/blog')
-            ->assertDontSee('googletagmanager');
+            ->assertDontSee('https://www.google-analytics.com/analytics.js');
 
         Config::set('blogged.settings.ga_id', 'ga_code_id');
         $this->get('/blog')
-            ->assertSee('googletagmanager')
+            ->assertSee('https://www.google-analytics.com/analytics.js')
             ->assertSee('ga_code_id');
     }
 
