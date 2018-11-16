@@ -25778,6 +25778,14 @@ new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
   }
 });
 
+ga('set', 'page', __WEBPACK_IMPORTED_MODULE_1__router__["a" /* default */].currentRoute.path);
+ga('send', 'pageview');
+
+__WEBPACK_IMPORTED_MODULE_1__router__["a" /* default */].afterEach(function (to, from) {
+  ga('set', 'page', to.path);
+  ga('send', 'pageview');
+});
+
 /***/ }),
 /* 20 */
 /***/ (function(module, exports, __webpack_require__) {

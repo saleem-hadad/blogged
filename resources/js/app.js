@@ -30,3 +30,11 @@ new Vue({
     Article.parse();
   }
 });
+
+ga('set', 'page', router.currentRoute.path);
+ga('send', 'pageview');
+
+router.afterEach(( to, from ) => {
+  ga('set', 'page', to.path);
+  ga('send', 'pageview');
+});

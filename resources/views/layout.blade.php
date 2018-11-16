@@ -29,6 +29,18 @@
                 <link rel="stylesheet" type="text/css" href="{{ asset($css) }}">
             @endforeach
         @endif
+
+        {{-- Google Analytics --}}
+        @if(config('blogged.settings.ga_id'))
+            <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('blogged.settings.ga_id') }}"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', "{{ config('blogged.settings.ga_id') }}");
+            </script>
+        @endif
+        {{-- /Google Analytics --}}
     </head>
     <body>
         <div id="app">
@@ -50,17 +62,5 @@
                 <script type="text/javascript" src="{{ asset($js) }}"></script>
             @endforeach
         @endif
-
-        {{-- Google Analytics --}}
-        @if(config('blogged.settings.ga_id'))
-            <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('blogged.settings.ga_id') }}"></script>
-            <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', "{{ config('blogged.settings.ga_id') }}");
-            </script>
-        @endif
-        {{-- /Google Analytics --}}
     </body>
 </html>
