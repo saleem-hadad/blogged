@@ -15,7 +15,7 @@
                         <img class="card-img-top" :src="article.image" alt="Card image">
 
                         <div class="bg-secondary px-5 py-2">
-                            <a href="#" class="btn btn-link btn-sm" style="margin-right: 0px">{{ article.category }}</a>/ <span class="description">{{ article.publish_date }}</span> (<span class="readingTime"></span>)
+                            <a href="#" class="btn btn-link btn-sm" style="margin-right: 0px">{{ article.category.title }}</a>/ <span class="description">Created at: {{ article.created_at }} | Published at: {{ article.publish_date }}</span>
                         </div>
 
                         <div class="card-body px-5">

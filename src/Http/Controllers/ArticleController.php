@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use BinaryTorch\Blogged\Models\Article;
 use BinaryTorch\Blogged\Jobs\CreateNewArticle;
 use BinaryTorch\Blogged\Http\Resources\ArticleResource;
+use BinaryTorch\Blogged\Http\Resources\ArticleMinimalResource;
 use BinaryTorch\Blogged\Http\Requests\CreateArticleFormRequest;
 
 class ArticleController extends Controller
@@ -21,7 +22,7 @@ class ArticleController extends Controller
             ->orderBy('publish_date', 'DESC')
             ->paginate($pagination);
 
-        return ArticleResource::collection($articles)
+        return ArticleMinimalResource::collection($articles)
             ->additional(['statistics' => [
                 'total'     => $articles->total(),
                 'published' => Article::published()->count(),
@@ -34,7 +35,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        // Article::authorizeToView($article);
+        $article->load(['category', 'author']);
 
         return new ArticleResource($article);
     }

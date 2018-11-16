@@ -28,13 +28,6 @@ class Article extends Model
     protected $table = 'blogged_articles';
 
     /**
-     * The relations to eager load on every query.
-     *
-     * @var array
-     */
-    protected $with = ['category'];
-
-    /**
      * The attributes that should be mutated to dates.
      *
      * @var array

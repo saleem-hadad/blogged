@@ -37,7 +37,7 @@ class DashboardTest extends TestCase
             ->assertJsonCount(2, 'data')
             ->assertJsonStructure([
                 'data' => [
-                    ['id', 'title']
+                    ['title', 'slug', 'image', 'published']
                 ],
                 'links',
                 'statistics'

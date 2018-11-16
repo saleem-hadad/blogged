@@ -18,8 +18,14 @@
                         </div>
 
                         <div v-if="articles.length" class="card-header border-0">
-                            <h3 class="mb-0">Articles</h3>
+                            <h3 class="mb-0 pull-left">Articles</h3>
+
+                            <router-link tag="a" to="/articles/new" class="btn btn-sm btn-primary pull-right">
+                                New Article
+                            </router-link>
                         </div>
+                        
+                        <div class="clearfix"></div>
                         
                         <articles v-if="articles.length" :data="articles"></articles>
 

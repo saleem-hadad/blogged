@@ -18,7 +18,7 @@ class BlogController extends Controller
         if($category) {
             $category = Category::whereSlug($category)->firstOrFail();
 
-            $articles = $category->articles()->published()->orderBy('publish_date', 'DESC')->filter($filters)->paginate($pagination);
+            $articles = $category->articles()->published()->orderBy('publish_date', 'DESC')->with('category')->filter($filters)->paginate($pagination);
             
             return view('blogged::blog.index', compact('articles'));
         }
@@ -37,7 +37,7 @@ class BlogController extends Controller
         
         abort_if($category->id != $article->category_id, 404);
 
-        $article->load('author');
+        $article->load(['category', 'author']);
 
         return view('blogged::blog.show', compact('article'));
     }

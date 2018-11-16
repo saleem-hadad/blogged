@@ -20,10 +20,18 @@ class ArticleResource extends JsonResource
             'slug'         => $this->slug,
             'image'        => $this->image,
             'body'         => $this->body,
-            'publish_date' => $this->publish_date,
+            'publish_date' => $this->publish_date ? $this->publish_date->toDateString() : 'NA',
             'published'    => $this->published,
             'featured'     => $this->featured,
-            'created_at'   => $this->created_at,
+            'created_at'   => $this->created_at->toDateString(),
+            'category'     => [
+                'title'    => $this->category->title,
+                'slug'     => $this->category->slug,
+            ],
+            'author'       => [
+                'name'     => $this->author->name,
+                'avatar'   => $this->author->avatar,
+            ],
         ];
     }
 }

@@ -28,13 +28,19 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <router-link exact tag="a" to="/" class="nav-link">
-                        <i class="ni ni-tv-2 text-primary"></i> Dashboard
+                        <i class="ni ni-palette text-primary"></i> Dashboard
+                    </router-link>
+                </li>
+
+                <li class="nav-item">
+                    <router-link tag="a" to="/categories" class="nav-link">
+                        <i class="ni ni-books text-primary"></i> Categories
                     </router-link>
                 </li>
                 
                 <li class="nav-item">
                     <router-link tag="a" to="/articles/new" class="nav-link">
-                        <i class="ni ni-planet text-primary"></i> New Article
+                        <i class="ni ni-diamond text-primary"></i> New Article
                     </router-link>
                 </li>
             </ul>
