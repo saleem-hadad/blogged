@@ -33892,7 +33892,7 @@ var render = function() {
               "div",
               { staticClass: "card shadow" },
               [
-                !_vm.articles.length
+                !_vm.articles.length && !_vm.isLoading
                   ? _c(
                       "div",
                       { staticClass: "text-center my-6" },

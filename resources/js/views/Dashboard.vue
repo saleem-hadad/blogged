@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col">
                     <div class="card shadow">
-                        <div v-if="! articles.length" class="text-center my-6">
+                        <div v-if="! articles.length && ! isLoading" class="text-center my-6">
                             <img width="300px" src="/vendor/binarytorch/blogged/assets/empty.svg">
                             <h2 class="pt-4">No articles found!</h2>
                             <router-link tag="a" to="/articles/new" class="btn btn-primary">
