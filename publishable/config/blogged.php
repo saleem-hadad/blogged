@@ -73,12 +73,9 @@ return [
         'twitter'   => true,
         'facebook'  => true,
         'linkedin'  => true,
-        'google'    => true,
+        'pinterest' => true,
         'tumblr'    => false,
         'email'     => false,
-        'pinterest' => true,
-        'reddit'    => false,
-        'whatsApp'  => false,
         'telegram'  => false,
     ],
 
