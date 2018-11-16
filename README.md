@@ -24,7 +24,17 @@
 
 ![blogged](https://s3-ap-southeast-1.amazonaws.com/myseniorio/blogged-showcase.png)
 
-#### See [full documentation](https://blogged.binarytorch.com.my/docs)
+☝️ Install the package via composer.
+
+    composer require binarytorch/blogged
+
+✌️ Run the install command.
+
+    php artisan blogged:install
+
+Visit your app domain with `/blog` endpoint. That's it.
+
+#### See [full documentation and demo](https://blogged.binarytorch.com.my/docs)
 
 ## License
 
