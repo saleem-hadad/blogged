@@ -26,6 +26,8 @@
 
 ![blogged](https://s3-ap-southeast-1.amazonaws.com/myseniorio/blogged-showcase.png)
 
+## Get Started
+
 ☝️ Install the package via composer.
 
     composer require binarytorch/blogged
