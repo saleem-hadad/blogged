@@ -1,4 +1,5 @@
 import Dashboard from '../views/Dashboard';
+import Categories from '../views/Categories';
 import NewArticle from '../views/NewArticle';
 import ViewArticle from '../views/ViewArticle';
 import EditArticle from '../views/EditArticle';
@@ -10,6 +11,12 @@ export default [
         name: 'dashboard',
         path: '/',
         component: Dashboard,
+        props: true,
+    },
+    {
+        name: 'categories',
+        path: '/categories',
+        component: Categories,
         props: true,
     },
     {

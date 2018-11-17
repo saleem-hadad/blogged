@@ -31,11 +31,13 @@ class BlogController extends Controller
     /**
      * Show a given article.
      */
-    public function show(Category $category, Article $article)
+    public function show($category, Article $article)
     {
-        abort_if(! $article->published, 403);
-        
+        $category = Category::where('slug', $category)->firstOrFail();
+
         abort_if($category->id != $article->category_id, 404);
+        
+        abort_if(! $article->published, 403);
 
         $article->load(['category', 'author']);
 
