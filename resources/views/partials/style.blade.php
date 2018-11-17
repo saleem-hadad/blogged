@@ -33,4 +33,12 @@
     ::selection {
         background: {{ config('blogged.ui.colors.selection') }};
     }
+
+    .navbar-vertical.navbar-expand-md .navbar-nav .nav-link.active:before {
+        border-left: 2px solid {{ config('blogged.ui.primary_color') }};
+    }
+
+    .text-primary {
+        color: {{ config('blogged.ui.primary_color') }} !important;
+    }
 </style>

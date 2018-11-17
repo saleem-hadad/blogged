@@ -14,7 +14,7 @@
         </article>
 
         <h3>
-            Refer back to the <a href="/docs">documentation</a> for more information.
+            Refer back to the <a href="https://blogged.binarytorch.com.my/docs" target="__blank]">documentation</a> for more information.
         </h3>
     </div>
 </div>
