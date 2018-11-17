@@ -33546,6 +33546,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['data']
@@ -33583,6 +33588,22 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("td", { domProps: { textContent: _vm._s(article.title) } }),
+            _vm._v(" "),
+            _c("td", [
+              !article.published
+                ? _c("span", { staticClass: "badge badge-dot mr-4" }, [
+                    _c("i", { staticClass: "bg-warning" }),
+                    _vm._v(" Draft")
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              article.published
+                ? _c("span", { staticClass: "badge badge-dot mr-4" }, [
+                    _c("i", { staticClass: "bg-success" }),
+                    _vm._v(" Published")
+                  ])
+                : _vm._e()
+            ]),
             _vm._v(" "),
             _c(
               "td",
@@ -33630,6 +33651,8 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Image")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Title")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Status")]),
         _vm._v(" "),
         _c("th", { staticClass: "text-right", attrs: { scope: "col" } }, [
           _vm._v("Actions")
