@@ -83,10 +83,11 @@
 
                         <div class="text-center mb-4">
                             <button type="button" class="btn btn-primary" @click="publish"><i class="ni ni-spaceship"></i> Update and Publish</button>
-                            <button type="button" class="btn btn-outline-primary" @click="save"><i class="fa fa-save"></i> Update only</button>
+                            <button type="button" class="btn btn-outline-primary" @click="save"><i class="fa fa-save"></i> Update</button>
+                            <button type="button" class="btn color-danger btn-link" @click="draft">Draft</button>
+                            <button type="button" class="btn color-danger btn-link" data-toggle="modal" data-target="#delete-article">Delete</button>
                         </div>
                         <div class="text-center mb-4">
-                            <button type="button" class="btn color-danger btn-link" data-toggle="modal" data-target="#delete-article"><i class="fa fa-trash"></i> Delete this article</button>
                         </div>
                     </div>
                 </div>
@@ -178,10 +179,14 @@ export default {
             this.form.published = true;
             this.save();
         },
+        draft() {
+            this.form.published = false;
+            this.save();
+        },
         save() {
             let form = {...this.form};
 
-            form.image = form.image ? form.image.path : null
+            form.image = form.image ? form.image.path ? form.image.path : form.image : null
             form.category_id = form.category.id
 
             axios.put('/blogged-api/articles/' + this.$route.params.slug, {

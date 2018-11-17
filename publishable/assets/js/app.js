@@ -34827,6 +34827,7 @@ var _this = this;
 //
 //
 //
+//
 
 
 
@@ -34892,12 +34893,16 @@ var _this = this;
             this.form.published = true;
             this.save();
         },
+        draft: function draft() {
+            this.form.published = false;
+            this.save();
+        },
         save: function save() {
             var _this3 = this;
 
             var form = _extends({}, this.form);
 
-            form.image = form.image ? form.image.path : null;
+            form.image = form.image ? form.image.path ? form.image.path : form.image : null;
             form.category_id = form.category.id;
 
             axios.put('/blogged-api/articles/' + this.$route.params.slug, _extends({}, form)).then(function (response) {
@@ -35243,12 +35248,35 @@ var render = function() {
                       },
                       [
                         _c("i", { staticClass: "fa fa-save" }),
-                        _vm._v(" Update only")
+                        _vm._v(" Update")
                       ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn color-danger btn-link",
+                        attrs: { type: "button" },
+                        on: { click: _vm.draft }
+                      },
+                      [_vm._v("Draft")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn color-danger btn-link",
+                        attrs: {
+                          type: "button",
+                          "data-toggle": "modal",
+                          "data-target": "#delete-article"
+                        }
+                      },
+                      [_vm._v("Delete")]
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._m(3)
+                  _c("div", { staticClass: "text-center mb-4" })
                 ],
                 1
               )
@@ -35354,28 +35382,6 @@ var staticRenderFns = [
       _c("span", { staticClass: "input-group-text" }, [
         _c("i", { staticClass: "ni ni-caps-small" })
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center mb-4" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn color-danger btn-link",
-          attrs: {
-            type: "button",
-            "data-toggle": "modal",
-            "data-target": "#delete-article"
-          }
-        },
-        [
-          _c("i", { staticClass: "fa fa-trash" }),
-          _vm._v(" Delete this article")
-        ]
-      )
     ])
   }
 ]

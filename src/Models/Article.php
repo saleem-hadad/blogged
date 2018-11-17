@@ -160,7 +160,17 @@ class Article extends Model
     /**
      * @return void
      */
-    public function deleteImage()
+    public function updateImage($path)
+    {
+        $this->image = $path;
+
+        $this->deleteImageFromStorage();
+    }
+
+    /**
+     * @return void
+     */
+    public function deleteImageFromStorage()
     {
         if(\Storage::disk(config('blogged.settings.storage'))->exists($this->getOriginal('image'))) {
             \Storage::disk(config('blogged.settings.storage'))->delete($this->getOriginal('image'));
@@ -177,7 +187,7 @@ class Article extends Model
         parent::boot();
 
         static::deleting(function ($item) {
-            $item->deleteImage();
+            $item->deleteImageFromStorage();
         });
     }
 }

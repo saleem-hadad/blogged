@@ -48,11 +48,13 @@ class UpdateArticle
         }
 
         if($this->request->has('image') && ($this->article->image != $this->request->image)) {
-            $this->article->deleteImage();
+            $this->article->updateImage($this->request->image);
         }
 
-        $allowdAttributes = ['title', 'slug', 'image', 'excerpt', 'body', 'publish_date', 'featured', 'category_id'];
-        $this->article->update($this->request->only($allowdAttributes));
+        $allowdAttributes = ['title', 'slug', 'excerpt', 'body', 'publish_date', 'published', 'featured', 'category_id'];
+        $this->article->fill($this->request->only($allowdAttributes));
+
+        $this->article->save();
 
         if($this->request->published) {
             $this->article->publish();
