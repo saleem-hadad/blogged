@@ -34864,7 +34864,7 @@ var _this = this;
     },
     computed: {
         articleImage: function articleImage() {
-            return this.form.image ? this.form.image : '/vendor/binarytorch/blogged/assets/new.svg';
+            return this.form.image ? this.form.image.url ? this.form.image.url : this.form.image : '/vendor/binarytorch/blogged/assets/new.svg';
         }
     },
     created: function created() {

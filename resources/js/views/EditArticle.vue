@@ -151,7 +151,7 @@ export default {
     },
     computed: {
         articleImage() {
-            return this.form.image ? this.form.image : '/vendor/binarytorch/blogged/assets/new.svg';
+            return this.form.image ? this.form.image.url ? this.form.image.url : this.form.image : '/vendor/binarytorch/blogged/assets/new.svg';
         }  
     },
     created() {
