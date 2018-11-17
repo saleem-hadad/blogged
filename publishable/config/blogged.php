@@ -8,6 +8,11 @@ return [
     |--------------------------------------------------------------------------
     | Blogged Routes
     |--------------------------------------------------------------------------
+    |
+    | Since Blogged doesn't force you to use custom login page, instead you
+    | can use your own login page by providing the login path to be used
+    | by Blogged in order to authenticate them and then allows access.
+    |
     */
 
     'routes'        => [
@@ -68,6 +73,11 @@ return [
     |--------------------------------------------------------------------------
     | Social
     |--------------------------------------------------------------------------
+    |
+    | Blogged comes with handy little feature enables your readers to
+    | share your articles on thier social media accounts. Feel free
+    | to enable or disable any of the social media that you want.
+    |
     */
 
     'social'        => [
