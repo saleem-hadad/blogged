@@ -19,7 +19,7 @@
                         <div v-if="categories.length" class="card-header border-0">
                             <h3 class="mb-0 pull-left">Categories</h3>
 
-                            <button type="button" class="btn btn-sm btn-primary pull-right" data-toggle="modal" data-target="#new-category">New Category</button>
+                            <button type="button" class="btn btn-sm btn-primary pull-right" data-toggle="modal" data-target="#new-category"><i class="ni ni-fat-add"></i> New Category</button>
 
                             <div class="clearfix"></div>
                         </div>

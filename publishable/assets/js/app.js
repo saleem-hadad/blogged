@@ -34004,9 +34004,8 @@ var render = function() {
                             attrs: { tag: "a", to: "/articles/new" }
                           },
                           [
-                            _vm._v(
-                              "\n                            New Article\n                        "
-                            )
+                            _c("i", { staticClass: "ni ni-fat-add" }),
+                            _vm._v(" New Article\n                        ")
                           ]
                         )
                       ],
@@ -47013,18 +47012,7 @@ var render = function() {
                     _vm._v("Categories")
                   ]),
                   _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-sm btn-primary pull-right",
-                      attrs: {
-                        type: "button",
-                        "data-toggle": "modal",
-                        "data-target": "#new-category"
-                      }
-                    },
-                    [_vm._v("New Category")]
-                  ),
+                  _vm._m(0),
                   _vm._v(" "),
                   _c("div", { staticClass: "clearfix" })
                 ])
@@ -47036,7 +47024,7 @@ var render = function() {
                     "table",
                     { staticClass: "table align-items-center table-flush" },
                     [
-                      _vm._m(0),
+                      _vm._m(1),
                       _vm._v(" "),
                       _c(
                         "tbody",
@@ -47142,7 +47130,7 @@ var render = function() {
                   { staticClass: "card bg-secondary shadow border-0" },
                   [
                     _c("div", { staticClass: "card-body px-lg-5 py-lg-5" }, [
-                      _vm._m(1),
+                      _vm._m(2),
                       _vm._v(" "),
                       _c("form", { attrs: { role: "form" } }, [
                         _c("div", { staticClass: "form-group mb-3" }, [
@@ -47152,7 +47140,7 @@ var render = function() {
                               staticClass: "input-group input-group-alternative"
                             },
                             [
-                              _vm._m(2),
+                              _vm._m(3),
                               _vm._v(" "),
                               _c("input", {
                                 directives: [
@@ -47190,7 +47178,7 @@ var render = function() {
                               staticClass: "input-group input-group-alternative"
                             },
                             [
-                              _vm._m(3),
+                              _vm._m(4),
                               _vm._v(" "),
                               _c("input", {
                                 directives: [
@@ -47282,7 +47270,7 @@ var render = function() {
                   { staticClass: "card bg-secondary shadow border-0" },
                   [
                     _c("div", { staticClass: "card-body px-lg-5 py-lg-5" }, [
-                      _vm._m(4),
+                      _vm._m(5),
                       _vm._v(" "),
                       _c("form", { attrs: { role: "form" } }, [
                         _c("div", { staticClass: "form-group mb-3" }, [
@@ -47292,7 +47280,7 @@ var render = function() {
                               staticClass: "input-group input-group-alternative"
                             },
                             [
-                              _vm._m(5),
+                              _vm._m(6),
                               _vm._v(" "),
                               _c("input", {
                                 directives: [
@@ -47330,7 +47318,7 @@ var render = function() {
                               staticClass: "input-group input-group-alternative"
                             },
                             [
-                              _vm._m(6),
+                              _vm._m(7),
                               _vm._v(" "),
                               _c("input", {
                                 directives: [
@@ -47464,6 +47452,23 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-sm btn-primary pull-right",
+        attrs: {
+          type: "button",
+          "data-toggle": "modal",
+          "data-target": "#new-category"
+        }
+      },
+      [_c("i", { staticClass: "ni ni-fat-add" }), _vm._v(" New Category")]
+    )
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
