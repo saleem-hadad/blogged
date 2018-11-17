@@ -51,4 +51,24 @@ class ArticleController extends Controller
         
         return response()->json([], 201);
     }
+
+    /**
+     * @return response
+     */
+    public function update(Request $request)
+    {
+        // Article::authorizeToUpdate($request);
+        // remove old image
+        return response()->json([], 204);
+    }
+
+    /**
+     * @return response
+     */
+    public function destroy(Request $request)
+    {
+        // Article::authorizeToDelete($request);
+        // remove image
+        return response()->json([], 204);
+    }
 }
