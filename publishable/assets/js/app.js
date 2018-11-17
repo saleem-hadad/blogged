@@ -34323,6 +34323,11 @@ var _this = this;
         var _this2 = this;
 
         axios.get('/blogged-api/categories').then(function (response) {
+            if (!response.data.data.length) {
+                _this2.$toasted.error('Opps! Please make sure you create a category first!');
+
+                _this2.$router.push({ name: 'categories' });
+            }
             _this2.categories = response.data.data;
             _this2.isLoading = false;
         }).catch(function () {

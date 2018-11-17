@@ -135,6 +135,11 @@ export default {
     created() {
         axios.get('/blogged-api/categories')
             .then((response) => {
+                if(! response.data.data.length) {
+                    this.$toasted.error('Opps! Please make sure you create a category first!');
+                    
+                    this.$router.push({ name: 'categories' });
+                }
                 this.categories = response.data.data
                 this.isLoading = false;
             }).catch(() => {
