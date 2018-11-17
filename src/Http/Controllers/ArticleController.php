@@ -2,12 +2,14 @@
 
 namespace BinaryTorch\Blogged\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use BinaryTorch\Blogged\Models\Article;
+use BinaryTorch\Blogged\Jobs\UpdateArticle;
 use BinaryTorch\Blogged\Jobs\CreateNewArticle;
 use BinaryTorch\Blogged\Http\Resources\ArticleResource;
 use BinaryTorch\Blogged\Http\Resources\ArticleMinimalResource;
 use BinaryTorch\Blogged\Http\Requests\CreateArticleFormRequest;
+use BinaryTorch\Blogged\Http\Requests\UpdateArticleFormRequest;
 
 class ArticleController extends Controller
 {
@@ -33,8 +35,10 @@ class ArticleController extends Controller
     /**
      * Show a given article.
      */
-    public function show(Article $article)
+    public function show(Article $article, Request $request)
     {
+        $article->authorizeToView($request);
+
         $article->load(['category', 'author']);
 
         return new ArticleResource($article);
@@ -55,20 +59,24 @@ class ArticleController extends Controller
     /**
      * @return response
      */
-    public function update(Request $request)
+    public function update(Article $article, UpdateArticleFormRequest $request)
     {
-        // Article::authorizeToUpdate($request);
-        // remove old image
+        $article->authorizeToUpdate($request);
+        
+        UpdateArticle::dispatch($article, $request);
+
         return response()->json([], 204);
     }
 
     /**
      * @return response
      */
-    public function destroy(Request $request)
+    public function destroy(Article $article, Request $request)
     {
-        // Article::authorizeToDelete($request);
-        // remove image
+        $article->authorizeToDelete($request);
+
+        $article->delete();
+
         return response()->json([], 204);
     }
 }

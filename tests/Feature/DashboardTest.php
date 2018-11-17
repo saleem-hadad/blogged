@@ -70,7 +70,7 @@ class DashboardTest extends TestCase
 
         factory(Category::class)->create(['slug' => 'category-one']);
 
-        $this->json('POST', '/blogged-api/articles', [
+        $newData = [
             'title'       => 'How are you?',
             'slug'        => 'how-are-you',
             'body'        => 'you are cool',
@@ -79,62 +79,44 @@ class DashboardTest extends TestCase
             'image'       => 'image.png',
             'featured'    => true,
             'published'   => true,
-        ])->assertStatus(201);
+        ];
+
+        $this->json('POST', '/blogged-api/articles', $newData)->assertStatus(201);
+
+        $this->assertDatabaseHas('blogged_articles', $newData);
     }
 
     /** @test */
-    public function authorized_users_can_upload_images()
+    public function authorized_users_can_update_existing_article()
     {
-        Storage::fake(config('blogged.settings.storage'));
-
         $this->authenticate();
 
-        $image = UploadedFile::fake()->image('image.jpg');
-        $this->json('POST', 'blogged-api/images', [
-            'image' => $image,
-        ])->assertJsonStructure(['url'])->assertStatus(200);
+        factory(Article::class)->create(['slug' => 'old-article']);
 
-        Storage::disk(config('blogged.settings.storage'))->assertExists('/public/blogged/images', $image->hashName());
+        $newData = [
+            'title'       => 'How are you?',
+            'slug'        => 'how-are-you',
+            'body'        => 'you are cool',
+            'excerpt'     => 'you are not cool',
+            'image'       => 'newImage.png',
+            'featured'    => true,
+            'published'   => true,
+        ];
+
+        $this->json('PUT', '/blogged-api/articles/old-article', $newData)->assertStatus(204);
+
+        $this->assertDatabaseHas('blogged_articles', $newData);
     }
 
     /** @test */
-    public function authorized_users_can_delete_images()
+    public function authorized_users_can_delete_existing_article()
     {
-        Storage::fake(config('blogged.settings.storage'));
-
-        // upload an image
         $this->authenticate();
-        $image = UploadedFile::fake()->image('image.jpg');
-        $response = $this->json('POST', 'blogged-api/images', ['image' => $image]);
 
-        // delete the image
-        $path = $response->json()['path'];
-        $this->json('DELETE', '/blogged-api/images', [
-            'path' => $path
-        ])->assertStatus(204);
+        factory(Article::class)->create(['slug' => 'old-article']);
 
-        Storage::disk(config('blogged.settings.storage'))->assertMissing($path);
-    }
+        $this->json('DELETE', '/blogged-api/articles/old-article')->assertStatus(204);
 
-    /** @test */
-    public function authorized_users_may_not_delete_images_if_linked_with_articles()
-    {
-        Storage::fake(config('blogged.settings.storage'));
-
-        // upload an image
-        $this->authenticate();
-        $image = UploadedFile::fake()->image('image.jpg');
-        $response = $this->json('POST', 'blogged-api/images', ['image' => $image]);
-        $path = $response->json()['path'];
-
-        // link with article
-        factory(Article::class)->create(['image' => $path]);
-        
-        // delete the image
-        $this->json('DELETE', '/blogged-api/images', [
-            'path' => $path
-        ])->assertStatus(403);
-
-        Storage::disk(config('blogged.settings.storage'))->assertExists($path);
+        $this->assertDatabaseMissing('blogged_articles', ['slug' => 'old-article']);
     }
 }

@@ -48,7 +48,7 @@ class CategoryController extends Controller
      */
     public function update(Category $category, Request $request)
     {
-        // Category::authorizeToUpdate($request);
+        $category->authorizeToUpdate($request);
 
         $request->validate([
             'title' => 'required|string|max:100', 
@@ -68,9 +68,9 @@ class CategoryController extends Controller
      *
      * @return void
      */
-    public function delete(Category $category)
+    public function destroy(Category $category, Request $request)
     {
-        // Category::authorizeToDelete($request);
+        $category->authorizeToDelete($request);
 
         $category->delete();
 
