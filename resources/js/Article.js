@@ -17,7 +17,6 @@ class Article {
         var readingTime = require('reading-time');
         var stats = readingTime($('article').text());
         $('.readingTime').html(stats.text);
-        console.log(stats.text);
     }
 
     parseBlockquotes() {
