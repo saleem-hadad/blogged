@@ -34805,6 +34805,28 @@ var _this = this;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -34890,6 +34912,16 @@ var _this = this;
 
             axios.delete('/blogged-api/images/', { data: { path: path } }).then(function (response) {
                 _this4.form.image = null;
+            });
+        },
+        deleteArticle: function deleteArticle() {
+            var _this5 = this;
+
+            axios.delete('/blogged-api/articles/' + this.$route.params.slug).then(function (response) {
+                _this5.$toasted.success('Article has been deleted.');
+                _this5.$router.push({ name: 'dashboard' });
+            }).catch(function (errors) {
+                _this5.$toasted.error('Something went wronge or you don\'t have permission to perform this action!');
             });
         }
     },
@@ -35216,27 +35248,81 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "text-center mb-4" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn color-danger btn-link",
-                        attrs: { type: "button" },
-                        on: { click: _vm.save }
-                      },
-                      [
-                        _c("i", { staticClass: "fa fa-trash" }),
-                        _vm._v(" Delete this article")
-                      ]
-                    )
-                  ])
+                  _vm._m(3)
                 ],
                 1
               )
             : _vm._e()
         ])
       ])
-    ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "delete-article",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "delete-article",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal- modal-dialog-centered modal-sm",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-body p-0" }, [
+                _c(
+                  "div",
+                  { staticClass: "card bg-secondary shadow border-0" },
+                  [
+                    _c("div", { staticClass: "card-body px-lg-5 py-lg-5" }, [
+                      _c(
+                        "div",
+                        { staticClass: "text-center text-muted mb-4" },
+                        [
+                          _vm._v(
+                            "\n                    Are you sure you want to delete this article? This action cannot be undone!\n                "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "text-center" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary my-4",
+                            attrs: { type: "button", "data-dismiss": "modal" }
+                          },
+                          [_vm._v("No, Cancel")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-link my-4",
+                            attrs: { type: "button", "data-dismiss": "modal" },
+                            on: { click: _vm.deleteArticle }
+                          },
+                          [_vm._v("Yes, Delete!")]
+                        )
+                      ])
+                    ])
+                  ]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -35268,6 +35354,28 @@ var staticRenderFns = [
       _c("span", { staticClass: "input-group-text" }, [
         _c("i", { staticClass: "ni ni-caps-small" })
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-center mb-4" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn color-danger btn-link",
+          attrs: {
+            type: "button",
+            "data-toggle": "modal",
+            "data-target": "#delete-article"
+          }
+        },
+        [
+          _c("i", { staticClass: "fa fa-trash" }),
+          _vm._v(" Delete this article")
+        ]
+      )
     ])
   }
 ]

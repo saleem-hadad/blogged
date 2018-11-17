@@ -86,12 +86,34 @@
                             <button type="button" class="btn btn-outline-primary" @click="save"><i class="fa fa-save"></i> Update only</button>
                         </div>
                         <div class="text-center mb-4">
-                            <button type="button" class="btn color-danger btn-link" @click="save"><i class="fa fa-trash"></i> Delete this article</button>
+                            <button type="button" class="btn color-danger btn-link" data-toggle="modal" data-target="#delete-article"><i class="fa fa-trash"></i> Delete this article</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- delete article model -->
+        <div class="modal fade" id="delete-article" tabindex="-1" role="dialog" aria-labelledby="delete-article" aria-hidden="true">
+        <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+            <div class="modal-body p-0">
+                <div class="card bg-secondary shadow border-0">
+                <div class="card-body px-lg-5 py-lg-5">
+                    <div class="text-center text-muted mb-4">
+                        Are you sure you want to delete this article? This action cannot be undone!
+                    </div>
+                    <div class="text-center">
+                        <button type="button" data-dismiss="modal" class="btn btn-primary my-4">No, Cancel</button>
+                        <button type="button" @click="deleteArticle" data-dismiss="modal" class="btn btn-link my-4">Yes, Delete!</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+        <!-- /delete article model -->
     </div>
 </template>
 
@@ -175,6 +197,14 @@ export default {
             axios.delete('/blogged-api/images/', { data: { path: path } })
                 .then((response) => {
                     this.form.image = null
+                });
+        },
+        deleteArticle() {
+            axios.delete('/blogged-api/articles/' + this.$route.params.slug).then((response) => {
+                    this.$toasted.success('Article has been deleted.');
+                    this.$router.push({ name: 'dashboard' });
+                }).catch((errors) => {
+                    this.$toasted.error('Something went wronge or you don\'t have permission to perform this action!');
                 });
         }
     },

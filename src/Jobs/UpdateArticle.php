@@ -48,7 +48,7 @@ class UpdateArticle
         }
 
         if($this->request->has('image') && ($this->article->image != $this->request->image)) {
-            $this->deleteImageFromStorage($this->article->image);
+            $this->article->deleteImage();
         }
 
         $allowdAttributes = ['title', 'slug', 'image', 'excerpt', 'body', 'publish_date', 'featured', 'category_id'];
@@ -56,19 +56,6 @@ class UpdateArticle
 
         if($this->request->published) {
             $this->article->publish();
-        }
-    }
-
-    /**
-     * deleteImageFromStorage
-     *
-     * @param mixed $path
-     * @return void
-     */
-    protected function deleteImageFromStorage($path)
-    {
-        if(\Storage::disk(config('blogged.settings.storage'))->exists($path)) {
-            \Storage::disk(config('blogged.settings.storage'))->delete($path);
         }
     }
 }

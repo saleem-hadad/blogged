@@ -156,4 +156,28 @@ class Article extends Model
     {
         return route('blogged.show', [$this->category->slug, $this->slug]);
     }
+
+    /**
+     * @return void
+     */
+    public function deleteImage()
+    {
+        if(\Storage::disk(config('blogged.settings.storage'))->exists($this->getOriginal('image'))) {
+            \Storage::disk(config('blogged.settings.storage'))->delete($this->getOriginal('image'));
+        }
+    }
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($item) {
+            $item->deleteImage();
+        });
+    }
 }
