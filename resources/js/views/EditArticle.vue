@@ -12,15 +12,13 @@
                     </div>
 
                     <div v-if="! isLoading" class="card shadow no-border pb-2">
-                        <img class="card-img-top" id="pick-image" :src="form.image ? form.image.url : '/vendor/binarytorch/blogged/assets/new.svg'" alt="Card image">
+                        <img class="card-img-top" id="pick-image" :src="articleImage" alt="Card image">
 
                         <image-uploader
                             trigger="#pick-image"
                             @uploaded="handleUploaded"
                             upload-form-name="image"
                             upload-url="/blogged-api/images"/>
-
-                        <SEO-tips></SEO-tips>
 
                         <div class="card-body px-5">
                             <div class="form-group mb-4">
@@ -84,8 +82,11 @@
                         </div>
 
                         <div class="text-center mb-4">
-                            <button type="button" class="btn btn-primary" @click="publish"><i class="ni ni-spaceship"></i> Publish Now</button>
-                            <button type="button" class="btn btn-outline-primary" @click="save"><i class="ni ni-calendar-grid-58"></i> Save Draft</button>
+                            <button type="button" class="btn btn-primary" @click="publish"><i class="ni ni-spaceship"></i> Update and Publish</button>
+                            <button type="button" class="btn btn-outline-primary" @click="save"><i class="fa fa-save"></i> Update only</button>
+                        </div>
+                        <div class="text-center mb-4">
+                            <button type="button" class="btn color-danger btn-link" @click="save"><i class="fa fa-trash"></i> Delete this article</button>
                         </div>
                     </div>
                 </div>
@@ -95,7 +96,6 @@
 </template>
 
 <script>
-import SEOTips from '../components/SEOTips';
 import ImageUploader from '../components/ImageUploader';
 
 export default {
@@ -103,7 +103,6 @@ export default {
         return {
             categories: [],
             isLoading: true,
-            articleCreated: false,
             form: {
                 title: null,
                 slug: null,
@@ -127,10 +126,10 @@ export default {
             this.removeOldImage(oldValue.path);
         }
     },
-    beforeRouteLeave (to, from, next) {
-        this.removeOldImage();
-
-        next();
+    computed: {
+        articleImage() {
+            return this.form.image ? this.form.image : '/vendor/binarytorch/blogged/assets/new.svg';
+        }  
     },
     created() {
         axios.get('/blogged-api/categories')
@@ -140,7 +139,7 @@ export default {
 
         axios.get('/blogged-api/articles/' + this.$route.params.slug)
             .then((response) => {
-                this.article = response.data.data;
+                this.form = response.data.data;
                 this.isLoading = false;
             }).catch(() => {
                 this.isLoading = false;
@@ -163,26 +162,16 @@ export default {
             form.image = form.image ? form.image.path : null
             form.category_id = form.category.id
 
-            axios.post('/blogged-api/articles', {
+            axios.put('/blogged-api/articles/' + this.$route.params.slug, {
                 ...form
             }).then((response) => {
-                    this.articleCreated = true
-
-                    let action = form.published ? 'published.' : 'saved.'
-                    this.$toasted.success('Your article has been ' + action);
-                    
+                    this.$toasted.success('Your article has been updated.');
                     this.$router.push({ name: 'dashboard' });
                 }).catch((errors) => {
                     this.$toasted.error('Opps! Please make sure the entered data is valid.');
                 });
         },
         removeOldImage(path) {
-            // if the path given null and no image selected or article create => don't remove the image
-            if(this.articleCreated || (! path && ! this.form.image)) { return }
-
-            // if path not given and image selected => remove it
-            if(! path) { path = this.form.image.path; }
-
             axios.delete('/blogged-api/images/', { data: { path: path } })
                 .then((response) => {
                     this.form.image = null
@@ -191,7 +180,6 @@ export default {
     },
     components: {
         ImageUploader,
-        SEOTips
     }
 }
 </script>

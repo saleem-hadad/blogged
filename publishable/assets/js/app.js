@@ -40834,9 +40834,7 @@ var render = function() {
                     staticClass: "card-img-top",
                     attrs: {
                       id: "pick-image",
-                      src: _vm.form.image
-                        ? _vm.form.image.url
-                        : "/vendor/binarytorch/blogged/assets/new.svg",
+                      src: _vm.articleImage,
                       alt: "Card image"
                     }
                   }),
@@ -40849,8 +40847,6 @@ var render = function() {
                     },
                     on: { uploaded: _vm.handleUploaded }
                   }),
-                  _vm._v(" "),
-                  _c("SEO-tips"),
                   _vm._v(" "),
                   _c("div", { staticClass: "card-body px-5" }, [
                     _c("div", { staticClass: "form-group mb-4" }, [
@@ -41106,7 +41102,7 @@ var render = function() {
                       },
                       [
                         _c("i", { staticClass: "ni ni-spaceship" }),
-                        _vm._v(" Publish Now")
+                        _vm._v(" Update and Publish")
                       ]
                     ),
                     _vm._v(" "),
@@ -41118,8 +41114,23 @@ var render = function() {
                         on: { click: _vm.save }
                       },
                       [
-                        _c("i", { staticClass: "ni ni-calendar-grid-58" }),
-                        _vm._v(" Save Draft")
+                        _c("i", { staticClass: "fa fa-save" }),
+                        _vm._v(" Update only")
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text-center mb-4" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn color-danger btn-link",
+                        attrs: { type: "button" },
+                        on: { click: _vm.save }
+                      },
+                      [
+                        _c("i", { staticClass: "fa fa-trash" }),
+                        _vm._v(" Delete this article")
                       ]
                     )
                   ])
@@ -46245,10 +46256,8 @@ exports.push([module.i, "\n#pick-image {\n    cursor: pointer;\n}\n", ""]);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_SEOTips__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_SEOTips___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_SEOTips__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_ImageUploader__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_ImageUploader___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_ImageUploader__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_ImageUploader__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_ImageUploader___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_ImageUploader__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _this = this;
@@ -46349,7 +46358,7 @@ var _this = this;
 //
 //
 //
-
+//
 
 
 
@@ -46358,7 +46367,6 @@ var _this = this;
         return {
             categories: [],
             isLoading: true,
-            articleCreated: false,
             form: {
                 title: null,
                 slug: null,
@@ -46385,10 +46393,10 @@ var _this = this;
             _this.removeOldImage(oldValue.path);
         }
     },
-    beforeRouteLeave: function beforeRouteLeave(to, from, next) {
-        this.removeOldImage();
-
-        next();
+    computed: {
+        articleImage: function articleImage() {
+            return this.form.image ? this.form.image : '/vendor/binarytorch/blogged/assets/new.svg';
+        }
     },
     created: function created() {
         var _this2 = this;
@@ -46398,7 +46406,7 @@ var _this = this;
         });
 
         axios.get('/blogged-api/articles/' + this.$route.params.slug).then(function (response) {
-            _this2.article = response.data.data;
+            _this2.form = response.data.data;
             _this2.isLoading = false;
         }).catch(function () {
             _this2.isLoading = false;
@@ -46424,12 +46432,8 @@ var _this = this;
             form.image = form.image ? form.image.path : null;
             form.category_id = form.category.id;
 
-            axios.post('/blogged-api/articles', _extends({}, form)).then(function (response) {
-                _this3.articleCreated = true;
-
-                var action = form.published ? 'published.' : 'saved.';
-                _this3.$toasted.success('Your article has been ' + action);
-
+            axios.put('/blogged-api/articles/' + this.$route.params.slug, _extends({}, form)).then(function (response) {
+                _this3.$toasted.success('Your article has been updated.');
                 _this3.$router.push({ name: 'dashboard' });
             }).catch(function (errors) {
                 _this3.$toasted.error('Opps! Please make sure the entered data is valid.');
@@ -46438,24 +46442,13 @@ var _this = this;
         removeOldImage: function removeOldImage(path) {
             var _this4 = this;
 
-            // if the path given null and no image selected or article create => don't remove the image
-            if (this.articleCreated || !path && !this.form.image) {
-                return;
-            }
-
-            // if path not given and image selected => remove it
-            if (!path) {
-                path = this.form.image.path;
-            }
-
             axios.delete('/blogged-api/images/', { data: { path: path } }).then(function (response) {
                 _this4.form.image = null;
             });
         }
     },
     components: {
-        ImageUploader: __WEBPACK_IMPORTED_MODULE_1__components_ImageUploader___default.a,
-        SEOTips: __WEBPACK_IMPORTED_MODULE_0__components_SEOTips___default.a
+        ImageUploader: __WEBPACK_IMPORTED_MODULE_0__components_ImageUploader___default.a
     }
 });
 

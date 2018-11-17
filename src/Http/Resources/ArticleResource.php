@@ -20,6 +20,7 @@ class ArticleResource extends JsonResource
             'slug'         => $this->slug,
             'image'        => $this->image,
             'body'         => $this->body,
+            'excerpt'      => $this->excerpt,
             'publish_date' => $this->publish_date ? $this->publish_date->toDateString() : 'NA',
             'published'    => $this->published,
             'featured'     => $this->featured,
