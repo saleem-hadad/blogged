@@ -51,7 +51,7 @@
                         </div>
 
                         <div v-if="isLoading" class="text-center py-4">
-                            <ball-beat-loader color="#8F8F8F"></ball-beat-loader>
+                            <loader color="#8F8F8F"></loader>
                         </div>
                     </div>
                 </div>

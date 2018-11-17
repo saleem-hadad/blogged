@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col">
                     <div v-if="isLoading" class="card text-center shadow no-border py-8">
-                        <ball-beat-loader color="#8F8F8F"></ball-beat-loader>        
+                        <loader color="#8F8F8F"></loader>        
                     </div>
 
                     <div v-if="! isLoading" class="card shadow no-border pb-2">

@@ -25741,7 +25741,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vue_
 });
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component(__WEBPACK_IMPORTED_MODULE_6__components_BackToTop___default.a.name, __WEBPACK_IMPORTED_MODULE_6__components_BackToTop___default.a);
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component(__WEBPACK_IMPORTED_MODULE_5_vue_loaders__["a" /* BallBeatLoader */].name, __WEBPACK_IMPORTED_MODULE_5_vue_loaders__["a" /* BallBeatLoader */]);
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('loader', __WEBPACK_IMPORTED_MODULE_5_vue_loaders__["a" /* BallBeatLoader */]);
 
 var noDelimiter = { replace: function replace() {
     return '(?!x)x';
@@ -34019,7 +34019,7 @@ var render = function() {
                   ? _c(
                       "div",
                       { staticClass: "text-center py-4" },
-                      [_c("ball-beat-loader", { attrs: { color: "#8F8F8F" } })],
+                      [_c("loader", { attrs: { color: "#8F8F8F" } })],
                       1
                     )
                   : _vm._e(),
@@ -38475,7 +38475,7 @@ var render = function() {
             ? _c(
                 "div",
                 { staticClass: "card text-center shadow no-border py-8" },
-                [_c("ball-beat-loader", { attrs: { color: "#8F8F8F" } })],
+                [_c("loader", { attrs: { color: "#8F8F8F" } })],
                 1
               )
             : _vm._e(),
@@ -40656,7 +40656,7 @@ var render = function() {
             ? _c(
                 "div",
                 { staticClass: "card text-center shadow no-border py-8" },
-                [_c("ball-beat-loader", { attrs: { color: "#8F8F8F" } })],
+                [_c("loader", { attrs: { color: "#8F8F8F" } })],
                 1
               )
             : _vm._e(),
@@ -40815,7 +40815,7 @@ var render = function() {
             ? _c(
                 "div",
                 { staticClass: "card text-center shadow no-border py-8" },
-                [_c("ball-beat-loader", { attrs: { color: "#8F8F8F" } })],
+                [_c("loader", { attrs: { color: "#8F8F8F" } })],
                 1
               )
             : _vm._e(),
@@ -47090,7 +47090,7 @@ var render = function() {
               ? _c(
                   "div",
                   { staticClass: "text-center py-4" },
-                  [_c("ball-beat-loader", { attrs: { color: "#8F8F8F" } })],
+                  [_c("loader", { attrs: { color: "#8F8F8F" } })],
                   1
                 )
               : _vm._e()

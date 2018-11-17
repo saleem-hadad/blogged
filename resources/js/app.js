@@ -18,7 +18,7 @@ Vue.use(Toasted, {
 })
 
 Vue.component(BackToTop.name, BackToTop);
-Vue.component(BallBeatLoader.name, BallBeatLoader);
+Vue.component('loader', BallBeatLoader);
 
 const noDelimiter = {replace: () => '(?!x)x'};
 
