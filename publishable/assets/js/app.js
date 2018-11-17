@@ -33549,8 +33549,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['data']
@@ -33574,16 +33572,14 @@ var render = function() {
           return _c("tr", { key: article.id }, [
             _c("th", { attrs: { scope: "row" } }, [
               _c("div", { staticClass: "media align-items-center" }, [
-                _c("a", { staticClass: "rounded", attrs: { href: "#" } }, [
-                  _c("img", {
-                    staticClass: "rounded",
-                    attrs: {
-                      width: "150px",
-                      alt: "article image",
-                      src: article.image
-                    }
-                  })
-                ])
+                _c("img", {
+                  staticClass: "rounded",
+                  attrs: {
+                    width: "150px",
+                    alt: "article image",
+                    src: article.image
+                  }
+                })
               ])
             ]),
             _vm._v(" "),

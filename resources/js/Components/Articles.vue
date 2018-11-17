@@ -14,9 +14,7 @@
                 <tr v-for="article in data" :key="article.id">
                     <th scope="row">
                         <div class="media align-items-center">
-                        <a href="#" class="rounded">
                             <img class="rounded" width="150px" alt="article image" :src="article.image">
-                        </a>
                         </div>
                     </th>
                     <td v-text="article.title"></td>
