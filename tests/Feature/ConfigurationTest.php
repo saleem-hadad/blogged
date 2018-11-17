@@ -61,4 +61,16 @@ class ConfigurationTest extends TestCase
         $this->get($article->path())
             ->assertSee('disqus_thread');
     }
+
+    /** @test */
+    public function dashboard_can_be_disabled()
+    {        
+        $this->authenticate();
+        
+        Config::set('blogged.settings.dashboard', true);
+        $this->get(config('blogged.routes.dashboard'))->assertStatus(200);
+
+        Config::set('blogged.settings.dashboard', false);
+        $this->get(config('blogged.routes.dashboard'))->assertStatus(403);
+    }
 }

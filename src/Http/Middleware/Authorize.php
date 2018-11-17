@@ -13,6 +13,8 @@ class Authorize
      */
     public function handle($request, $next)
     {
+        abort_if(! config('blogged.settings.dashboard'), 403);
+
         return $next($request);
     }
 }

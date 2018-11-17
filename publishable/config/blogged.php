@@ -28,6 +28,7 @@ return [
     */
 
     'settings'       => [
+        'dashboard'  => true,
         'user'       => App\User::class,
         'storage'    => env('BLOGGED_STORAGE', 'local'),
         'ga_id'      => env('BLOGGED_GA', ''),
