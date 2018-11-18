@@ -23,7 +23,7 @@
 
 **Blogged** is a carefully designed Laravel package provides an easy way to create a beautiful blog like [this](https://blogged.binarytorch.com.my/blog) inside your normal Laravel projects. It lives besides your code project's code base without interacting with it. It comes with a beautiful looking user interface which is highly configurable to fit your need.
 
-![blogged](https://s3-ap-southeast-1.amazonaws.com/myseniorio/blogged-showcase.png)
+![blogged](https://blogged.binarytorch.com.my/blogged-showcase.png)
 
 ## Get Started
 
