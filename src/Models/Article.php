@@ -2,6 +2,7 @@
 
 namespace BinaryTorch\Blogged\Models;
 
+use Mews\Purifier\Facades\Purifier;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use BinaryTorch\Blogged\Filters\Filterable;
@@ -72,7 +73,10 @@ class Article extends Model
      */
     public function getParsedBodyAttribute()
     {
-        return $this->parse($this->body);
+        return Purifier::clean($this->parse($this->body), [
+            'AutoFormat.AutoParagraph' => false,
+            'AutoFormat.RemoveEmpty'   => false,
+        ]);
     }
 
     /**

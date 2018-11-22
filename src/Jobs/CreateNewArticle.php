@@ -4,7 +4,6 @@ namespace BinaryTorch\Blogged\Jobs;
 
 use Illuminate\Http\Request;
 use Illuminate\Bus\Queueable;
-use Mews\Purifier\Facades\Purifier;
 use Illuminate\Queue\SerializesModels;
 use BinaryTorch\Blogged\Models\Article;
 use Illuminate\Queue\InteractsWithQueue;
@@ -22,17 +21,12 @@ class CreateNewArticle
      */
     public function handle()
     {
-        $body = Purifier::clean(request()->body, [
-            'AutoFormat.AutoParagraph' => false,
-            'AutoFormat.RemoveEmpty'   => false,
-        ]);
-
         $article = Article::create([
             'title'        => request()->title, 
             'slug'         => request()->slug,
             'image'        => request()->image, 
             'excerpt'      => request()->excerpt, 
-            'body'         => $body, 
+            'body'         => request()->body, 
             'publish_date' => request()->publish_date,
             'featured'     => request()->featured,
             'category_id'  => request()->category_id,

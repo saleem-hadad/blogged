@@ -137,8 +137,10 @@ class ArticleTest extends TestCase
     public function it_parse_its_body_with_parsedBody_attribute()
     {
         $article = factory(Article::class)->create(['body' => '#hello']);
-
         $this->assertEquals('<h1>hello</h1>', $article->parsedBody);
+
+        $article = factory(Article::class)->create(['body' => '<script>alert(1);</script>']);
+        $this->assertEquals('', $article->parsedBody);
     }
 
     /** @test */

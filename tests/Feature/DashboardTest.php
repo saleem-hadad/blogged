@@ -73,14 +73,14 @@ class DashboardTest extends TestCase
         $newData = [
             'title'       => 'How are you?',
             'slug'        => 'how-are-you',
-            'body'        => 'you are cool',
+            'body'        => '> you are cool',
             'excerpt'     => 'you are not cool',
             'category_id' => 1,
             'image'       => 'image.png',
             'featured'    => true,
             'published'   => true,
         ];
-
+        
         $this->json('POST', '/blogged-api/articles', $newData)->assertStatus(201);
 
         $this->assertDatabaseHas('blogged_articles', $newData);
