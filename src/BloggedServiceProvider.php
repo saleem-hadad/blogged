@@ -34,12 +34,12 @@ class BloggedServiceProvider extends ServiceProvider
      */
     protected function registerRoutes()
     {
-        Route::group($this->webRoutesConfig(), function () {
-            $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
-        });
-
         Route::group($this->apiRoutesConfig(), function () {
             $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
+        });
+
+        Route::group($this->webRoutesConfig(), function () {
+            $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
         });
     }
 

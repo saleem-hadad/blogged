@@ -27,13 +27,13 @@ export default [
     },
     {
         name: 'view',
-        path: '/articles/:slug',
+        path: '/articles/:slug*',
         component: ViewArticle,
         props: true,
     },
     {
         name: 'edit',
-        path: '/articles/:slug/edit',
+        path: '/articles/:slug*/edit',
         component: EditArticle,
         props: true,
     },

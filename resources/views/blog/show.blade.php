@@ -27,18 +27,18 @@
                 <div class="card shadow no-border pb-2">
                     <img class="card-img-top" src="{{ $article->image }}" alt="Card image cap">
 
-                    <div class="bg-secondary px-5 py-2">
+                    <div class="bg-secondary px-4 py-2">
                         <a href="{{ $article->category->path() }}" class="btn btn-link btn-sm" style="margin-right: 0px">{{ $article->category->title }}</a>/ <span class="description">{{ $article->publish_date->toFormattedDateString() }}</span> (<span class="readingTime"></span>)
                     </div>
 
-                    <div class="card-body px-5">
-                        <h1 class="display-2">@if($article->featured) <span style="display: inline">&#9733;</span>@endif {{ $article->title }}</h1>
+                    <div class="card-body px-4">
+                        <h1 class="display-3">@if($article->featured) <span style="display: inline">&#9733;</span>@endif {{ $article->title }}</h1>
                         <article class="pt-2 is-{{ config('blogged.ui.code') }}">
                             {!! $article->parsedBody !!}
                         </article>
                     </div>
 
-                    <div class="card-footer px-5">
+                    <div class="card-footer px-4">
                             @include('blogged::partials.author', [
                                 'avatar' => $article->authorAvatar(),
                                 'name'   => $article->author->name
