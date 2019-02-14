@@ -44,6 +44,20 @@ class BlogTest extends TestCase
     }
 
     /** @test */
+    public function article_author_can_view_any_of_his_article_even_if_not_published()
+    {
+        $article = factory(Article::class)->create([
+            'title' => 'How to become a developer in 1 min?',
+            'slug'  => 'how-to',
+        ]);
+        
+        $this->actingAs($article->author);
+        $this->get($article->path())
+            ->assertStatus(200)
+            ->assertSee('How to become a developer in 1 min?');
+    }
+
+    /** @test */
     public function a_guest_can_view_all_articles_in_a_given_category()
     {
         $category = factory(Category::class)->create();

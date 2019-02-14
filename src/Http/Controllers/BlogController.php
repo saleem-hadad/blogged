@@ -37,7 +37,7 @@ class BlogController extends Controller
 
         abort_if($category->id != $article->category_id, 404);
         
-        abort_if(! $article->published, 403);
+        abort_if(! $article->published && $article->author->id != auth()->id(), 403);
 
         $article->load(['category', 'author']);
 
