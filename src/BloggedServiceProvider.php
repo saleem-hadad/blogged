@@ -17,7 +17,7 @@ class BloggedServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerRoutes();
-        
+
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'blogged');
 
         Route::middlewareGroup('blogged', config('blogged.middleware', []));
@@ -76,22 +76,11 @@ class BloggedServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->loadHelpers();
         $this->registerConfigs();
 
         if ($this->app->runningInConsole()) {
             $this->registerPublishableResources();
             $this->registerConsoleCommands();
-        }
-    }
-
-    /**
-     * Load helpers.
-     */
-    protected function loadHelpers()
-    {
-        foreach (glob(__DIR__.'/Helpers/*.php') as $filename) {
-            require_once $filename;
         }
     }
 

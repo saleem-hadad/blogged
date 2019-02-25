@@ -30,7 +30,10 @@
     "autoload": {
         "psr-4": {
             "BinaryTorch\\Blogged\\": "src/"
-        }
+        },
+        "files": [
+            "src/Helpers/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
