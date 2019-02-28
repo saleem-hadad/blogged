@@ -2,10 +2,12 @@
 
 namespace BinaryTorch\Blogged;
 
+use Gate;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use BinaryTorch\Blogged\Commands\InstallCommand;
+use BinaryTorch\Blogged\Commands\PoliciesCommand;
 
 class BloggedServiceProvider extends ServiceProvider
 {
@@ -25,6 +27,10 @@ class BloggedServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         $this->app->make('Illuminate\Database\Eloquent\Factory')->load(__DIR__ . '/../database/factories');
+
+        $ns = $this->app->getNamespace();
+
+        $this->registerPolicies();
     }
 
     /**
@@ -136,5 +142,22 @@ class BloggedServiceProvider extends ServiceProvider
     protected function registerConsoleCommands()
     {
         $this->commands(InstallCommand::class);
+        $this->commands(PoliciesCommand::class);
+    }
+
+    protected function registerPolicies()
+    {
+        $ns = $this->app->getNamespace();
+
+        $policies = [
+            \BinaryTorch\Blogged\Models\Article::class => $ns."Policies\BloggedArticlePolicy",
+            \BinaryTorch\Blogged\Models\Category::class => $ns."Policies\BloggedCategoryPolicy",
+        ];
+
+        foreach ($policies as $model => $policy) {
+            if (class_exists($policy)) {
+                Gate::policy($model, $policy);
+            }
+        }
     }
 }
