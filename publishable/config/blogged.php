@@ -68,7 +68,7 @@ return [
             //'js/custom.js',
         ],
     ],
-    
+
     /*
     |--------------------------------------------------------------------------
     | Social
@@ -136,9 +136,15 @@ return [
     |
     */
 
-    'middleware' => [
+    // Middlewares assigned to blog front pages
+    'middleware-front' => [
+        'web',
+    ],
+
+    // Middlewares assigned to blog admin
+    'middleware-back' => [
         'web',
         Authenticate::class,
         Authorize::class,
-    ],
+    ]
 ];

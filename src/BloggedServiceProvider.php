@@ -19,10 +19,13 @@ class BloggedServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerRoutes();
-        
+
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'blogged');
 
         Route::middlewareGroup('blogged', config('blogged.middleware', []));
+
+        Route::middlewareGroup('blogged-front', config('blogged.middleware-front', []));
+        Route::middlewareGroup('blogged-back', config('blogged.middleware-back', []));
 
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
@@ -58,7 +61,7 @@ class BloggedServiceProvider extends ServiceProvider
             'namespace'  => 'BinaryTorch\Blogged\Http\Controllers',
             'domain'     => config('blogged.domain', null),
             'as'         => 'blogged.',
-            'middleware' => 'web',
+            'middleware' => 'blogged-front',
         ];
     }
 
@@ -71,7 +74,7 @@ class BloggedServiceProvider extends ServiceProvider
             'namespace'  => 'BinaryTorch\Blogged\Http\Controllers',
             'domain'     => config('blogged.domain', null),
             'prefix'     => 'blogged-api',
-            'middleware' => 'blogged',
+            'middleware' => 'blogged-back',
         ];
     }
 
