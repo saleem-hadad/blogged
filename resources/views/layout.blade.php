@@ -9,12 +9,14 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         @yield('head')
-        
+
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-        
+
         {{-- CSS --}}
+        @if(config('blogged.ui.blogged_css'))
         <link rel="stylesheet" href="{{ blogged_assets('css/app.css') }}">
+        @endif
 
         {{-- Icon --}}
         <link rel="apple-touch-icon" href="{{ asset(config('blogged.ui.fav')) }}">
@@ -38,7 +40,7 @@
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
                 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-            
+
                 ga('create', "{{ config('blogged.settings.ga_id') }}", 'auto');
                 ga('send', 'pageview');
             </script>
