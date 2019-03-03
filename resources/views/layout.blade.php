@@ -14,7 +14,7 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
         {{-- CSS --}}
-        @if(config('blogged.ui.blogged_css'))
+        @if(config('blogged.ui.blogged_css', true))
         <link rel="stylesheet" href="{{ blogged_assets('css/app.css') }}">
         @endif
 
