@@ -61,6 +61,7 @@ return [
         'sidebar'          => true,
         'primary_color'    => '#ab3f61',
         'code'             => 'dark',
+        'blogged_css'      => true,
         'additional_css'   => [
             //'css/custom.css',
         ],
