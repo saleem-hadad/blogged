@@ -21,8 +21,6 @@ class BloggedServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'blogged');
 
-        Route::middlewareGroup('blogged', config('blogged.middleware', []));
-
         Route::middlewareGroup('blogged-front', config('blogged.middleware-front', []));
         Route::middlewareGroup('blogged-back', config('blogged.middleware-back', []));
 
