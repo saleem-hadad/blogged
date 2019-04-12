@@ -3,7 +3,6 @@
 namespace BinaryTorch\Blogged;
 
 use Gate;
-use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use BinaryTorch\Blogged\Commands\InstallCommand;
