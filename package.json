@@ -17,7 +17,7 @@
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "cropperjs": "^1.4.3",
-    "jquery": "^3.2",
+    "jquery": "^3.4",
     "markdown-it": "^8.4.2",
     "marked": "^0.6.1",
     "popper.js": "^1.12",
