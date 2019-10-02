@@ -89,6 +89,7 @@ return [
         'tumblr'    => false,
         'email'     => false,
         'telegram'  => false,
+        'whatsapp'  => false,
     ],
 
     /*

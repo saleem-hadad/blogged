@@ -42,7 +42,13 @@
   
             @if(config('blogged.social.telegram'))
                 <a target="_blank" href="https://telegram.me/share/url?text={{ $title }}&amp;url={{ $url }}" class="btn btn-neutral btn-linkedin btn-round btn-lg">
-                    <i class="fa fa-google-square"></i> Telegram
+                    <i class="fa fa-telegram"></i> Telegram
+                </a>
+            @endif
+
+            @if(config('blogged.social.whatsapp'))
+                <a target="_blank" href="whatsapp://send?text={{ $url }}=" class="btn btn-neutral btn-slack btn-round btn-lg">
+                    <i class="fa fa-whatsapp"></i> Whatsapp
                 </a>
             @endif
         </div>
