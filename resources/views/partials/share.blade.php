@@ -47,7 +47,7 @@
             @endif
 
             @if(config('blogged.social.whatsapp'))
-                <a target="_blank" href="whatsapp://send?text={{ $url }}=" class="btn btn-neutral btn-slack btn-round btn-lg">
+                <a target="_blank" href="whatsapp://send?text={{ $url }}" class="btn btn-neutral btn-slack btn-round btn-lg">
                     <i class="fa fa-whatsapp"></i> Whatsapp
                 </a>
             @endif
