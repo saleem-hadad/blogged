@@ -1,6 +1,6 @@
 {
-    "name": "binarytorch/blogged",
-    "description": "Write gorgeous articles for your Laravel applications using MarkDown",
+    "name": "willgoldstein/blogged",
+    "description": "A forked repo from binarytorch/blogged to write gorgeous articles for your Laravel applications using MarkDown",
     "keywords": ["laravel", "markdown", "blog", "articles"],
     "license": "MIT",
     "type": "library",
